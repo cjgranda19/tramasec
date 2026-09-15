@@ -1,0 +1,1797 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Certificado Zurich</title>
+    <style>
+        @page {
+            size: A4;
+            margin: 0;
+        }
+.certificado-zurich-root .page {
+            width: 190mm !important;
+            min-height: 277mm !important;
+            margin-left: auto !important;
+            margin-right: auto !important;
+            padding: 10mm 0 !important;
+            box-sizing: border-box !important;
+            font-family: Arial, Helvetica, sans-serif !important;
+            font-size: 12px !important;
+            background: #ffffff !important;
+            page-break-after: always;
+            overflow: hidden;
+        }
+
+        .certificado-zurich-root .tabla-vehiculo {
+            width: 82%;
+            margin: 18px auto;
+            border-collapse: collapse;
+        }
+
+        .certificado-zurich-root .tabla-vehiculo th {
+            border: 1px solid #000;
+            padding: 4px;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .certificado-zurich-root .tabla-vehiculo td {
+            border: 1px solid #000;
+            padding: 4px;
+            vertical-align: middle;
+        }
+
+        .certificado-zurich-root .table-simple {
+            width: 90% !important;
+            max-width: 90% !important;
+            margin-left: auto !important;
+            margin-right: auto !important;
+            border-collapse: collapse !important;
+            table-layout: fixed !important;
+            color: black;
+        }
+
+        .certificado-zurich-root .table-simple td {
+            border: 1px solid #000 !important;
+            padding: 5px !important;
+            vertical-align: middle;
+            box-sizing: border-box !important;
+        }
+
+        .certificado-zurich-root .table-simple th {
+            border: 1px solid #000 !important;
+            padding: 5px !important;
+            text-align: center !important;
+            font-weight: bold;
+            background: #ffffff;
+            color: #000000;
+            box-sizing: border-box !important;
+        }
+
+       .certificado-zurich-root .box {
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+    border-bottom: 1px solid black;
+    padding: 5px;
+}
+
+        .certificado-zurich-root .bold {
+            font-weight: bold;
+        }
+
+        .certificado-zurich-root .lista-cuadro {
+            padding: 12px 20px 12px 28px !important;
+            line-height: 1.45;
+        }
+
+        .certificado-zurich-root .tabla-documento {
+            width: 90% !important;
+            max-width: 90% !important;
+            margin-left: auto !important;
+            margin-right: auto !important;
+            border-collapse: collapse !important;
+            table-layout: fixed !important;
+            color: #000 !important;
+        }
+
+        .certificado-zurich-root .tabla-documento th {
+            border: 1px solid #000 !important;
+            padding: 5px !important;
+            background-color: #215C98 !important;
+            color: #ffffff !important;
+            text-align: center !important;
+            font-weight: bold;
+            box-sizing: border-box !important;
+            font-size: 12px !important;
+        }
+
+        .certificado-zurich-root .tabla-documento td {
+            border: 1px solid #000 !important;
+            padding: 5px !important;
+            box-sizing: border-box !important;
+        }
+
+        .certificado-zurich-root .cabecera-azul {
+            background-color: #2d6699;
+            color: #ffffff;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .certificado-zurich-root .tabla-vehiculo .titulo-columna {
+            background: #2d6699;
+            color: #ffffff;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .certificado-zurich-root .header {
+            width: 190mm !important;
+            max-width: 190mm !important;
+            margin: 0 !important;
+            border-collapse: collapse !important;
+            table-layout: fixed !important;
+        }
+
+        .certificado-zurich-root .header td {
+            border: none !important;
+            vertical-align: middle !important;
+            padding: 0 !important;
+        }
+
+        .certificado-zurich-root .section-title {
+            display: block !important;
+            width: 190mm !important;
+            max-width: 190mm !important;
+            margin: 0 !important;
+            padding: 5px 0 !important;
+            box-sizing: border-box !important;
+            background-color: #d2d1d1 !important;
+            border: 1px solid #000 !important;
+            text-align: center !important;
+            font-weight: bold !important;
+            font-size: 12px !important;
+        }
+
+        .certificado-zurich-root .cert-table {
+            width: 190mm !important;
+            max-width: 190mm !important;
+            margin: 0 !important;
+            border-collapse: collapse !important;
+            table-layout: fixed !important;
+            color: black !important;
+        }
+
+        .certificado-zurich-root .cert-table td {
+            border: 1px solid #000 !important;
+            padding: 5px !important;
+            vertical-align: middle !important;
+            box-sizing: border-box !important;
+        }
+
+        .certificado-zurich-root .cert-table th {
+            border: 1px solid #000 !important;
+            background-color: #d2d1d1 !important;
+            color: black !important;
+            padding: 5px !important;
+            font-size: 12px !important;
+            text-align: center !important;
+            box-sizing: border-box !important;
+        }
+
+        .certificado-zurich-root .text-center {
+            text-align: center;
+        }
+
+        .certificado-zurich-root .text-right {
+            text-align: right;
+        }
+
+        .certificado-zurich-root .logo-zurich {
+            width: 150px;
+        }
+
+        .certificado-zurich-root .logo-insuratlan {
+            width: 70px;
+        }
+
+        .certificado-zurich-root .firma {
+            width: 130px;
+        }
+
+        .certificado-zurich-root .img-zurich {
+            width: 150px !important;
+            height: 50px !important;
+            background-image: url('data:image/png;base64,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');
+            background-size: contain !important;
+            background-repeat: no-repeat !important;
+            background-position: left center !important;
+            display: inline-block !important;
+        }
+
+        .certificado-zurich-root .img-insuratlan {
+            width: 70px !important;
+            height: 50px !important;
+            background-image: url('data:image/jpeg;base64,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');
+            background-size: contain !important;
+            background-repeat: no-repeat !important;
+            background-position: right center !important;
+            display: inline-block !important;
+        }
+
+        .certificado-zurich-root .boxed {
+            width: 190mm !important;
+            max-width: 190mm !important;
+            box-sizing: border-box !important;
+            border: 1px solid black;
+        }
+
+        .certificado-zurich-root .center {
+            text-align: center;
+        }
+
+        .certificado-zurich-root .right {
+            text-align: right;
+        }
+
+        .certificado-zurich-root .logo-left {
+            width: 30% !important;
+            text-align: left !important;
+        }
+
+        .certificado-zurich-root .logo-center {
+            width: 40% !important;
+            text-align: center !important;
+            color: #365F91 !important;
+        }
+
+        .certificado-zurich-root .logo-right {
+            width: 30% !important;
+            text-align: right !important;
+        }
+
+        .certificado-zurich-root .main-title {
+            text-align: center;
+            font-size: 12px;
+            margin: 4mm 0;
+        }
+
+        .certificado-zurich-root .para {
+            margin: 4px 0;
+        }
+
+        .certificado-zurich-root .para-tight {
+            margin: 2px 0;
+        }
+
+        .certificado-zurich-root .small {
+            font-size: 11px;
+        }
+
+        .certificado-zurich-root .tiny {
+            font-size: 10px;
+        }
+
+        .certificado-zurich-root .spacer-sm {
+            height: 5mm;
+        }
+
+        .certificado-zurich-root .spacer-md {
+            height: 10mm;
+        }
+
+        .certificado-zurich-root .spacer-lg {
+            height: 18mm;
+        }
+
+        .certificado-zurich-root .sub-title {
+            border-left: 1px solid black;
+            border-right: 1px solid black;
+            border-bottom: 1px solid black;
+            padding: 5px;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .certificado-zurich-root .text-block {
+            padding-left: 5px;
+            padding-right: 5px;
+        }
+
+        .certificado-zurich-root .signatures {
+            width: 100% !important;
+            border-collapse: collapse !important;
+            table-layout: fixed !important;
+        }
+
+        .certificado-zurich-root .signatures td {
+            border: none !important;
+            text-align: center;
+            vertical-align: middle;
+        }
+
+        .certificado-zurich-root .no-border {
+            width: 100% !important;
+            border-collapse: collapse !important;
+            table-layout: fixed !important;
+        }
+
+        .certificado-zurich-root .no-border td {
+            border: none !important;
+        }
+
+        .certificado-zurich-root .page.small table[style*="width:70%"] {
+            border: 1px solid black;
+            border-collapse: collapse;
+            width: 70%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .certificado-zurich-root .page.small table[style*="width:70%"] td {
+            border: 1px solid black;
+            padding: 5px;
+        }
+
+        .certificado-zurich-root td,
+.certificado-zurich-root th,
+.certificado-zurich-root p,
+.certificado-zurich-root div {
+            overflow-wrap: break-word;
+            word-wrap: break-word;
+        }
+
+        .certificado-zurich-root table {
+            max-width: 100%;
+        }
+
+        .certificado-zurich-root td {
+            box-sizing: border-box;
+        }
+
+.certificado-zurich-root .page:last-child {
+    page-break-after: auto !important;
+    break-after: auto !important;
+}
+</style>
+
+</head>
+
+<body>
+<div class="certificado-zurich-root">
+
+
+    <!-- PÁGINA 1 -->
+    <div class="page">
+        <table class="header">
+            <tr>
+                <td class="logo-left">
+                    <div class="img-zurich"></div>
+                </td>
+                <td style="width: 40%; text-align: center; color: #365F91;">
+                    Av. Eloy Alfaro N34-194 y Catalina<br>de Aldaz.<br>Quito-Ecuador
+                </td>
+                <td class="logo-right">
+                    <div class="img-insuratlan"></div>
+                </td>
+            </tr>
+        </table>
+
+        <h1 class="main-title">Póliza de seguro vehicular<br>Certificado individual de cobertura</h1>
+
+        <table class="cert-table">
+            <tr>
+                <td colspan="2"><b>Póliza N°:</b> {{$cotizador--&gt;numero_poliza ?? ''}}</td>
+                <td><b>Certificado N°:</b> {{$contrato_numero_certificado}} </td>
+            </tr>
+            <tr>
+                <td><b>Vigencia del certificado:</b> ANUAL</td>
+                <td><b>Desde:</b> {{\Carbon\Carbon::parse($cotizador-&gt;inicio_vigencia)-&gt;format('d/m/Y')}}</td>
+                <td><b>Hasta:</b> {{\Carbon\Carbon::parse($cotizador-&gt;fin_vigencia)-&gt;format('d/m/Y')}}</td>
+            </tr>
+        </table>
+
+        <div class="section-title">Datos del beneficiario</div>
+        <table class="cert-table">
+            <tr>
+                <td colspan="3"><b>Nombre del asegurado</b> {{$informacion_titular-&gt;primer_nombre ?? ''}}
+                    {{$informacion_titular-&gt;segundo_nombre ?? ''}} {{$informacion_titular-&gt;primer_apellido ?? ''}}
+                    {{$informacion_titular-&gt;segundo_apellido ?? ''}} </td>
+            </tr>
+            <tr>
+                <td><b>Teléfono</b> {{$informacion_titular-&gt;telefono ?? ''}} </td>
+                <td><b>Mail</b></td>
+                <td> {{$informacion_titular-&gt;email ?? ''}} </td>
+            </tr>
+            <tr>
+                <td><b>Fecha de nacimiento:</b> {{\Carbon\Carbon::parse($informacion_titular-&gt;fecha_nacimiento ??
+                    '')-&gt;format('d/m/Y')}}</td>
+                <td><b>Celular</b></td>
+                <td> {{$informacion_titular-&gt;celular ?? ''}} </td>
+            </tr>
+            <tr>
+                <td colspan="3"><b>Dirección:</b> {{$informacion_titular-&gt;direccion ?? ''}} </td>
+            </tr>
+        </table>
+
+        <div class="section-title">Características del vehículo</div>
+        <div style="padding:4mm 12mm 6mm 12mm; border-left:1px solid #333; border-right:1px solid #333;">
+            <table class="tabla-documento">
+                <tr>
+                    <th>Categoría</th>
+                    <th>Detalle</th>
+                    <th>Categoría</th>
+                    <th>Detalle</th>
+                </tr>
+                <tr>
+                    <td>Marca:</td>
+                    <td class="center"> {{\App\Servicios\Catalogos::get($objeto_asegurado-&gt;marca ?? '')}}
+                    </td>
+                    <td>Valor Asegurado:</td>
+                    <td class="center"> {{number_format(floatval($cotizador-&gt;valor_asegurado ?? 0), 2)}} </td>
+                </tr>
+                <tr>
+                    <td>Modelo:</td>
+                    <td class="center"> {{\App\Servicios\Catalogos::get($objeto_asegurado-&gt;modelo ?? '')}}
+                    </td>
+                    <td>Prima neta anual:</td>
+                    <td class="center"> {{number_format(floatval($cotizador-&gt;prima_neta ?? 0), 2)}} </td>
+                </tr>
+                <tr>
+                    <td>Motor:</td>
+                    <td class="center"> {{$objeto_asegurado-&gt;motor ?? ''}}
+                    </td>
+                    <td>Super de Bancos:</td>
+                    <td class="center"> </td>
+                </tr>
+                <tr>
+                    <td>Chasis / No. Serie:</td>
+                    <td class="center"> {{$objeto_asegurado-&gt;chasis ?? ''}} </td>
+                    <td>Seguro Campesino:</td>
+                    <td class="center"> {{$cotizador-&gt;impuesto_ssc ?? ''}} </td>
+                </tr>
+                <tr>
+                    <td>Clase:</td>
+                    <td class="center"> {{$cotizador-&gt;clase_vehiculo ?? ''}} </td>
+                    <td>IVA:</td>
+                    <td class="center"> {{number_format(floatval($cotizador-&gt;iva ?? 0), 2)}} </td>
+                </tr>
+                <tr>
+                    <td>Color:</td>
+                    <td class="center"> {{$objeto_asegurado-&gt;color ?? ''}}
+                    </td>
+                    <td>Derechos de Emisión:</td>
+                    <td class="center"> {{number_format(floatval($cotizador-&gt;derechos_emision ?? 0), 2)}}
+                    </td>
+                </tr>
+                <tr>
+                    <td>Placa:</td>
+                    <td class="center"> {{$objeto_asegurado-&gt;placa ?? ''}}
+                    </td>
+                    <td>Prima Total primer año:</td>
+                    <td class="center"> {{number_format(floatval($cotizador-&gt;prima_total ?? 0), 2)}} </td>
+                </tr>
+                <tr>
+                    <td>Año:</td>
+                    <td class="center"> {{$objeto_asegurado-&gt;year ?? ''}}
+                    </td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="section-title">Coberturas</div>
+        <div
+            style="padding:4mm 13mm 5mm 13mm; border-left:1px solid #333; border-right:1px solid #333; border-bottom:1px solid #333;">
+            <table class="tabla-documento">
+                <tr>
+                    <th style="width:77%">Cobertura</th>
+                    <th style="width:23%">Límite asegurado</th>
+                </tr>
+                <tr>
+                    <td>Responsabilidad Civil (LUC)</td>
+                    <td class="center">USD $40.000,00</td>
+                </tr>
+                <tr>
+                    <td>Muerte Accidental e Invalidez total y permanente por ocupante (hasta 2 ocupantes)</td>
+                    <td class="center">USD $5.000,00</td>
+                </tr>
+                <tr>
+                    <td>Muerte Accidental para el titular de la Póliza</td>
+                    <td class="center">USD $10.000,00</td>
+                </tr>
+                <tr>
+                    <td>Gastos Médico por ocupante (hasta 2 ocupantes)</td>
+                    <td class="center">USD $5.000,00</td>
+                </tr>
+                <tr>
+                    <td>Gastos por remolque a consecuencia de accidente en exceso a la asistencia vehicular, vía
+                        reembolso, hasta</td>
+                    <td class="center">USD $300,00</td>
+                </tr>
+                <tr>
+                    <td>Gastos de Sepelio únicamente para el conductor en caso de accidente de tránsito dentro del
+                        vehículo asegurado, en exceso de la asistencia, vía reembolso</td>
+                    <td class="center">USD $500,00</td>
+                </tr>
+                <tr>
+                    <td>Gastos de Ambulancia por accidente, en exceso de la asistencia, bajo reembolso</td>
+                    <td class="center">USD $250,00</td>
+                </tr>
+                <tr>
+                    <td>Gastos Legales<br>- &nbsp;&nbsp;Liberación del vehículo hasta: $100<br>- &nbsp;&nbsp;Indagación
+                        previa hasta: $200<br>- &nbsp;&nbsp;Instrucción fiscal hasta: $300<br>- &nbsp;&nbsp;Proceso
+                        judicial hasta: $400</td>
+                    <td class="center" style="vertical-align:middle">USD $1.000,00</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <!-- PÁGINA 2 -->
+    <div class="page">
+        <table class="header">
+            <tr>
+                <td class="logo-left">
+                    <div class="img-zurich"></div>
+                </td>
+                <td class="logo-center">
+                    Av. Eloy Alfaro N34-194 y Catalina<br>de Aldaz.<br>Quito-Ecuador
+                </td>
+                <td class="logo-right">
+                    <div class="img-insuratlan"></div>
+                </td>
+
+            </tr>
+        </table>
+        <div class="spacer-md boxed"></div>
+        <div class="spacer-sm"></div>
+        <div class="section-title">Deducibles</div>
+        <div
+            style="padding:5mm 14mm 9mm 14mm; border-left:1px solid #333; border-right:1px solid #333; border-bottom:1px solid #333;">
+            <table class="tabla-documento">
+                <tr>
+                    <th>Cobertura</th>
+                    <th>Detalle</th>
+                </tr>
+                <tr>
+                    <td><b>Pérdidas Parciales 1er evento</b></td>
+                    <td class="center">10% del valor del siniestro, 1.5% del valor asegurado, mínimo $450.</td>
+                </tr>
+                <tr>
+                    <td><b>Pérdidas Parciales 2do evento</b></td>
+                    <td class="center">10% del valor del siniestro, 1.5% del valor asegurado, mínimo $600.</td>
+                </tr>
+                <tr>
+                    <td><b>Pérdidas Parciales 3er evento</b></td>
+                    <td class="center">10% del valor del siniestro, 2% del valor asegurado, mínimo $750.</td>
+                </tr>
+                <tr>
+                    <td><b>Pérdida Total por Daños o choque</b></td>
+                    <td class="center">15% del valor asegurado</td>
+                </tr>
+                <tr>
+                    <td><b>Pérdida Total por Robo</b></td>
+                    <td class="center">20% del valor asegurado</td>
+                </tr>
+            </table>
+        </div>
+        <div class="section-title">Descripción de las coberturas</div>
+        <div class="box">Póliza de cobertura Todo Riesgo con Amparos
+            adicionales</div>
+        <div class="section-title">Beneficios adicionales</div>
+        <div class="box">
+            <table class="table-simple">
+                <tr>
+                    <td class="bold">ASISTENCIA ZURICH</td>
+                </tr>
+                <tr>
+                    <td class="lista-cuadro">
+                        - &nbsp; Coordinación remolque por avería para vehículos livianos<br>
+                        - &nbsp; Coordinación de remolque por choque para vehículos livianos<br>
+                        - &nbsp; Coordinación de maniobras especiales<br>
+                        - &nbsp; Coordinación de rescate<br>
+                        - &nbsp; Coordinación segundo traslado de vehículos<br>
+                        - &nbsp; Traslados adicionales<br>
+                        - &nbsp; Coordinación cambio de neumático<br>
+                        - &nbsp; Coordinación de cerrajería vehicular<br>
+                        - &nbsp; Coordinación de envío de combustible<br>
+                        - &nbsp; Coordinación traspaso de corriente - carga de batería<br>
+                        - &nbsp; Tramitador personal<br>
+                        - &nbsp; Coordinación de ambulancia en caso de lesiones resultado de un accidente de
+                        tránsito<br>
+                        - &nbsp; Coordinación de reparación de parabrisas y retrovisores<br>
+                        - &nbsp; Coordinación de Servicio Exequial
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+
+    <!-- PÁGINA 3 -->
+    <div class="page">
+        <table class="header">
+            <tr>
+                <td class="logo-left">
+                    <div class="img-zurich"></div>
+                </td>
+                <td class="logo-center">
+                    Av. Eloy Alfaro N34-194 y Catalina<br>de Aldaz.<br>Quito-Ecuador
+                </td>
+                <td class="logo-right">
+                    <div class="img-insuratlan"></div>
+                </td>
+            </tr>
+        </table>
+        <div class="section-title">Exclusiones (de acuerdo con las condiciones generales de la póliza)</div>
+        <div class="box">
+            <table class="table-simple">
+                <tr>
+                    <td>
+                        <p>Los amparos de esta Póliza no cubren las pérdidas o daños ocurridos bajo
+                            las
+                            siguientes circunstancias:</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <p>1.1 Carreras o enseñanzas:<br>Mientras el vehículo asegurado sea
+                            utilizado
+                            voluntariamente por el conductor para ser parte, directa o indirectamente, de carreras,
+                            contiendas o
+                            pruebas de seguridad, resistencia o velocidad; o, cuando se utilice para fines de enseñanza
+                            o de
+                            instrucciones de su manejo o funcionamiento.</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <p>1.2 Vehículo alquilado:<br>Mientras el vehículo se dé en alquiler
+                            de manera
+                            formal o informal, remunerada o no remunerada (comodato), excepto si dicho uso hubiese sido
+                            declarado
+                            por el Asegurado y hubiera sido aceptado por la Compañía y descrito en las condiciones
+                            particulares
+                            de
+                            la póliza.</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <p class="para-tight">1.3 Carencia de licencia:<br>Mientras el vehículo sea manejado, con
+                            consentimiento del Asegurado o sin aquel, por una persona que no tenga licencia de conducir
+                            expedida
+                            por
+                            las autoridades de tránsito respectivas; o no tenga el tipo de licencia que corresponde para
+                            conducir el
+                            vehículo asegurado; o no tenga puntos en su licencia de conducir. No se consideran válidos
+                            los
+                            permisos
+                            provisionales.</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <p>1.4 Multas:<br>Multas que las autoridades impusieren al Asegurado a
+                            consecuencia de infracciones, aun cuando tales infracciones hubiesen sido impugnadas.</p>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <p>1.5 Desatención a normas de tránsito:<br>Cuando el conductor del
+                            vehículo
+                            asegurado desatienda las señales o normas de tránsito, salvo que haya contratado la cláusula
+                            de
+                            amparo
+                            patrimonial y se encuentre detallada en las condiciones particulares.</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+
+                        <p>1.6 Embriaguez:<br>Mientras el vehículo sea manejado por una
+                            persona en
+                            estado
+                            de embriaguez o bajo los efectos tóxicos de estupefacientes, salvo que haya contratado la
+                            cláusula
+                            de
+                            amparo patrimonial y se encuentre detallada en las condiciones particulares.</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <p>1.7 Sobrecarga o esfuerzo excesivo:<br>Sobrecarga o esfuerzo
+                            excesivo en
+                            relación con la resistencia o con la capacidad del vehículo asegurado o con la resistencia
+                            de
+                            cualquiera
+                            de sus partes; según este determinado por las especificaciones de fábrica del vehículo.</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <p>1.8 Daño intencional:<br>Daño o pérdida causada por el Asegurado o
+                            por el
+                            conductor, o con su complicidad.</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <p>1.9 Incautación:<br>Apoderamiento o toma de posesión que, debido a
+                            atribuciones
+                            legales o razón imperiosa de pública necesidad, lleva a cabo la autoridad judicial, militar
+                            o de
+                            otra índole; o daños a la propiedad por o bajo la orden de cualquier gobierno de jure o de
+                            facto o autoridad
+                            pública o local. Cualquier daño o pérdida que sobrevenga durante la subsistencia de
+                            condiciones anormales que, directa o indirectamente,
+                            sean ocasionadas por, o sean consecuencia de cualquiera de los hechos señalados, no están
+                            amparados por este seguro, excepto en cuanto el
+                            Asegurado pruebe que tal pérdida o daño ocurrió independientemente de la existencia de tales
+                            condiciones anormales. </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <p>
+                            1.10 Guerra y revolución:<br>
+                            Guerra, haya sido o no declarada, hostilidades u operaciones bélicas o militares, guerra
+                            civil, revolución, conmoción civil, insurrección, poder militar o usurpado, asonada,
+                            invasión, insubordinación, rebelión y sedición.</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <p class="para-tight">1.11 Medidas cautelares:<br>No tendrá cobertura la pérdida o
+                            retención del
+                            vehículo, ni los daños que este sufriere debido a la imposición de medida cautelares sobre
+                            el
+                            vehículo
+                            asegurado tales como, pero sin limitar embargo, secuestro o retención.</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+
+                        <p>1.12 Riesgos nucleares:<br>a. Accidente, pérdida o daño a bienes o
+                            cualquier
+                            pérdida o gastos que resulten o sean consecuencia de la emisión de radiaciones ionizantes o
+                            contaminación por la radioactividad de cualquier desperdicio radioactivo de la combustión de
+                            combustible
+                            nuclear, así como cualquier pérdida consecuente o responsabilidad de cualquier naturaleza
+                            que,
+                            directa o
+                            indirectamente, sean ocasionadas, o contribuidas por, o resulten o sean consecuencia de las
+                            mismas
+                            causas ya enumeradas. Para los fines de la presente exclusión, la combustión incluye
+                            cualquier
+                            proceso
+                            de fisión o fusión nuclear sostenido por sí mismo.<br>b. Accidente, pérdida, responsabilidad
+                            o daño
+                            que,
+                            directa o indirectamente, sea ocasionado, o contribuido por, o sea consecuencia de la
+                            existencia de
+                            material para armas nucleares.</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <p>1.13 Contaminación:<br>Contaminación o contaminación ambiental, salvo que la pérdida o
+                            daño sea
+                            consecuencia de un accidente cubierto por la póliza.</p>
+                    </td>
+                </tr>
+
+            </table>
+        </div>
+    </div>
+
+    <!-- PÁGINA 4 -->
+    <div class="page">
+        <table class="header">
+            <tr>
+                <td class="logo-left">
+                    <div class="img-zurich"></div>
+                </td>
+                <td class="logo-center">
+                    Av. Eloy Alfaro N34-194 y Catalina<br>de Aldaz.<br>Quito-Ecuador
+                </td>
+                <td class="logo-right">
+                    <div class="img-insuratlan"></div>
+                </td>
+            </tr>
+        </table>
+
+        <div class="section-title">Documentos necesarios para la reclamación de siniestros</div>
+        <div class="box">
+            <table class="table-simple">
+                <tr>
+                    <td>
+                        De acuerdo a las condiciones generales de la póliza: </td>
+                </tr>
+                <tr>
+                    <td>
+                        <b>1. Para todos los siniestros</b><br><br>
+
+                        a) &nbsp; Formulario de aviso de siniestro<br>
+                        b) &nbsp; Documento de identidad: cédula, RUC, pasaporte<br>
+                        c) &nbsp; Licencia de conducir<br>
+                        d) &nbsp; Matrícula de vehículo a nombre del Asegurado<br>
+                        e) &nbsp; Parte policial o denuncia a las autoridades competentes<br>
+                        f) &nbsp; Informes derivados de parte policial o denuncia a las autoridades competentes<br>
+                        g) &nbsp; La Compañía tendrá siempre el derecho de solicitar cualquier otro antecedente o
+                        documento que se necesite, o que estime necesario, para comprobar la ocurrencia del
+                        siniestro y
+                        su cuantía.
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <b>2. Pérdidas Parciales por Daños o por Robo</b><br><br>
+
+                        En adición a los documentos indicados en el numeral 1, se enumeran los siguientes
+                        documentos:<br>
+                        a) &nbsp; Proforma de reparaciones (mano de obra y repuestos)<br>
+                        b) &nbsp; En caso de reembolsos: presentar el vehículo asegurado reparado
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <b>3. Pérdidas Totales por Daños</b><br><br>
+
+                        En adición a los documentos indicados en el numeral 1, se enumeran los siguientes
+                        documentos:<br>
+                        a) &nbsp; Carta de aceptación de pérdida total<br>
+                        b) &nbsp; Carta de autorización de retiro del salvamento<br>
+                        c) &nbsp; Originales de cédulas y papeletas de votación, del Asegurado y cónyuge (si
+                        corresponde)<br>
+                        d) &nbsp; Original de la matrícula<br>
+                        e) &nbsp; Copias digitales de: parte policial, informe técnico mecánico y reconocimiento del
+                        lugar de los hechos<br>
+                        f) &nbsp; Informe de rastreo satelital (si corresponde)<br>
+                        g) &nbsp; Pagos actualizados de matrículas y multas del vehículo asegurado, hasta el año del
+                        siniestro.
+                        h) &nbsp; Certificado único vehicular sin prohibiciones, ni restricciones (bloqueos,
+                        gravámenes, entre otros)<br>
+                        i) &nbsp; Certificado de gravámenes del Registro Mercantil - Sin gravamen<br>
+                        j) &nbsp; Cesión de derechos notariada firmada por el Asegurado, su cónyuge (si corresponde)
+                        y la Compañía.
+
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <b>4. Pérdidas Totales por Robo</b><br><br>
+
+                        En adición a los documentos indicados en el numeral 1 y 3, se enumeran los siguientes
+                        documentos:<br>
+                        a) &nbsp; Denuncia original de robo total<br>
+                        b) &nbsp; Informe de rastreo satelital (si corresponde)<br>
+                        c) &nbsp; Informe de Investigaciones de la autoridad competente
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <b>5. Responsabilidad Civil Extra Contractual</b><br><br>
+
+                        En adición a los documentos indicados en el numeral 1, se enumeran los siguientes
+                        documentos:<br>
+                        a) &nbsp; Factura de gastos médicos por lesiones corporales (si fuera el caso)<br>
+                        b) &nbsp; Sentencia Judicial Ejecutoriado-determinada por la autoridad competente<br>
+                        c) &nbsp; Informe médico, certificado médico o resumen de historia clínica de las lesiones
+                        sufridas por terceras personas (si fuera el caso)<br>
+                        d) &nbsp; Certificado de defunciones (si fuera el caso)<br>
+                        e) &nbsp; Presupuestos o facturas de reparación de los vehículos o propiedades afectadas.
+                        (si fuera el caso)
+
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <b>6. Gastos Médicos y/o Incapacidad y Desmembración por accidente</b><br><br>
+                        En adición a los documentos indicados en el numeral 1, se enumeran los siguientes
+                        documentos:<br>
+                        a) &nbsp; Informe del médico legista (si corresponde)<br>
+                        b) &nbsp; Historia clínica completa de las lesiones sufridas. De no existir, certificados de
+                        las atenciones médicas recibidas<br>
+                        c) &nbsp; Para Gastos Médicos: Liquidación del seguro obligatorio de accidentes de
+                        tránsito<br>
+                        d) &nbsp; Facturas por gastos incurridos hospitalarios, médicos quirúrgicos o farmacéuticos
+
+                    </td>
+
+                </tr>
+                <tr>
+                    <td>
+                        <b>7. Muerte Accidental</b><br><br>
+
+                        En adición a los documentos indicados en el numeral 1, se enumeran los siguientes
+                        documentos:<br>
+                        a) &nbsp; Partida de defunción del o los ocupantes del vehículo<br>
+                        b) &nbsp; Protocolo de autopsia<br>
+                        c) &nbsp; Acta de levantamiento de cadáver<br>
+                        d) &nbsp; Posesión efectiva de bienes
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <!-- PÁGINA 5 -->
+    <div class="page">
+        <table class="header">
+            <tr>
+                <td class="logo-left">
+                    <div class="img-zurich"></div>
+                </td>
+                <td class="logo-center">
+                    Av. Eloy Alfaro N34-194 y Catalina<br>de Aldaz.<br>Quito-Ecuador
+                </td>
+                <td class="logo-right">
+                    <div class="img-insuratlan"></div>
+                </td>
+            </tr>
+        </table>
+        <div class="section-title">Notas importantes</div>
+
+        <div class="box">
+            <table class="table-simple">
+
+                <tr>
+                    <td>
+                        - La presente Certificado cubre riesgos exclusivamente de uso particular
+                        (se excluye de cobertura vehículos de uso público, alquiler o transporte
+                        de pasajeros mediante plataformas digitales).
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        - El valor asegurado del vehículo debe ser siempre el real comercial del
+                        mercado y es responsabilidad del Asegurado mantenerlo actualizado durante
+                        la vigencia, para evitar un infraseguro o sobreseguro.
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        - En caso de que el cliente cambie el uso del vehículo a alquiler o taxi,
+                        debe notificar inmediatamente a la Aseguradora, caso contrario al ocurrir
+                        un siniestro no tendrá cobertura.
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        - En caso de pérdida total del vehículo el valor a indemnizar será el Valor Real Comercial del
+                        vehículo al momento de la pérdida.
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        - En caso de que el Asegurado tenga accesorios extras, diferentes de los originales,
+                        deberá notificar por escrito su decisión de asegurarlos, informando a la compañía
+                        la marca, modelo, tipo y valor asegurado de dicho accesorio.
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        - Cobertura del sistema de Air Bag hasta el límite del 100% del valor asegurado
+                        del vehículo, siempre y cuando sea consecuencia de choque y/o volcadura cubierto
+                        en la póliza.
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        - Los daños por pérdidas totales se indemnizarán cuando los presupuestos de
+                        reparación superen el 70% del valor Asegurado.
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        - El presente certificado no tendrá validez si la prima no se encuentra al día en pagos.
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        - Las coberturas mencionadas en el certificado, deberán aplicarse de acuerdo
+                        con las condiciones y parámetros detallados en la póliza madre, la cual
+                        prevalecerá en caso de cualquier discrepancia o duda en la interpretación de las mismas.
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        - Aplica Prima mínima de $400
+                    </td>
+                </tr>
+
+            </table>
+            <br>
+            <br>
+
+            <p class="small">*Conforme a las condiciones generales de la póliza que se encuentran cargados dentro de la
+                página</p>
+        </div>
+    </div>
+
+    <!-- PÁGINA 6 -->
+    <div class="page">
+        <table class="header">
+            <tr>
+                <td class="logo-left">
+                    <div class="img-zurich"></div>
+                </td>
+                <td class="logo-center">Av. Eloy Alfaro N34-194 y Catalina<br>de Aldaz.<br>Quito-Ecuador</td>
+                <td class="logo-right">
+                    <div class="img-insuratlan"></div>
+                </td>
+            </tr>
+        </table>
+
+
+        <div class="spacer-md"></div>
+        <div class="section-title">Cláusulas adicionales</div>
+        <div
+            style="padding:13mm 26mm 0 26mm; border-left:1px solid #333; border-right:1px solid #333; border-bottom:1px solid #333; min-height:133mm;">
+            <table class="tabla-documento">
+                <tr>
+                    <th>Cláusulas Aclaratorias</th>
+                </tr>
+                <tr>
+                    <td>Cláusula aclaratoria de Pago de Cuotas</td>
+                </tr>
+                <tr>
+                    <td>Cláusula aclaratoria de Notificación de Siniestro</td>
+                </tr>
+                <tr>
+                    <td>Cláusula aclaratoria de Adhesión</td>
+                </tr>
+                <tr>
+                    <td>Cláusula aclaratoria de Designación de ajustadores, liquidadores y peritos</td>
+                </tr>
+                <tr>
+                    <td>Cláusula aclaratoria de Errores u omisiones</td>
+                </tr>
+                <tr>
+                    <td>Cláusula aclaratoria de Avisos y letreros</td>
+                </tr>
+                <tr>
+                    <td>Cláusula aclaratoria de Designación nuevo Taller</td>
+                </tr>
+                <tr>
+                    <td>Cláusula aclaratoria de Devolución de documentos Firmados</td>
+                </tr>
+                <tr>
+                    <td>Cláusula aclaratoria de Primera Opción de Compra del Vehículo recuperado</td>
+                </tr>
+                <tr>
+                    <td>Cláusula aclaratoria de Valor Acordado</td>
+                </tr>
+            </table>
+            <div class="spacer-lg"></div>
+            <br>
+            <br>
+            <table class="tabla-documento">
+                <tr>
+                    <th>Cláusulas de Cobertura</th>
+                </tr>
+                <tr>
+                    <td>Cláusula de Cobertura Amparo Patrimonial</td>
+                </tr>
+                <tr>
+                    <td>Cláusula de Cobertura Automática de nuevas unidades</td>
+                </tr>
+                <tr>
+                    <td>Cláusula de Cobertura de Automaticidad para Accesorios</td>
+                </tr>
+                <tr>
+                    <td>Cláusula de Cobertura Motín, Huelga y Conmoción Civil</td>
+                </tr>
+                <tr>
+                    <td>Cláusula de Cobertura Comunidad Andina</td>
+                </tr>
+                <tr>
+                    <td>Cláusula de Cobertura de vías no entregadas oficialmente al tráfico público</td>
+                </tr>
+                <tr>
+                    <td>Cláusula de Cobertura para Actos de Autoridad</td>
+                </tr>
+                <tr>
+                    <td>Cláusula de Cobertura de Extensión de Vigencia a Prorrata</td>
+                </tr>
+                <tr>
+                    <td>Cláusula de Cobertura de Dispositivo de Rastreo</td>
+                </tr>
+                <tr>
+                    <td>Cláusula de Cobertura de Vehículos bajo Régimen Especial</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <!-- PÁGINA 7 -->
+    <div class="page">
+        <table class="header">
+            <tr>
+                <td class="logo-left">
+                    <div class="img-zurich"></div>
+                </td>
+                <td class="logo-center">Av. Eloy Alfaro N34-194 y Catalina<br>de Aldaz.<br>Quito-Ecuador</td>
+                <td class="logo-right">
+                    <div class="img-insuratlan"></div>
+                </td>
+            </tr>
+        </table>
+
+
+        <div class="section-title">Cláusula de exclusión de riesgos de información tecnológica</div>
+        <div class="box"
+          style="font-size: 11px; line-height: 1.3; text-align: justify; padding: 4mm 7mm; margin-bottom: 0;">
+            <table>
+                <tr>
+                    <td style="border:1px solid #000; padding:4mm 7mm; vertical-align:top;">
+                        <p class="para-tight">Queda entendido y convenido que la Compañía, en adición a las exclusiones
+                            de
+                            las
+                            condiciones generales de la Póliza arriba citada, no será responsable, bajo cualquier
+                            cobertura
+                            de
+                            esta
+                            Póliza o extensión de cobertura, amparo opcional o adicional, por los daños materiales y/o
+                            cualquier
+                            tipo de pérdida consecuencial, ni proporcionará cobertura, ni realizará pago alguno, ni
+                            brindará
+                            servicio o beneficio alguno al Asegurado o cualquier beneficiario, por pérdida, daño, gasto,
+                            costo,
+                            falla, distorsión, corrupción, eliminación, copia, degradación, desaparición o mal
+                            funcionamiento de
+                            los
+                            activos digitales y datos electrónicos del Asegurado, que sean producto de cualquier causa,
+                            incluidos,
+                            entre otros:</p>
+                        <br>
+                        <p class="para-tight">a) Pérdida de información personal;<br>b) Pérdidas físicas y de
+                            información, y
+                            programas/software relacionadas con cualquier ataque cibernético;<br>c) Extorsión
+                            cibernética,
+                            independientemente de cualquier otra causa o evento que contribuya concurrentemente o en
+                            cualquier
+                            otra
+                            serie de acontecimientos derivados de la pérdida; o,<br>d) Incendio, fuga o descarga de
+                            sistemas
+                            automáticos de protección contra incendios, o explosión.</p>
+                        <br>
+
+                        <p class="para-tight"><b>Definiciones aplicables a esta exclusión</b></p>
+                        <br>
+
+                        <p class="para-tight"><b>Activos digitales:</b> hardware, dispositivos de entrada y salida
+                            asociados,
+                            dispositivos de almacenamiento de datos, equipos de red, componentes, servidores de
+                            archivos,
+                            equipos de
+                            procesamiento de datos, memoria de la computadora, microchip, microprocesador (circuito
+                            integrado),
+                            circuito integrado o dispositivo similar en equipos informático, programa, software de
+                            computadora o
+                            sistema operativo, datos electrónicos, programas, software, archivos de audio e imágenes. En
+                            la
+                            medida
+                            en que existen como datos electrónicos y solo en esa forma, los activos digitales incluyen
+                            lo
+                            siguiente:
+                            cuentas, facturas, evidencias de deudas, dinero, documentos valiosos, registros, resúmenes,
+                            escrituras,
+                            manuscritos, información personal u otros documentos.</p>
+                        <br>
+                        <p class="para-tight"><b>Datos electrónicos:</b> datos, información, programas, códigos o
+                            instrucciones,
+                            de
+                            cualquier tipo que se registran o transmiten de forma utilizable en equipos electrónicos o
+                            controlados
+                            electrónicamente, sistemas informáticos, redes, circuitos integrados o dispositivos
+                            similares en
+                            equipos
+                            no informáticos.</p>
+                        <br>
+                        <p class="para-tight"><b>Información personal:</b> toda información con la cual un individuo
+                            puede
+                            identificarse o contactarse de forma única y confiable, incluyendo el nombre, número de
+                            teléfono,
+                            correo
+                            electrónico, número de seguro social, datos médicos o de atención médica u otra información
+                            de
+                            salud
+                            protegida, número de licencia de conducir o número de identificación personal, número de
+                            cuenta,
+                            número
+                            de tarjeta de crédito, número de tarjeta de débito, código de acceso o contraseña que
+                            permitiría
+                            el
+                            acceso a la cuenta financiera del individuo u otra información personal no pública.</p>
+                        <br>
+
+                        <p class="para-tight"><b>Ataque cibernético:</b> pérdida, destrucción, manipulación o corrupción
+                            de
+                            datos
+                            electrónicos y programas/software cometido con alguna intención maliciosa.</p><br>
+
+                        <p class="para-tight"><b>Extorsión cibernética:</b> una amenaza o una serie de amenazas para
+                            introducir
+                            un
+                            virus informático que causa una pérdida en los activos digitales.</p>
+                        <br>
+                        <p class="para-tight">Todos los demás términos y condiciones de la Póliza, con excepción de lo
+                            establecido
+                            en esta cláusula, quedan en pleno vigor y sin modificación alguna.</p><br>
+
+                        <p class="para-tight">El Contratante y/o Asegurado podrá solicitar a la Superintendencia de
+                            Compañías,
+                            Valores y Seguros la verificación de este texto.</p><br>
+
+                        <p class="para-tight"><i>NOTA: La Superintendencia de Compañías, Valores y Seguros, para efectos
+                                de
+                                control,
+                                asignó a la presente cláusula el registro No. 51817, mediante el oficio
+                                SCVS-IRQ-SRS-SCTSR-2019-00032551-O de 21 de mayo de 2019.</i></p>
+
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <!-- PÁGINA 8 -->
+    <div class="page">
+        <table class="header">
+            <tr>
+                <td class="logo-left">
+                    <div class="img-zurich"></div>
+                </td>
+                <td class="logo-center">
+                    Av. Eloy Alfaro N34-194 y Catalina<br>de Aldaz.<br>Quito-Ecuador
+                </td>
+                <td class="logo-right">
+                    <div class="img-insuratlan"></div>
+                </td>
+            </tr>
+        </table>
+        <div class="boxed tiny" style="padding:4mm 7mm; margin-bottom:0;">
+
+        </div>
+        <div class="section-title">Cláusula de exclusión por sanciones comerciales y económicas</div>
+        <div class="box"
+            style="font-size: 11px; line-height: 1.3; text-align: justify; padding: 4mm 7mm; margin-bottom: 0;">
+            <table style="width:100%; border-collapse:collapse;">
+                <tr>
+                    <td>
+                        <p class="para-tight">Queda entendido y convenido que la Compañía, en adición a las exclusiones
+                            de
+                            las
+                            condiciones generales de la Póliza arriba citada, no tendrá responsabilidad alguna frente al
+                            asegurado,
+                            contratante, pagador o beneficiario, por cualquier pago, directa o indirectamente, derivado
+                            de o
+                            relacionado con un siniestro, reclamo, indemnización o devolución, si tales personas, sean
+                            naturales
+                            o
+                            jurídicas, hubiesen violado o infringido una ley o regulación local o internacional o
+                            hubieran
+                            incurrido
+                            en delitos fiscales o de otra naturaleza, cuya consecuencia sea la imposición de sanciones
+                            comerciales o
+                            económicas, por lo tanto, la Compañía no egresará valor alguno si la contraparte:</p><br>
+
+                        <p class="para-tight">(i) Es nacional de, tiene su domicilio o residencia permanente en o posee
+                            bienes
+                            con
+                            bandera de origen de algún país sancionado internacionalmente, que limite o prohíba a la
+                            Compañía (o
+                            al
+                            Grupo al que esta pertenece) prestar servicios, otorgar cobertura, realizar operaciones u
+                            ofrecer
+                            beneficios económicos derivados de la contratación de seguro;<br>(ii) Importa o exporta
+                            el(los)
+                            bien(es)
+                            asegurado(s) teniendo alguna restricción o sanción para su movilidad, traslado o
+                            transporte;<br>(iii)
+                            Activa, por la ocurrencia de un siniestro, la póliza de seguro dentro de territorios
+                            sancionados
+                            internacionalmente; o,<br>(iv) Paga las primas, cancela las facturas o presenta
+                            reclamaciones de
+                            pago en
+                            cualquier moneda distinta a la que circula legalmente en el territorio ecuatoriano.</p><br>
+                        <p class="para-tight">Todos los demás términos y condiciones de la Póliza, con excepción de lo
+                            establecido
+                            en esta cláusula, quedan en pleno vigor y sin modificación alguna.</p><br>
+                        <p>El Contratante y/o Asegurado podrá solicitar a la Superintendencia de Compañías,
+                            Valores y Seguros la verificación de este texto.</p><br>
+                        <p class="para-tight"><i>NOTA: La Superintendencia de Compañías, Valores y Seguros, para efectos
+                                de
+                                control,
+                                asignó a la presente cláusula el registro No. 52431, mediante el oficio
+                                SCVS-IRQ-DRS-2019-00094923-O
+                                de 26 de diciembre de 2019.</i></p>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="section-title">Declaraciones</div>
+        <div class="box"
+           style="width:100%; box-sizing:border-box; font-size:11px !important; line-height:1.3 !important; text-align:justify; padding:0; margin-bottom:0;">
+
+            <div class="sub-title" style="font-size: 11px; padding: 2px; border-left: none; border-right: none;">En mi
+                calidad de Asegurado(a) y/o Solicitante, al firmar esta Póliza, declaro:</div>
+            <div class="sub-title" style="font-size: 11px; padding: 2px; border-left: none; border-right: none;">
+                Consentimiento de tratamiento de datos personales</div>
+            <div style="padding: 4mm 7mm;">
+
+
+                <p class="para-tight">Por medio de la presente cláusula autorizo de manera libre, específica, informada
+                    e
+                    inequívoca, de conformidad con la Ley Orgánica de Protección de Datos Personales ( “LOPDP”), que los
+                    datos personales y/o sensibles que he entregado o entregaré, sean accedidos y tratados por Zurich
+                    Seguros Ecuador S.A. (“Zurich Seguros” o “Responsable”), en su calidad de Responsable del
+                    Tratamiento,
+                    con la finalidad de gestionar las obligaciones que le corresponden dentro de la relación contractual
+                    que
+                    mantendremos a partir de la póliza de seguros que se detalla en este certificado individual de
+                    cobertura.</p><br>
+                <p class="para-tight">Además, autorizo el tratamiento de mis datos personales para que Zurich Seguros
+                    pueda
+                    valorar, seleccionar y tarifar los riesgos asociados al producto contratado, así como realizar
+                    análisis
+                    de siniestralidad, de desarrollo de nuevos productos y otros factores determinantes para el giro de
+                    negocio de la aseguradora, como, por ejemplo, fines estadísticos o levantamiento de información
+                    histórica. Para esto, declaro conocer que el Responsable realiza toma de valoraciones y decisiones
+                    automatizadas, incluida la segmentación y elaboración de perfiles. Autorizo al Responsable a
+                    compartir
+                    mis datos personales con terceros proveedores de estos servicios.</p><br>
+
+                <p class="para-tight">De igual forma, autorizo a Zurich Seguros a realizar consultas respecto de mi
+                    perfil
+                    comercial, financiero y/o crediticio a burós de crédito, instituciones financieras y/o entidades
+                    públicas, así como compartir mis datos personales a los burós de crédito, a la Central de Riesgos y
+                    otras autoridades u órganos de control, si fuere pertinente y/o necesario. Además, podrá compartir
+                    mis
+                    datos personales a terceros proveedores de servicios y/o asistencias con la finalidad
+
+                    de cumplir sus obligaciones como aseguradora en cuanto al producto contratado.</p><br>
+                <p class="para-tight">Acepto y autorizo, expresamente, que, en caso de ser necesario de que se realice
+                    una
+                    transferencia de mis datos personales a nivel nacional o internacional, esta, sea efectuada de
+                    acuerdo
+                    con la LOPDP y, únicamente, con el fin de cumplir con el objeto para el que fueron requeridos dichos
+                    datos personales o para dar cumplimiento con la contratación de los productos u otorgamiento de los
+                    servicios provistos por Zurich Seguros.</p><br>
+                <p class="para-tight">Entiendo y reconozco que, en caso de no proporcionar mis datos personales o de no
+                    autorizar su acceso, Zurich Seguros no podrá cumplir con los fines antes mencionados, lo cual podría
+                    afectar mi capacidad de acceso a ciertos servicios o beneficios relacionados con la póliza de seguro
+                    contratada.</p><br>
+                <p class="para-tight">Reconozco que he sido debidamente informado sobre las características que forman
+                    parte
+                    del tratamiento de mis datos personales de conformidad con la Política de Protección de Datos
+                    Personales
+                    de Zurich Seguros Ecuador, disponible en: https://www.zurichseguros.com.ec/proteccion-de-datos</p>
+                <br>
+                <p class="para-tight">Entiendo, que puedo ejercer mis derechos contemplados en la Ley Orgánica de
+                    Protección
+                    de Datos Personales, incluyendo la posibilidad de revocar este consentimiento, enviando una
+                    solicitud a
+                    la dirección de correo electrónico protecciondedatos.ec@zurich.com</p>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- PÁGINA 9 -->
+    <div class="page">
+        <table class="header">
+            <tr>
+                <td class="logo-left">
+                    <div class="img-zurich"></div>
+                </td>
+                <td class="logo-center">
+                    Av. Eloy Alfaro N34-194 y Catalina<br>de Aldaz.<br>Quito-Ecuador
+                </td>
+                <td class="logo-right">
+                    <div class="img-insuratlan"></div>
+                </td>
+            </tr>
+        </table>
+        <div class="section-title">Ejercicio de derechos por parte del cliente</div>
+        <div class="box">
+            <br>
+            <div>
+                Zurich le informa que usted podrá ejercer sus derechos contemplados en la Ley Orgánica de Protección de
+                Datos Personales en cualquier momento, incluyendo la revocatoria al consentimiento, a través de una
+                solicitud dirigida a protecciondedatos.ec@zurich.com o en cualquiera de los establecimientos físicos de
+                Zurich, que los podrá encontrar en la dirección electrónica de www.zurichseguros.com.ec
+            </div>
+        </div>
+        <div class="section-title" style="background-color: #ffffff;">De licitud de fondos</div>
+        <div class="box"
+            style="font-size: 11px; line-height: 1.3; text-align: justify; padding: 4mm 7mm; margin-bottom: 0;">
+            <p class="para-tight">Bajo juramento, prevenido(a) de la gravedad del delito de perjurio, que el seguro
+                contratado con la Compañía ampara bienes, garantías y contratos de procedencia lícita, los mismos
+                que no
+                provienen ni provendrán de ninguna actividad relacionada con el narcotráfico, el lavado de activos o
+                el
+                financiamiento del terrorismo o cualquier actividad que fuese sancionada en la Ley de Detección y
+                Erradicación del Delito de Lavado de Activos y del Financiamiento de Delitos. De igual manera
+                declaro
+                que el origen y destino de los fondos entregados en la presente o en futuras transacciones
+                comerciales
+                relacionadas con este contrato de seguro, tienen origen lícito y no guardan relación alguna con las
+                actividades antes mencionadas.</p>
+            <p class="para-tight">Autorizo, expresa y voluntariamente, a la Compañía a realizar el análisis y las
+                verificaciones que considere necesarias para corroborar la licitud de los fondos y bienes
+                relacionados
+                con, comprendidos en o amparados por este contrato de seguro; e, informar a las autoridades
+                competentes,
+                si fuera el caso, sobre los resultados de dicho análisis o verificaciones; así como autorizo de
+                forma
+                expresa, voluntaria e irrevocable a todas las personas naturales o jurídicas, de derecho público o
+                privado, a facilitar toda la información que la Compañía les requiera, inclusive facultando,
+                anticipadamente, el levantamiento del sigilo bancario en caso de ser necesario, incluida la revisión
+                y
+                verificación de mis datos en los burós de información crediticia.</p>
+            <p class="para-tight">Eximo a la Compañía de cualquier responsabilidad administrativa, civil, penal o de
+                cualquier otra naturaleza, que se le pretenda imputar como resultado del error o falsedad de
+                cualquiera
+                de mis declaraciones.</p>
+        </div>
+
+        <div class="section-title" style="background-color: #ffffff;">
+            De uso de medios electrónicos
+        </div>
+        <div class="box"
+            style="font-size: 11px; line-height: 1.3; text-align: justify; padding: 4mm 7mm; margin-bottom: 0;">
+
+            <p class="para-tight"> Que (i) reconozco y acepto que, por principios de responsabilidad social,
+                medioambiental estoy
+                interesado(a) en utilizar los mecanismos virtuales y tecnológicos habilitados por la Compañía con el
+                objeto de mejorar sus servicios, por lo que expreso mi voluntad de usarlos mientras se mantenga la
+                relación contractual, comprometiéndome, en todo momento, a actuar de buena fe en el uso y destino de
+                estos medios; (ii) acepto, irrevocablemente, que todas las indicaciones, comunicaciones o
+                notificaciones que reciba de la Compañía sea por medios electrónicos, informáticos y telemáticos, a
+                través del internet, correo electrónico, formularios digitales, seguridades, códigos, claves, medios
+                magnéticos, o cualquier medio o forma generada desde su sistema, no físicamente, todos estos medios
+                constituyen el acto por el cual la Compañía me dará a conocer el estado, movimientos,
+                modificaciones, endosos, compromisos complementarios, acuerdos de pago, finiquitos, cancelaciones y
+                todo lo relacionado con mi póliza, desmaterializados como mensaje de datos, entendido este como toda
+                información creada, generada, procesada, enviada, recibida, comunicada o archivada por medios
+                electrónicos, que puede ser intercambiada por cualquier medio que, conforme a la Ley de Comercio
+                Electrónico, Firmas Electrónicas y Mensajes de Datos, tiene el mismo valor jurídico que los
+                documentos escritos, por lo que el acceso a ellos es entendido por mí como acceso a los documentos
+                originales; (iii) conozco que las claves, códigos, seguridades, números secretos y demás medidas
+                tecnológicas de seguridad aceptadas, tienen la calidad de firmas electrónicas, con todos los efectos
+                derivados de su creación, aceptación y uso, de acuerdo con la ley y su reglamento, por lo que
+                reconozco su absoluta validez jurídica; (iv) asumo la responsabilidad total por el uso de la clave
+                de usuario que me fuese entregada, por lo que la falta de cuidado, la indebida reserva, el mal uso o
+                el uso de terceros, autorizados o no, me ocasione perjuicios o no, será de mi exclusiva cuenta y
+                riesgo; y, (v) soy el(la) único(a) responsable de la veracidad de la información que he entregado y
+                entregaré a la Compañía, por lo que ratifico que dicha información corresponde a datos correctos,
+                auténticos y actualizados, siendo la información y los documentos que la contengan válidos, eficaces
+                e irrevocables, de tal forma que, suficientemente informado, libre y expresamente, autorizo a la
+                Compañía a tratar y comunicar los datos personales que he proporcionado en este documento o que haya
+                proporcionado o llegue a proporcionar en cualquier otro que se relacione con el seguro contratado,
+                por los medios legales, físicos, digitales o telemáticos que se consideren convenientes para los
+                fines de la evaluación del riesgo, la cobertura, el pago de siniestros o cualquier otro propósito
+                relacionado con este seguro, y para cualquier servicio o asistencia complementaria al mismo, sin que
+                sea necesario confirmación posterior expresa de mi parte.</p>
+
+        </div>
+    </div>
+
+    <!-- PÁGINA 10 -->
+    <div class="page">
+        <table class="header">
+            <tr>
+                <td class="logo-left">
+                    <div class="img-zurich"></div>
+                </td>
+                <td class="logo-center">Av. Eloy Alfaro N34-194 y Catalina<br>de Aldaz.<br>Quito-Ecuador</td>
+                <td class="logo-right">
+                    <div class="img-insuratlan"></div>
+                </td>
+            </tr>
+        </table>
+
+        <div class="box"
+            style="border-top: 1px solid #000; font-size: 11px; line-height: 1.3; text-align: justify; padding: 4mm 7mm; margin-bottom: 0;">
+
+            <p>Declaro conocer que las condiciones particulares de estos productos se rigen
+                por
+                las
+                pólizas aprobadas por la Superintendencia de Compañías, Valores y Seguros. Acepto expresamente
+                que
+                he
+                tomado el seguro contratado bajo las condiciones, términos y costos que me han sido informados
+                de
+                forma
+                previa, completa, clara y precisa, y que se contienen en la documentación que me ha sido
+                entregada y
+                que, voluntariamente, he suscrito, por lo que declaro conocer, comprender y aceptar los textos
+                de
+                tal
+                documentación a la que me someto.</p>
+            <p class="para-tight">Para acceder a la información completa del seguro contratado, podrá visitar
+                las
+                Condiciones Generales de la póliza la página web de Zurich Seguros Ecuador S.A. en el siguiente
+                link:<br><u>https://www.zurichseguros.com.ec/transparencia-informacion/indicadores-gobierno-corporativo</u>
+            </p>
+            <div class="spacer-lg"></div>
+            <p class="bold">Lugar y fecha de emisión:</p>
+            <table class="signatures">
+                <tr>
+                    <td style="width:50%"></td>
+                    <td>
+                        <img class="firma"
+                            src="data:image/png;base64,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"
+                            alt="Firma">
+                    </td>
+                </tr>
+                <tr>
+                    <td>FIRMA ASEGURADO</td>
+                    <td>FIRMA ASEGURADORA</td>
+                </tr>
+            </table>
+            <div class="spacer-md"></div>
+            <p class="para-tight">El Contratante y/o Asegurado podrá solicitar a la Superintendencia de
+                Compañías,
+                Valores y Seguros, la verificación del texto de la Póliza.</p>
+        </div>
+        <p class="note" style="margin-top:5mm;"><b>NOTA: La Superintendencia de Compañías, Valores y Seguros, para
+                efectos
+                de control, asignó al presente formulario el registro No. SCVS-6-7-SF-208-111004425-22052025, el 22
+                de
+                mayo
+                de 2025.</b></p>
+    </div>
+
+
+    <!-- PÁGINA 11 -->
+    <div class="page">
+        <table class="header">
+            <tr>
+                <td class="logo-left">
+                    <div class="img-zurich"></div>
+                </td>
+                <td class="logo-center">
+                    Av. Eloy Alfaro N34-194 y Catalina<br>de Aldaz.<br>Quito-Ecuador
+                </td>
+                <td class="logo-right">
+                    <div class="img-insuratlan"></div>
+                </td>
+            </tr>
+        </table>
+        <h2 class="center" style="font-size:12px; margin:0 0 9mm 0;">Anexo para Designación de Beneficiario Acreedor
+        </h2>
+        <p class="para">Se añade el presente texto de designación de beneficiario acreedor para formar parte de la
+            póliza de VEHÍCULOS No. {{ $poliza_maestra ?? '' }} , emitida a favor de:
+            {{$informacion_titular-&gt;primer_nombre ?? ''}}
+            {{$informacion_titular-&gt;segundo_nombre ?? ''}}
+            {{$informacion_titular-&gt;primer_apellido ?? ''}}
+            {{$informacion_titular-&gt;segundo_apellido ?? ''}} </p>
+        <p class="para">Se hace constar mediante el presente endoso que en la póliza arriba citada se designa
+            beneficiario acreedor a:</p>
+        <p class="para" style="margin-left:10mm;"><b> {{$informacion_titular-&gt;primer_nombre ?? ''}}
+                {{$informacion_titular-&gt;segundo_nombre ?? ''}} {{$informacion_titular-&gt;primer_apellido ?? ''}}
+                {{$informacion_titular-&gt;segundo_apellido ?? ''}}</b> hasta por el valor de:
+            {{number_format(floatval($cotizador-&gt;valor_asegurado ?? 0), 2)}}
+        </p>
+        <p class="para" style="margin-left:10mm;">En caso de siniestro, la compañía aseguradora cancelará al
+            Beneficiario Acreedor el valor del crédito pendiente, sin necesidad de notificación judicial, hasta por
+            la
+            suma arriba establecida, pago que estará sujeto a regla proporcional señalada en la póliza. El saldo de
+            los
+            beneficios de la póliza si lo hubiere, será pagado al Asegurado.</p>
+        <p class="para">El presente endoso no tendrá validez si el asegurado no se encuentra al día con los pagos de
+            la
+            prima que le corresponda.</p>
+        <p class="para">Toda modificación posterior a las disposiciones establecidas en la póliza solicitada por el
+            asegurado y que afecte el interés del beneficiario acreedor, deberá hacerse con el consentimiento
+            expreso de
+            este.</p>
+        <p class="para">Las demás condiciones de la póliza se mantienen sin modificación alguna.</p>
+        <p class="para"><b>Vigencia:</b> Desde:
+            {{\Carbon\Carbon::parse($cotizador-&gt;inicio_vigencia)-&gt;format('d/m/Y')}} &nbsp;&nbsp;&nbsp;&nbsp;
+            Hasta: {{\Carbon\Carbon::parse($cotizador-&gt;fin_vigencia)-&gt;format('d/m/Y')}}</p>
+        <p class="para"><b>Propiedad Asegurada:</b></p>
+        <p class="para"><b>Item # 1</b></p>
+        <p class="para"><b>Propietario:</b> {{$informacion_titular-&gt;primer_nombre ?? ''}}
+            {{$informacion_titular-&gt;segundo_nombre ?? ''}} {{$informacion_titular-&gt;primer_apellido ?? ''}}
+            {{$informacion_titular-&gt;segundo_apellido ?? ''}}</p>
+        <p class="para"><b>Marca:</b> {{\App\Servicios\Catalogos::get($objeto_asegurado-&gt;marca ?? '')}}</p>
+        <p class="para"><b>Modelo:</b> {{\App\Servicios\Catalogos::get($objeto_asegurado-&gt;modelo ?? '')}}</p>
+        <p class="para"><b>Color:</b> {{$objeto_asegurado-&gt;color ?? ''}}
+        </p>
+        <p class="para"><b>Placas:</b> {{$objeto_asegurado-&gt;placa ?? ''}}</p>
+        <p class="para"><b>Año:</b> {{$objeto_asegurado-&gt;year ?? ''}} </p>
+        <p class="para"><b>Chasis:</b> {{$objeto_asegurado-&gt;chasis ?? ''}}</p>
+        <p class="para"><b>Motor:</b> {{$objeto_asegurado-&gt;motor ?? ''}}</p>
+        <p class="para"><b>Valor asegurado:</b> {{number_format(floatval($cotizador-&gt;valor_asegurado ?? 0), 2)}} </p>
+        <div class="spacer-md"></div>
+        <p class="para"><b>Fecha:</b> {{\Carbon\Carbon::parse($cotizador-&gt;inicio_vigencia)-&gt;format('d/m/Y')}}</p>
+        <table class="signatures" style="margin-top:22mm;">
+            <tr>
+                <td>Asegurado</td>
+                <td>Beneficiario Acreedor</td>
+                <td>Aseguradora</td>
+            </tr>
+        </table>
+        <p style="margin-top:12mm;">Agente: INSURATLAN EC</p>
+    </div>
+
+
+
+    <!-- PÁGINA 13 -->
+    <div class="page small">
+        <table class="no-border" style="margin-bottom:4mm;">
+            <tr>
+                <td></td>
+                <td class="logo-right">
+                    <div class="img-insuratlan"></div>
+                </td>
+            </tr>
+        </table>
+
+
+        <h2 class="center" style="font-size:12px; margin-bottom:2px;">CONSENTIMIENTO PARA EL TRATAMIENTO DE DATOS
+            PERSONALES</h2>
+        <p class="center bold">(Documento obligatorio para la contratación de un producto o servicio)</p>
+        <p class="para-tight"><b>1. Marco Legal</b><br>ATLÁNTIDA INSURANCE INSURATLANTIDA S.A. solicita autorización
+            expresa para el tratamiento de sus datos personales, de conformidad con lo dispuesto en el artículo 66
+            numeral 19 de la Constitución del Ecuador, la Ley Orgánica de Protección de Datos Personales (LOPDP) y
+            su
+            Reglamento (RGLOPDP) y demás legislación conexa vigente en el Ecuador. El tratamiento de sus datos
+            personales se realizará bajo los siguientes términos:</p>
+        <p class="para-tight"><b>2. Datos Recolectados</b><br>Los datos personales recopilados, incluyen, entre
+            otros:
+        </p>
+        <ul class="list">
+            <li>Información de identificación (nombres y apellidos, cédula, dirección, contacto, teléfono, correo
+                electrónico, imagen).</li>
+            <li>Información financiera, información crediticia, datos financieros, historial de crédito, historial
+                judicial, estatus migratorio, bienes asegurados, preferencias, imagen</li>
+            <li>Datos sensibles (historial médico, datos de salud, exámenes de salud, recetas).</li>
+            <li>Información necesaria para la prestación de servicios y cumplimiento legal.</li>
+        </ul>
+        <p class="para-tight"><b>3. Finalidades del Tratamiento</b><br>Sus datos se utilizarán para los siguientes
+            fines:</p>
+        <ul class="list">
+            <li>Cumplir con el contrato, obligaciones contractuales y legales, así como normativa vigente.</li>
+            <li>Brindar servicios, evaluar perfiles y preferencias.</li>
+            <li>Evaluar y perfilar usuarios y clientes en relación con los servicios ofrecidos.</li>
+            <li>Comunicar ofertas, promociones o campañas publicitarias.</li>
+            <li>Realizar transacciones, validaciones y prevenir fraudes.</li>
+            <li>Contactarlo con fines informativos.</li>
+            <li>Ofrecerle nuestros productos y los de nuestros socios, asociados y relacionadas.</li>
+            <li>Realizar transacciones, validaciones o gestiones en línea.</li>
+            <li>Verificar con las entidades pertinentes, incluyendo organismos públicos.</li>
+            <li>Contactarnos por teléfono, mensaje de datos o correo electrónico.</li>
+            <li>Enviar comunicaciones comerciales y generales.</li>
+            <li>Usar sus datos personales, imagen y voz en campañas publicitarias y promocionales.</li>
+        </ul>
+        <p class="para-tight"><b>4. Cesión a Terceros</b><br>Sus datos podrán ser compartidos con:</p>
+        <ul class="list">
+            <li>Aliados estratégicos, relacionadas, auditores y autoridades y entidades de control para gestionar
+                servicios o cumplir normativas.</li>
+            <li>Empresas de mensajería, archivo, call centers y entidades de control para comunicación,
+                almacenamiento,
+                y seguridad.</li>
+            <li>Proveedores de servicios y tecnológicos para prestación de servicios y cumplimiento del contrato,
+                así
+                como diseño y protección de plataformas.</li>
+            <li>Entidades proveedoras de Seguros para la contratación de servicios, en cumplimiento del contrato y
+                para
+                la ejecución del mismo.</li>
+        </ul>
+        <p class="para-tight"><b>5. Cesión o Transferencias de datos personales a Terceros</b><br>Los datos
+            personales
+            del titular podrán ser transferidos a terceros en función de la autorización provista en el presente
+            documento. Así mismo podrán ser transferidos a sucesores legales solo para continuidad de operaciones y
+            servicios.</p>
+        <p class="para-tight"><b>6. Transferencias Internacionales</b><br>El titular autoriza la transferencia de
+            sus
+            datos personales fuera de Ecuador, en cuyo caso se garantizarán estándares de protección equivalentes a
+            los
+            exigidos por la LOPDP.</p>
+        <p class="para-tight"><b>7. Seguridad y Confidencialidad</b><br>ATLÁNTIDA INSURANCE INSURATLANTIDA S.A.
+            garantiza la confidencialidad en el tratamiento de datos personales del Titular, cumpliendo con la LOPDP
+            y
+            su Reglamento. Implementamos estrictas medidas de seguridad para prevenir el acceso no autorizado, uso
+            indebido, pérdida o destrucción de sus datos. Nos comprometemos a mantener la integridad y
+            disponibilidad de
+            sus datos, limitando el acceso a personal autorizado y solo para los fines especificados en nuestro
+            Aviso de
+            Privacidad, de acuerdo con lo establecido en los artículos 37 y 39 de la LOPDP y los artículos 59 y 60
+            del
+            RGLOPDP.</p>
+        <p class="para-tight"><b>8. Conservación de Datos</b></p>
+    </div>
+
+    <!-- PÁGINA 14 -->
+    <div class="page small">
+        <table class="no-border" style="margin-bottom:4mm;">
+            <tr>
+                <td></td>
+
+                <td class="logo-right">
+                    <div class="img-insuratlan"></div>
+                </td>
+            </tr>
+        </table>
+        <p class="para-tight">Sus datos se conservarán durante la relación comercial y el plazo legal posterior para
+            cumplir obligaciones o resolver posibles reclamos. Luego, se eliminarán de forma segura.</p>
+        <p class="para-tight"><b>9. Derechos del Titular</b><br>Usted en calidad de Titular de los datos personales
+            que
+            entrega puede:</p>
+        <ul class="list">
+            <li>Acceder, rectificar, actualizar, eliminar u oponerse al tratamiento de sus datos.</li>
+            <li>Revocar su consentimiento (sin afectar tratamientos previos).</li>
+            <li>Solicitar portabilidad o evitar decisiones automatizadas.</li>
+        </ul>
+        <p class="para-tight">Para ejercer sus derecho o ante cualquier interrogante le solicitamos se contacte con
+            el
+            Delegado de Protección de Datos Personales a través de los siguientes medios:</p>
+        <ul class="list">
+            <li>Correo electrónico: datospersonalesgsa@suratlantida.com</li>
+            <li>Dirección física: Cualquiera de los establecimientos físicos de ATLÁNTIDA INSURANCE INSURATLANTIDA
+                S.A.
+            </li>
+        </ul>
+        <p class="para-tight">Para una información más detallada, le invitamos a consultar nuestra Política de
+            Privacidad, la cual se encuentra disponible en el sitio web oficial de ATLÁNTIDA INSURANCE
+            INSURATLANTIDA
+            S.A.: https://suratlantida.com.</p>
+        <p class="para-tight"><b>11. Aceptación y Consentimiento</b><br>En mi calidad de Titular de datos personales
+            declaro que he recibido información adecuada sobre mis derechos relacionados con el tratamiento de mis
+            datos
+            personales y entiendo claramente los fines para los que se utilizarán.</p>
+        <p class="para-tight">Otorgo mi consentimiento de manera libre, informada, específica e inequívoca para que
+            ATLÁNTIDA INSURANCE INSURATLANTIDA S.A. trate mis datos personales según las finalidades descritas en
+            este
+            documento.</p>
+        <div class="spacer-lg"></div>
+        <table style="width:70%; margin:0 auto;">
+            <tr>
+                <td style="width:55%"><b>Nombre y Apellidos del Cliente</b></td>
+                <td> {{$informacion_titular-&gt;primer_nombre ?? ''}}
+                    {{$informacion_titular-&gt;segundo_nombre ?? ''}}
+                    {{$informacion_titular-&gt;primer_apellido ?? ''}}
+                    {{$informacion_titular-&gt;segundo_apellido ?? ''}} </td>
+            </tr>
+            <tr>
+                <td><b>Cédula de ciudadanía:</b></td>
+                <td> {{$informacion_titular-&gt;identificacion ?? ''}}</td>
+            </tr>
+            <tr>
+                <td><b>Fecha:</b></td>
+                <td> {{\Carbon\Carbon::parse($cotizador-&gt;inicio_vigencia)-&gt;format('d/m/Y')}}</td>
+            </tr>
+            <tr>
+                <td style="height:24mm; vertical-align:top"><b>Firma de aceptación y<br>consentimiento</b></td>
+                <td></td>
+            </tr>
+        </table>
+    </div>
+
+
+</div>
+</body>
+
+</html>

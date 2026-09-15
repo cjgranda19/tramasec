@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Declaración de Asegurabilidad</title>
+<style>
+  @page {
+    size: A4;
+    margin: 10mm 15mm;
+  }
+  * {
+    box-sizing: border-box;
+  }
+  body {
+    font-family: "Times New Roman", Times, serif;
+    background: #ffffff;
+    margin: 0;
+    padding: 0;
+    color: #000000;
+    font-size: 9pt;
+    line-height: 1.15;
+  }
+
+  /* Encabezado */
+  .company-header {
+    text-align: center;
+    margin-bottom: 5px;
+  }
+  .company-header p {
+    margin: 2px 0;
+    font-weight: bold;
+    font-size: 11pt;
+  }
+
+  /* 
+   * CONTENEDOR PRINCIPAL (Marco exterior con padding)
+   */
+  .marco-principal {
+    border: 1.5px solid black;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 2mm; 
+  }
+
+  /* Estilos base para ambas tablas internas */
+  .tabla-interna {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed; /* Fuerza a respetar los anchos definidos */
+  }
+  .tabla-interna td, .tabla-interna th {
+    border: 1px solid black;
+    padding: 4px 6px;
+    vertical-align: top;
+  }
+
+  /* Espacio separador entre las dos tablas internas */
+  .espacio-divisorio {
+    height: 3mm;
+    width: 100%;
+  }
+
+  /* Título, fuera de las tablas, sin bordes, solo separación */
+  .title-cell {
+    text-align: center;
+    font-weight: bold;
+    font-size: 10.5pt;
+    text-transform: uppercase;
+    padding: 6px 6px;
+    margin-bottom: 3mm;
+  }
+
+  /* Casillas de verificación */
+  .chk {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border: 1px solid #000000;
+    margin: 0 4px 0 2px;
+    vertical-align: middle;
+    text-align: center;
+    line-height: 9px;
+    font-size: 8px;
+    font-weight: bold;
+  }
+  
+  /* Alineaciones de la tabla de preguntas */
+  .num-col { text-align: center; font-weight: bold; width: 5%; }
+
+  /* Se garantiza que la respuesta nunca haga salto de línea */
+  .ans-col { text-align: center; white-space: nowrap; vertical-align: middle; width: 15%; }
+  
+  /* Tabla interna para la Pregunta 11 */
+  .sub-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 6px;
+    margin-bottom: 2px;
+  }
+  .sub-table th, .sub-table td {
+    border: 1px solid black;
+    text-align: center;
+    padding: 3px;
+    height: 16px;
+  }
+  .sub-table th { font-weight: normal; }
+
+  /* Salto de página y Página 2 */
+  .page-break {
+    page-break-before: always;
+  }
+  .declaration-box {
+    border: 1.5px solid black;
+    padding: 25px 30px;
+  }
+  .declaration-box p {
+    text-align: justify;
+    margin: 0 0 12px 0;
+    line-height: 1.3;
+  }
+  .signature-section { margin-top: 60px; }
+  .signature-block {
+    text-align: center;
+    margin-top: 80px;
+  }
+  .signature-line {
+    display: inline-block;
+    border-top: 1px solid #000000;
+    width: 300px;
+    margin-bottom: 5px;
+  }
+  .footer-text { margin-top: 300px; }
+</style>
+</head>
+<body>
+
+<!-- PÁGINA 1 -->
+<div class="company-header">
+  <p>COMPAÑÍA DE SEGUROS CÓNDOR S.A.</p>
+  <p>SEGURO DE VIDA COLECTIVA</p>
+</div>
+
+<!-- CONTENEDOR PRINCIPAL -->
+<div class="marco-principal">
+
+  <!-- TÍTULO (dentro del marco general, no de la tabla 1) -->
+  <div class="title-cell">DECLARACION DE ASEGURABILIDAD</div>
+
+  <!-- TABLA 1: DATOS PERSONALES -->
+  <table class="tabla-interna tabla-superior">
+    <colgroup>
+      <col style="width: 62%;">
+      <col style="width: 20%;">
+      <col style="width: 18%;">
+    </colgroup>
+    <tr>
+      <td colspan="3">Contratante: {{isset($contrato-&gt;contratante)?$contrato-&gt;contratante:''}}</td>
+    </tr>
+    <tr>
+      <td colspan="3">Nombres y apellidos: {{isset($informacion_titular-&gt;primer_nombre)?$informacion_titular-&gt;primer_nombre:''}} {{isset($informacion_titular-&gt;segundo_nombre)?$informacion_titular-&gt;segundo_nombre:''}} {{isset($informacion_titular-&gt;primer_apellido)?$informacion_titular-&gt;primer_apellido:''}} {{isset($informacion_titular-&gt;segundo_apellido)?$informacion_titular-&gt;segundo_apellido:''}}</td>
+    </tr>
+    <tr>
+      <td>Cédula de identidad: {{isset($informacion_titular-&gt;identificacion)?$informacion_titular-&gt;identificacion:''}}</td>
+      <td>Fecha de Nacimiento: {{isset($informacion_titular-&gt;fecha_nacimiento)?$informacion_titular-&gt;fecha_nacimiento:''}}</td>
+      <td>Género: M <span class="chk">{{ strtoupper(substr(\App\Servicios\Catalogos::get($informacion_titular-&gt;genero ?? ''), 0, 1)) == 'M' ? 'X' : '' }}</span> F <span class="chk">{{ strtoupper(substr(\App\Servicios\Catalogos::get($informacion_titular-&gt;genero ?? ''), 0, 1)) == 'F' ? 'X' : '' }}</span></td>
+    </tr>
+    <tr>
+      <td colspan="3">Domicilio: {{isset($informacion_titular-&gt;direccion)?$informacion_titular-&gt;direccion:''}}</td>
+    </tr>
+    <tr>
+      <td>Ciudad: {{isset($informacion_titular-&gt;ciudad)?$informacion_titular-&gt;ciudad:''}}</td>
+      <td>Cantón: {{isset($informacion_titular-&gt;canton)?$informacion_titular-&gt;canton:''}}</td>
+      <td>Provincia: {{isset($informacion_titular-&gt;provincia)?$informacion_titular-&gt;provincia:''}}</td>
+    </tr>
+    <tr>
+      <td style="white-space: nowrap;">Estado civil: S <span class="chk">{{ strtoupper(substr(\App\Servicios\Catalogos::get($informacion_titular-&gt;estado_civil ?? ''), 0, 1)) == 'S' ? 'X' : '' }}</span> C <span class="chk">{{ strtoupper(substr(\App\Servicios\Catalogos::get($informacion_titular-&gt;estado_civil ?? ''), 0, 1)) == 'C' ? 'X' : '' }}</span> D <span class="chk">{{ strtoupper(substr(\App\Servicios\Catalogos::get($informacion_titular-&gt;estado_civil ?? ''), 0, 1)) == 'D' ? 'X' : '' }}</span> V <span class="chk">{{ strtoupper(substr(\App\Servicios\Catalogos::get($informacion_titular-&gt;estado_civil ?? ''), 0, 1)) == 'V' ? 'X' : '' }}</span> U <span class="chk">{{ strtoupper(substr(\App\Servicios\Catalogos::get($informacion_titular-&gt;estado_civil ?? ''), 0, 1)) == 'U' ? 'X' : '' }}</span></td>
+      <td colspan="2">Ocupación: {{isset($informacion_titular-&gt;ocupacion)?$informacion_titular-&gt;ocupacion:''}}</td>
+    </tr>
+    <tr>
+      <td>Teléfonos: {{isset($informacion_titular-&gt;telefono)?$informacion_titular-&gt;telefono:''}}</td>
+      <td colspan="2">Email: {{isset($informacion_titular-&gt;email)?$informacion_titular-&gt;email:''}}</td>
+    </tr>
+    <tr>
+      <td>Lugar de Trabajo: {{isset($informacion_titular-&gt;lugar_trabajo)?$informacion_titular-&gt;lugar_trabajo:''}}</td>
+      <td colspan="2">Dirección: {{isset($informacion_titular-&gt;direccion)?$informacion_titular-&gt;direccion:''}}</td>
+    </tr>
+  </table>
+
+  <!-- ESPACIO DIVISORIO ENTRE TABLAS -->
+  <div class="espacio-divisorio"></div>
+
+  <!-- TABLA 2A: FILA 1 (Peso/Estatura/Presión) EN TABLA PROPIA CON CELDAS IGUALES -->
+  <table class="tabla-interna" style="table-layout: fixed; margin-bottom: -1px;">
+    <colgroup>
+      <col style="width: 5%;">
+      <col style="width: 31.67%;">
+      <col style="width: 31.67%;">
+      <col style="width: 31.66%;">
+    </colgroup>
+    <tr>
+      <td class="num-col">1.</td>
+      <td>Peso: {{isset($informacion_titular-&gt;peso)?$informacion_titular-&gt;peso:'_______________'}} libras</td>
+      <td>Estatura {{isset($informacion_titular-&gt;estatura)?$informacion_titular-&gt;estatura:'______________'}} cm</td>
+      <td>Presión arterial: {{isset($informacion_titular-&gt;presion_arterial)?$informacion_titular-&gt;presion_arterial:'_______ /_______'}}</td>
+    </tr>
+  </table>
+
+  <!-- TABLA 2B: PREGUNTAS 2 A 12 -->
+  <table class="tabla-interna tabla-inferior">
+
+    <!-- DEFINICIÓN ESTRICTA DE ANCHOS PARA LAS COLUMNAS -->
+    <colgroup>
+      <col style="width: 5%;">  <!-- Número: Poco espacio -->
+      <col style="width: 80%;"> <!-- Pregunta: Mucho espacio -->
+      <col style="width: 15%;"> <!-- No/Sí: Espacio ajustado y exacto para una línea -->
+    </colgroup>
+
+    <tr>
+      <td class="num-col">2.</td>
+      <td style="text-align: justify;">¿Ha sido diagnosticado con cáncer, tumor, leucemia, anemia, linfoma, dolores de pecho, de cabeza, hipertensión arterial, arritmias, insuficiencia o trastornos cardiovasculares, infarto o derrame cerebral, desorden neurológico, parálisis, embolia, tuberculosis, trastornos respiratorios crónicos, úlcera, colitis, diverticulitis, gastritis, diabetes, problemas de tiroides, problemas de riñón, hígado, próstata, síndrome de inmunodeficiencia adquirida, o pérdida anormal de peso?</td>
+      <td class="ans-col">No <span class="chk"></span> Sí <span class="chk"></span></td>
+    </tr>
+    <tr>
+      <td class="num-col">3.</td>
+      <td style="text-align: justify;">¿Padece o ha padecido trastornos psicológicos, nerviosos, psiquiátricos, de comportamiento o para controlar dependencia de alcohol o drogas?</td>
+      <td class="ans-col">No <span class="chk"></span> Sí <span class="chk"></span></td>
+    </tr>
+    <tr>
+      <td class="num-col">4.</td>
+      <td style="text-align: justify;">¿Tiene actualmente alguna enfermedad, pérdida funcional o anatómica, o ha padecido accidentes que le impidan desempeñar labores propias de su ocupación?</td>
+      <td class="ans-col">No <span class="chk"></span> Sí <span class="chk"></span></td>
+    </tr>
+    <tr>
+      <td class="num-col">5.</td>
+      <td style="text-align: justify;">¿Se le ha aconsejado alguna prueba diagnóstica, hospitalización o cirugía que no se ha llevado a cabo, o ha sido sometido a pruebas diagnósticas cuyos resultados fueron anormales?</td>
+      <td class="ans-col">No <span class="chk"></span> Sí <span class="chk"></span></td>
+    </tr>
+    <tr>
+      <td class="num-col">6.</td>
+      <td>Si es mujer: ¿Sufre o ha sufrido trastornos ginecológicos, de ovarios, útero o mamas?<br>¿Está embarazada? En caso afirmativo indique de cuántos meses __________________________________</td>
+      <td class="ans-col">No <span class="chk"></span> Sí <span class="chk"></span><br>No <span class="chk"></span> Sí <span class="chk"></span></td>
+    </tr>
+    <tr>
+      <td class="num-col">7.</td>
+      <td>¿Toma alguna medicación? En caso afirmativo indique ¿cuál?________________________________________<br>______________________________________________ Diagnóstico?____________________________________</td>
+      <td class="ans-col">No <span class="chk"></span> Sí <span class="chk"></span></td>
+    </tr>
+    <tr>
+      <td class="num-col">8.</td>
+      <td>¿Fuma? Cigarrillo <span class="chk"></span> Puro <span class="chk"></span> Pipa <span class="chk"></span> Otro <span class="chk"></span> Cantidad diaria __________________________________</td>
+      <td class="ans-col">No <span class="chk"></span> Sí <span class="chk"></span></td>
+    </tr>
+    <tr>
+      <td class="num-col">9.</td>
+      <td>¿Consume bebidas alcohólicas? En caso afirmativo por favor detalle:<br>¿Cuáles? ________________________________ Cantidad ______________________ Frecuencia____________________</td>
+      <td class="ans-col">No <span class="chk"></span> Sí <span class="chk"></span></td>
+    </tr>
+    <tr>
+      <td rowspan="2" class="num-col">10.</td>
+      <td>¿Práctica algún deporte, por favor indique ¿cuáles?_________________________________________________</td>
+      <td class="ans-col">No <span class="chk"></span> Sí <span class="chk"></span></td>
+    </tr>
+    <tr>
+      <td style="text-align: right;">¿Con competición?</td>
+      <td class="ans-col">No <span class="chk"></span> Sí <span class="chk"></span></td>
+    </tr>
+    <tr>
+      <td class="num-col">11.</td>
+      <td colspan="2">
+        Si contestó afirmativamente las preguntas 2 a la 6, por favor especifique detalles:
+        <table class="sub-table">
+          <tr>
+            <th style="width: 5%;">No.</th>
+            <th style="width: 35%;">Diagnóstico/Tratamiento</th>
+            <th style="width: 30%;">Fecha/Duración/Secuelas</th>
+            <th style="width: 30%;">Médico tratante/ teléfono</th>
+          </tr>
+          <tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+          <tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+          <tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+          <tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+        </table>
+      </td>
+    </tr>
+    <tr>
+      <td class="num-col">12.</td>
+      <td>
+        ¿Tiene alguna otra cosa que declarar sobre su salud?, en caso afirmativo por favor detalle:
+        <br>
+        ____________________________________________________________________________________________________<br>
+        ____________________________________________________________________________________________________<br>
+        ____________________________________________________________________________________________________
+      </td>
+      <td class="ans-col">No <span class="chk"></span> Sí <span class="chk"></span></td>
+    </tr>
+  </table>
+
+</div>
+
+<!-- PÁGINA 2 -->
+<div class="page-break"></div>
+
+<div class="declaration-box">
+  <div>
+    <p>Declaro bajo juramento que la información aquí proporcionada es verdadera y exacta y de absoluta responsabilidad de quien lo suscribe. Autorizo a COMPAÑÍA DE SEGUROS CONDOR S.A. a verificar la información de este formulario y a cualquier médico, hospital, clínica, institución o compañía de seguros, que tenga información sobre mi salud, a proporcionarla a la Compañía o a su representación legal.</p>
+    
+    <p>La Compañía se reserva el derecho de solicitar requisitos médicos si lo estima conveniente, así como declinar cualquier solicitud que no esté de acuerdo con sus normas de selección de riesgos.</p>
+    
+    <p>Toda falsa declaración o reticencia en la declaración del solicitante, vicia de nulidad relativa el contrato de seguro, conforme a lo establecido en la Ley.</p>
+    
+    <p>Declaro expresamente que la prima que debo pagar por este contrato tiene origen lícito y no está relacionada con actividades de narcotráfico o lavado de dinero.</p>
+  </div>
+
+  <div class="signature-section">
+    <p>Lugar y fecha: &nbsp;&nbsp; {{isset($informacion_titular-&gt;ciudad)?$informacion_titular-&gt;ciudad:'________________________________________________________________________________'}}, {{\Carbon\Carbon::now()-&gt;format('Y-m-d')}}</p>
+
+    <div class="signature-block">
+      <div class="signature-line"></div>
+      <p style="text-align: center; margin: 0;">Firma del Solicitante</p>
+      <p style="text-align: center; margin: 0;">{{isset($informacion_titular-&gt;primer_nombre)?$informacion_titular-&gt;primer_nombre:''}} {{isset($informacion_titular-&gt;segundo_nombre)?$informacion_titular-&gt;segundo_nombre:''}} {{isset($informacion_titular-&gt;primer_apellido)?$informacion_titular-&gt;primer_apellido:''}} {{isset($informacion_titular-&gt;segundo_apellido)?$informacion_titular-&gt;segundo_apellido:''}}</p>
+    </div>
+  </div>
+  <div class="footer-text">
+    <p style="margin: 0;">El Asegurado podrá solicitar a la Superintendencia de Compañías, Valores y Seguros la verificación de este texto.</p>
+  </div>
+</div>
+
+</body>
+</html>

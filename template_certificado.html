@@ -1,0 +1,258 @@
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Certificado Cobertura</title>
+<style>
+    .bodyContainer, .bodyContainer table tr td {
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 12px;
+    }
+    .bodyContainer table {
+        width: 100%;
+    }
+</style>
+<div class="bodyContainer">
+    <!-- HOJA 1 -->
+    <p style="text-align: center;"><b>SWEADEN S. A.</b></p>
+    <p style="text-align: center;"><b>SEGURO DE VEHÍCULOS</b></p>
+    <p style="text-align: center;"><b>CERTIFICADO INDIVIDUAL DE SEGURO</b></p>
+    <p style="text-align: justify;"><b>RAMO:</b> VEHICULOS LIVIANOS USO PARTICULAR &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>PÓLIZA No.:</b> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>CERTIFICADO No.:</b> {{isset($contrato-&gt;numero_certificado)?$contrato-&gt;numero_certificado:''}}</p>
+    <p>
+        <b>CONTRATANTE y/o SOLICITANTE:</b><br>
+        <b>DIRECCIÓN DEL CONTRATANTE:</b> 
+    </p>
+    <p>
+        <b>ASEGURADO:</b> {{isset($informacion_titular-&gt;primer_nombre)?$informacion_titular-&gt;primer_nombre:''}} {{isset($informacion_titular-&gt;segundo_nombre)?$informacion_titular-&gt;segundo_nombre:''}} {{isset($informacion_titular-&gt;primer_apellido)?$informacion_titular-&gt;primer_apellido:''}} {{isset($informacion_titular-&gt;segundo_apellido)?$informacion_titular-&gt;segundo_apellido:''}} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>TELÉFONO:</b> {{isset($informacion_titular-&gt;telefono)?$informacion_titular-&gt;telefono:''}}<br>
+        <b>DIRECCIÓN DEL ASEGURADO:</b> {{isset($informacion_titular-&gt;direccion)?$informacion_titular-&gt;direccion:''}} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>E-mail:</b> {{isset($informacion_titular-&gt;email)?$informacion_titular-&gt;email:''}}
+    </p>
+    <p>
+        <b>VIGENCIA DEL CERTIFICADO</b> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>DESDE:</b> {{isset($cotizador-&gt;inicio_vigencia)?$cotizador-&gt;inicio_vigencia:''}} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>HASTA:</b> {{isset($cotizador-&gt;fin_vigencia)?$cotizador-&gt;fin_vigencia:''}}<br>
+        FECHA DE EMISIÓN DEL DOCUMENTO: {{\Carbon\Carbon::now()-&gt;format('Y-m-d')}}<br>
+        HORA DE INICIO Y TERMINACIÓN DE COBERTURA: 
+    </p>
+    <p>
+        <b>OBJETO DEL SEGURO:</b><br>
+        <b>MARCA:</b> {{ isset($objeto_asegurado-&gt;marca)?\App\Servicios\Catalogos::get($objeto_asegurado-&gt;marca):'' }} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>MODELO:</b> {{ isset($objeto_asegurado-&gt;modelo)?\App\Servicios\Catalogos::get($objeto_asegurado-&gt;modelo):'' }} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>AÑO:</b> {{ isset($objeto_asegurado-&gt;year)?$objeto_asegurado-&gt;year:'' }} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>TONELAJE:</b><br>
+        <b># MOTOR:</b> {{ isset($objeto_asegurado-&gt;motor)?$objeto_asegurado-&gt;motor:'' }} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b># CHASIS:</b> {{ isset($objeto_asegurado-&gt;chasis)?$objeto_asegurado-&gt;chasis:'' }} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>PLACA:</b> {{ isset($objeto_asegurado-&gt;placa)?$objeto_asegurado-&gt;placa:'' }} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b># DE OCUPANTES:</b>
+    </p>
+    <p><b>SUMA ASEGURADA:</b> {{isset($cotizador-&gt;valor_asegurado)?$cotizador-&gt;valor_asegurado:''}}</p>
+    <p>
+        <b>COBERTURAS:</b><br>
+        Todo riesgo, todos los eventos a consecuencia de: pérdida total y parcial por daños, pérdida total y parcial por robo o hurto, excepto las indicadas en exclusiones.
+    </p>
+    <p><b><u>Amparos Adicionales:</u></b></p>
+    <table>
+        <tbody><tr>
+            <td style="width: 300px;">a. Responsabilidad Civil LUC</td>
+            <td style="width: 100px; text-align: right;">$ 50.000</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>b. Muerte e Invalidez ocupante</td>
+            <td style="text-align: right;">$ &nbsp;&nbsp;5.000</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>c. Gastos médicos por ocupante</td>
+            <td style="text-align: right;">$ &nbsp;&nbsp;3.000</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>d. Gastos por sepelio por ocupante</td>
+            <td style="text-align: right;">$ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;500</td>
+            <td></td>
+        </tr>
+    </tbody></table>
+    <p><b>EXCLUSIONES:</b></p>
+    <ol type="a">
+        <li>La Aseguradora no se responsabiliza por las pérdidas o daños causados al, o sufridos por el vehículo asegurado en los siguientes casos:</li>
+        <li>a. Cuando sufra o se le ocasionen daños durante carreras, apuestas, pruebas de resistencia o velocidad oficiales o no oficiales, o cuando se emplee para fines de enseñanza o instrucción.</li>
+        <li>b. Por desatención, inobservancia o incumplimiento de las leyes, reglamentos y señales de tránsito vigentes, o multas que impongan las autoridades competentes por dichos motivos, o se halle en estado de embriaguez o bajo el efecto de drogas o cualquier sustancia tóxica.</li>
+        <li>c. Cuando sea secuestrado, embargado, confiscado, cedido o en custodia de las autoridades en cualquier forma.</li>
+        <li>d. Carpas, avisos, letreros, dibujos o motivos de propaganda que lleve el vehículo.</li>
+        <li>e. Guerra civil o internacional, invasión, insurrección, usurpación del poder, bombardeo terrestre, naval o aéreo, revolución, golpe de Estado, sabotaje y terrorismo.</li>
+        <li>f. Reacción o radiación nuclear o contaminación radioactiva.</li>
+        <li>g. Daño moral, lucro cesante o perjuicios derivados de la demora en las reparaciones, gastos de traslado, garaje o por la falta del vehículo asegurado.</li>
+        <li>h. Defectos o fallas mecánicas o de construcción, defectos del material, desgaste por uso, corto circuito u otros accidentes eléctricos cuando no se produzca incendio, fallas o daños mecánicos. En tal caso no se cubrirá la causa del siniestro, pero la Aseguradora sí responderá por los daños resultantes, quedando entendido que los costos de reparación de la causa o causas del siniestro están expresamente excluidos.</li>
+        <li>i. Cuando sea transportado por grúas, plataformas o cualquier vehículo que le remolque, excepto cuando el remolque sea consecuencia de un siniestro.</li>
+        <li>j. Objetos contenidos o transportados que no formen parte del vehículo.</li>
+        <li>k. Cuando se emplee en cualquier actividad ilícita.</li>
+    </ol>
+    <p><b>DEDUCIBLES:</b></p>
+    <p>
+        <b>Perdidas Parciales:</b> 15% del valor de siniestro, mín. 1.5% del valor asegurado, mín. USD 350<br>
+        (TALLERES MARESA)<br><br>
+
+        <b>Perdidas Parciales:</b> 15% del valor de siniestro, mín. 1.5% del valor asegurado, mín. USD 450<br>
+        (OTROS TALLERES)<br><br>
+
+        <b>Pérdidas Totales por cualquier causa:</b> 25% del valor asegurado<br><br>
+
+        <b>Deducible para vehículos eléctricos: Pérdida Total por incendio y/o autoignición:</b> 30% del valor asegurado.<br><br>
+
+    </p>
+    <p><b>BENEFICIOS ADICIONALES:</b></p>
+    <p style="text-align: justify;">
+        a. Cobertura de radios y parlantes: Esta póliza cubre el radio y parlantes originales, con los que viene equipado el vehículo de fábrica, hasta un límite de USD $1500. Para los vehículos equipados con radios de MASCARILLA DESMONTABLE (faceout), en caso de siniestro es requisito indispensable presentar y entregar la mascarilla a la Aseguradora.<br>
+        b. Cobertura de air bags y periféricos relacionados que tenga instalado el vehículo, al 100%<br>
+        d. Asistencia Vial en Siniestro y Averías:<br>
+        • Carga de Batería (no ha vehículos híbridos)<br>
+        • Apertura de Puertas<br>
+        • Carga de Gasolina<br>
+        • Mecánica Ligera<br>
+        • Conductor elegido<br>
+        • Servicio de Plataforma en caso de siniestro (choque)<br>
+        • Asistencia vial plus<br>
+        • Conductor profesional en caso de emergencia<br>
+        Nota: Únicamente se otorga el servicio dentro del territorio continental ecuatoriano y exclusivamente si el asegurado o quien estuviere legalmente como responsable del vehículo<br>
+        e. Abogado IN SITU.<br>
+f. Red de mecánicas (en caso de siniestro las reparaciones se realizarán en talleres autorizados de acuerdo con la marca del vehículo, conforme a nuestra red de mecánicas).<br>
+        g.  Notificación de Siniestros: 10 días hábiles<br>
+        h.  Cláusula de Pago de Primas: 30 días hábiles<br>
+        i.  Cancelación de Póliza: 30 días hábiles<br>
+        j. Cláusula de Automaticidad de Restitución de Suma Asegurada
+    </p>
+    <p><b>COSTO DEL SEGURO:</b></p>
+    <table style="border: 1px solid black; border-collapse: collapse;">
+        <tbody><tr style="border: 1px solid black;">
+            <td style="padding: 5px;">Prima neta: {{isset($cotizador-&gt;prima_neta)?round($cotizador-&gt;prima_neta, 2):''}}</td>
+            <td style="padding: 5px;">Imp. SVCS: {{isset($cotizador-&gt;impuesto_scvs)?round($cotizador-&gt;impuesto_scvs, 2):''}}</td>
+            <td style="padding: 5px;">Imp. Campesino: {{isset($cotizador-&gt;impuesto_ssc)?round($cotizador-&gt;impuesto_ssc, 2):''}}</td>
+        </tr>
+        <tr style="border: 1px solid black;">
+            <td style="padding: 5px;">Derechos de emisión: {{isset($cotizador-&gt;derechos_emision)?$cotizador-&gt;derechos_emision:''}}</td>
+            <td style="padding: 5px;">I.V.A.: {{isset($cotizador-&gt;iva)?round($cotizador-&gt;iva, 2):''}}</td>
+            <td style="padding: 5px;"></td>
+        </tr>
+        <tr style="border: 1px solid black;">
+            <td style="padding: 5px;"></td>
+            <td style="padding: 5px;"></td>
+            <td style="padding: 5px;"><b>PRIMA TOTAL:</b> {{isset($cotizador-&gt;prima_total)?round($cotizador-&gt;prima_total,2):''}}</td>
+        </tr>
+    </tbody></table>
+    <p><b>PROCEDIMIENTO PARA SINIESTROS:</b></p>
+    <p style="text-align: justify;">
+        El Asegurado o Beneficiario deberá notificar a la compañía de seguros su siniestro a los 3 días posteriores de conocido el siniestro, podrá siempre justificar, por fuerza mayor o caso fortuito, su imposibilidad en dar aviso oportuno del siniestro, con el fin de no perder su derecho a reclamar la indemnización;  en ningún caso el aviso de ocurrencia del sinestro podrá exceder al tiempo señalado en el artículo 26 del título XVII del libro I Código de Comercio; para dar cumplimiento a lo dispuesto en el inciso 1.3.4, artículo 1, sección I, de la resolución No. SCVS-INS-2018-0007, de 27 de febrero de 2018.
+    </p>
+    <p style="text-align: center;"><b>DOCUMENTOS PARA PRESENTAR EN CASO DE SINIESTRO</b></p>
+    <p style="text-align: justify;"><b>DOCUMENTACION NECESARIA EN CASO DE SINIESTRO POR PERDIDA TOTAL POR DAÑOS O POR ROBO O HURTO</b></p>
+    <ol type="a">
+        <li>Original del parte policial o denuncia presentada ante el Servicio de Investigación de Accidentes de Tránsito, SIAT. o ante la instancia policial correspondiente, o ante un juzgado de tránsito competente, en caso de que no hubiera existido intervención policial en el sitio del accidente.</li>
+        <li>Aviso de accidente, este documento proporcionado por la Compañía Aseguradora deberá ser completado y firmado por el Asegurado.</li>
+        <li>Copia de la licencia vigente de la persona que conducía el vehículo asegurado en el momento del siniestro, en caso de pérdida total por daños.</li>
+        <li>Matrícula original vigente a nombre del Asegurado y pago de esta a la fecha del siniestro.</li>
+        <li>Copia de la cédula de ciudadanía y papeleta de votación del Asegurado y cónyuge si es persona natural.</li>
+        <li>Copia de la cédula de ciudadanía y papeleta de votación del representante legal, copia del RUC y un ejemplar del nombramiento actualizado del representante legal debidamente inscrito en el Registro Mercantil, si el Asegurado es persona jurídica.</li>
+        <li>Certificado Único Vehicular emitido por la Agencia Nacional de Tránsito donde conste que el vehículo no posee gravamen, y en el caso de robo y/o hurto que conste el bloqueo por robo.</li>
+        <li>Certificado del Registro Mercantil de no poseer gravamen emitido en el Cantón donde se encuentre matriculado el vehículo.</li>
+        <li>Certificado de Orígenes o copia de factura a nombre del asegurado.</li>
+        <li>Si el Vehículo se encuentra financiado, se debe presentar el endoso de beneficiario y la tabla de amortización a la fecha del siniestro.</li>
+        <li>Cesión de derechos y transferencia de dominio legalizados por el asegurado y su cónyuge /o encargo fiduciario.</li>
+        <li>Juego de llaves originales del vehículo y/o copia.</li>
+<li>Entrega del vehículo accidentado y sus accesorios originales a la Compañía Aseguradora o a su representante, en el lugar que esta determine, en caso de pérdida total por daños.</li>
+        <li>Copia certificada del informe de las investigaciones realizadas emitido por la Policía Nacional o la Comisión de Tránsito del Guayas, según sea del caso. (para pérdida total por robo o hurto.</li>
+        <li>Documentación complementaria destinada a probar la ocurrencia del siniestro, la preexistencia del bien asegurado o el valor de la pérdida o el interés asegurable que tenía el Asegurado al momento del siniestro.</li>
+<li>Parte policial, informe técnico lugar de los hechos en el caso de pérdida total por choque.</li>
+<li>En el caso de que el vehículo se encuentre registrado de USO PUBLICO se debe hacer la des habilitación en el SRI a USO PARTICULAR lo cual debe constar en el Certificado Único vehicular anteriormente mencionado.</li>
+    </ol>
+    <p><b>DOCUMENTACIÓN NECESARIA EN CASO DE SINIESTRO POR PÉRDIDA PARCIAL POR DAÑOS:</b></p>
+    <ol type="a">
+        <li>Aviso de accidente, este documento proporcionado por la Compañía Aseguradora deberá ser completado y firmado por el Asegurado.</li>
+        <li>Copia de la matrícula vigente a nombre del Asegurado.</li>
+        <li>Copia de la licencia vigente, de la persona que conducía el vehículo asegurado al momento del siniestro.</li>
+        <li>Parte policial o denuncia original, ante las autoridades competentes.</li>
+        <li>Documentación complementaria, destinada a probar la ocurrencia del siniestro, la preexistencia del bien asegurado o el valor de la pérdida o el interés asegurable que tenía el Asegurado al momento del siniestro.</li>
+    </ol>
+    <p><b>DOCUMENTOS PARA PRESENTAR EN CASO DE SINIESTRO POR RESPONSABILIDAD CIVIL:</b></p>
+    <ol type="a">
+        <li>Carta formalizando el reclamo, con la versión de los hechos presentada por el Asegurado.</li>
+        <li>Copia de la denuncia o documento reclamatorio del tercero afectado.</li>
+        <li>Fallo judicial debidamente ejecutoriado o auto judicial ejecutoriado, según el proceso de que se trate.</li>
+        <li>Declaración del Asegurado admitiendo o no su responsabilidad.</li>
+        <li>Proforma de daños y/o copias de las facturas o recibos de los gastos incurridos.</li>
+    </ol>
+    <p style="text-align: justify;">
+        <b>DOCUMENTACIÓN NECESARIA EN CASO DE SINIESTRO POR MUERTE ACCIDENTAL O INVALIDEZ:</b>
+        En adición a la documentación requerida para el accidente del vehículo, se deberá presentar los siguientes documentos
+    </p>
+    <p>Accidentes Personales se debe reportar en la página web.</p>
+    <ul>
+        <li>Formulario aviso</li>
+        <li>Copia cédula</li>
+        <li>Historia Clínica</li>
+        <li>Pedido Exámenes</li>
+        <li>Facturas</li>
+        <li>Pedido recetas</li>
+        <li>Formulario de transferencia (Se llena en la página web)</li>
+    </ul>
+    <p>Para incapacidad total y permanente se solicita los mismos documentos para vida desgravamen, vida individual más el siguiente documento.</p>
+    <p>VIDA DESGRAVAMEN</p>
+    <ul>
+        <li>Aviso de siniestro</li>
+        <li>Copia de cédula</li>
+        <li>Certificado de defunción</li>
+        <li>Carta formal</li>
+        <li>Certificado de Saldo insoluto</li>
+        <li>Tabla de amortización</li>
+        <li>Pagaré</li>
+        <li>Formulario Transferencia</li>
+        <li>Levantamiento de cadáver y/o protocolo de Autopsia (en caso de ser muerte accidental)</li>
+        <li>Tabla de pagos</li>
+<li>Certificado del Ministerio de Salud Pública y/o Certificado del Iess</li>
+        <li>Historia Clínica Completa de toda la vida</li>
+    </ul>
+    <p>VIDA GRUPO</p>
+    <ul>
+        <li>Aviso de siniestro</li>
+        <li>Copia de cédula</li>
+        <li>Certificado de defunción</li>
+        <li>Carta formal</li>
+        <li>Posesión efectiva de los beneficiarios</li>
+        <li>Formulario Transferencia</li>
+        <li>Levantamiento de cadáver y/o protocolo de Autopsia (en caso de ser muerte accidental)</li>
+<li>Certificado del Ministerio de Salud Pública y/o Certificado del Iess</li>
+        <li>Historia Clínica Completa de toda la vida</li>
+    </ul>
+    <p>Nota, si la póliza viene con endoso beneficiario, la financiera debe entregar el original.</p>
+    <p style="text-align: justify;">
+        <b>Declaración:</b><br>
+        Conocedor(a) de las penas de perjurio, declaro que la información contenida en este formulario y la documentación que se adjunte al mismo es verdadera, completa y proporcionada de manera confiable y actualizada, comprometiéndome a comunicar oportunamente a SWEADEN S.A. los cambios que se susciten a la información y documentación entregada y a proveer la documentación e información adicional que me sea solicitada. Además, declaro que la relación con SWEADEN S.A. tiene un propósito lícito y que todos los bienes asegurados y garantías, así como los montos de primas que se pagarán, son de origen legítimo y los valores entregados a mi favor serán utilizados para actividades lícitas.<br>
+        Declaro que:
+    </p>
+    <p style="text-align: justify;">
+        Yo, mi cónyuge, mis parientes (padres, hijos, tíos, primos, suegros o cuñados) o colaboradores __Si   __No<br>
+        Desempeño(han) desempeñado funciones públicas de alto grado en los últimos dos años, por ejemplo, presidente de la República, ministro, Gobernador, secretario nacional, director general, dignatarios elegidos por voto popular, etc., o que, sin ocupar cargo público alguno, tiene injerencia política a escala nacional o internacional.
+    </p>
+    <p style="text-align: justify;">
+        <b>Autorización:</b><br>
+        Autorizo expresamente, en forma libre, voluntaria e irrevocable, a SWEADEN S.A., para que obtenga en cualquier momento y de cualquier fuente de información que considere pertinente, incluida la Central de Riesgos y Burós de Información Crediticia, mis referencias e información personales sobre mi comportamiento crediticio, manejo de mis cuentas corrientes, de ahorros, tarjetas de crédito, etc., y en general sobre el cumplimiento de mis obligaciones y demás información relacionada con mis activos, pasivos y contingentes, así como información de carácter general. De igual forma, SWEADEN S.A. queda expresamente autorizada para que pueda, en cualquier momento, utilizar, transferir o entregar dicha información y aquella que genere con SWEADEN S.A. por ocasión de la relación existente a autoridades competentes, organismos de control, Burós de Información Crediticia y otras instituciones o personas jurídicas legales o reglamentariamente facultadas. También la autorizo a realizar el análisis y las verificaciones que considere necesarias para comprobar la licitud de fondos y bienes comprendidos en el contrato de seguro.
+    </p>
+    <p>Fecha de emisión del documento: {{\Carbon\Carbon::now()-&gt;format('Y-m-d')}}</p>
+    <p>El contratante y/o Asegurado podrá solicitar a la Superintendencia de Compañía Valores y Seguros la verificación de este texto.</p>
+<p><b>CLÁUSULA  _________.-  PROTECCIÓN DE DATOS PERSONALES</b></p>
+    <p style="text-align: justify;">
+        <b>SWEADEN COMPAÑÍA DE SEGUROS S.A.</b>, reconoce la importancia de la privacidad y la protección de datos personales de sus clientes y se compromete a cumplir con las disposiciones de la Ley Orgánica de Protección de Datos Personales de Ecuador y su Política de Privacidad.
+    </p>
+    <p style="text-align: justify;">
+        En cumplimiento de lo anterior, SWEADEN COMPAÑÍA DE SEGUROS S.A. se compromete a:
+    </p>
+    <ul>
+        <li>Obtener el consentimiento previo, expreso e informado de los clientes antes de tratar sus datos personales.</li>
+        <li>Utilizar los datos personales únicamente para los fines específicos y legítimos para los que fueron recolectados, y a no divulgarlos a terceros sin el consentimiento de sus titulares.</li>
+        <li>Adoptar medidas de seguridad técnicas y organizativas adecuadas para proteger los datos personales de los clientes de cualquier acceso no autorizado, alteración, pérdida, destrucción o cualquier otro tipo de procesamiento no autorizado.</li>
+        <li>Facilitar a los clientes el ejercicio de los derechos que les asisten en virtud de la Ley Orgánica de Protección de Datos Personales de Ecuador, tales como el acceso, la rectificación, la cancelación y la oposición al tratamiento de los datos personales.</li>
+    </ul>
+    <p style="text-align: justify;">
+        <b>SWEADEN COMPAÑÍA DE SEGUROS S.A.</b> se compromete a cumplir con estas disposiciones durante el período de prestación de sus servicios, así como después de la terminación de la relación contractual con los clientes.
+    </p>
+    <p style="text-align: justify;">
+        <b>El CLIENTE</b> autoriza expresamente a <b>SWEADEN COMPAÑÍA DE SEGUROS S.A.</b> a tratar los datos personales que éste proporcione únicamente para fines laborales, administrativos y comerciales; y se compromete a proporcionar información veraz, completa y actualizada. Dicha autorización incluye el consentimiento para transferir datos personales a terceros para finalidades relacionadas con el cumplimiento de las obligaciones contenidas en este contrato, obligaciones legales u órdenes judiciales.
+    </p>
+    <p style="text-align: justify;">
+        <b>El CLIENTE</b> tiene derecho a ejercer los derechos que le corresponden en virtud de la Ley Orgánica de Protección de Datos Personales, tales como el acceso, la rectificación, la cancelación y la oposición al tratamiento de sus datos personales.
+    </p>
+    <p style="text-align: center;">
+        <br><br><br><br>
+        _______________________________<br>
+        Firma de la Aseguradora
+    </p>
+</div>

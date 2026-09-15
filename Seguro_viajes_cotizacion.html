@@ -1,0 +1,1834 @@
+<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Certificado Cobertura</title>
+    <style>
+        @page {
+            margin: 40px 0 40px 0;
+        }
+        .divContainer {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 12px;
+            color: #4f4c4d;
+        }
+        .divContainer .divContainerPadding {
+            padding: 0 40px 0 40px;
+        }
+        .divContainer .divSpace {
+            height: 30px;
+        }
+        .divContainer .redText {
+            color: #c92327;
+        }
+        .divContainer .grayText {
+            color: #666b70;
+        }
+        .divContainer .redHeader {
+            background-color: #c92327;
+            color: white;
+            padding: 5px 40px;
+        }
+        .divContainer .paddingText {
+            text-align: justify;
+            padding: 0 40px;
+        }
+        .divContainer .rTable {
+            display: table;
+            width: 100%;
+        }
+        .divContainer .rTable .rTableRow {
+            display: table-row;
+        }
+        .divContainer .rTable .rTableRow .rTableCell,
+        .divContainer .rTable .rTableRow .rTableHead 
+        {
+            display: table-cell;
+            border: 1px solid #4f4c4d;
+            padding: 3px;
+        }
+        .divContainer .styledTable1,
+        .divContainer .styledTable2 {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .divContainer .styledTable1 tr th,
+        .divContainer .styledTable1 tr td {
+            padding: 10px;
+        }
+        .divContainer .styledTable1 tr:nth-child(odd) {
+            background-color: #eff0ed;
+        }
+        .divContainer .styledTable1 tr th:first-child,
+        .divContainer .styledTable1 tr td:first-child {
+            border-top-left-radius: 10px;
+            border-bottom-left-radius: 10px;
+        }
+        .divContainer .styledTable1 tr th:last-child,
+        .divContainer .styledTable1 tr td:last-child {
+            border-top-right-radius: 10px;
+            border-bottom-right-radius: 10px;
+        }
+        .divContainer .styledTable2 tr td,
+        .divContainer .styledTable2 tr th {
+            border: 1px solid #4f4c4d;
+        }
+        .divContainer .divLine {
+            width: 500px;
+            height: 10px;
+            background-color: #c92327;
+        }
+.divContainer {
+            line-height: 1.28;
+        }
+
+        .divContainer .redHeader {
+            margin: 8px 0 5px 0;
+            page-break-after: avoid;
+            break-after: avoid-page;
+        }
+
+        .divContainer .paddingText {
+            margin-top: 5px;
+            margin-bottom: 8px;
+            orphans: 3;
+            widows: 3;
+            page-break-inside: auto;
+            break-inside: auto;
+        }
+
+        .divContainer table {
+            page-break-inside: auto;
+            break-inside: auto;
+        }
+
+        .divContainer tr {
+            page-break-inside: avoid;
+            break-inside: avoid;
+        }
+
+        .divContainer thead {
+            display: table-header-group;
+        }
+
+        .divContainer tfoot {
+            display: table-footer-group;
+        }
+
+        .divContainer img {
+            page-break-inside: avoid;
+            break-inside: avoid;
+        }
+
+        .divContainer .redHeader + .paddingText,
+        .divContainer .redHeader + p.paddingText {
+            page-break-before: avoid;
+            break-before: avoid-page;
+        }
+
+        @media screen {
+            .divContainer .divContainerPadding {
+                padding-top: 40px;
+            }
+        }
+
+        @media print {
+            html, body {
+                margin: 0 !important;
+                padding: 0 !important;
+            }
+
+            .divContainer .divContainerPadding {
+                padding-top: 0;
+            }
+
+            .divContainer .redHeader {
+                page-break-after: avoid;
+                break-after: avoid-page;
+            }
+
+            .divContainer .styledTable1,
+            .divContainer .styledTable2,
+            .divContainer .rTable {
+                page-break-inside: auto;
+                break-inside: auto;
+            }
+
+            .divContainer .styledTable1 tr,
+            .divContainer .styledTable2 tr,
+            .divContainer .rTableRow {
+                page-break-inside: avoid;
+                break-inside: avoid;
+            }
+        }
+    
+        .finalFooter {
+            width: 100%;
+            margin-top: 6px;
+            padding-top: 0;
+            page-break-before: avoid;
+            break-before: avoid-page;
+            page-break-inside: auto;
+            break-inside: auto;
+        }
+
+        .finalFooter .footerAddress {
+            text-align: center;
+            margin: 0 40px 5px 40px;
+            line-height: 1.10;
+            font-size: 9px;
+        }
+
+        .finalFooter .footerBottom {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 0;
+        }
+
+        .finalFooter .footerBottom td {
+            vertical-align: middle;
+        }
+
+        .finalFooter .footerWebsite {
+            text-align: right;
+            padding-right: 12px;
+            white-space: nowrap;
+            font-size: 9px;
+        }
+
+        .finalFooter .divLine {
+            height: 8px;
+        }
+
+    
+        .watermarkGlobal {
+                    position: fixed;
+                    top: 40%;
+                    left: 0;
+                    width: 100%;
+                    text-align: center;
+                    opacity: 0.15;
+                    transform: rotate(-30deg);
+                    font-size: 90px;
+                    color: #000000;
+                    z-index: 9999;
+                    pointer-events: none;
+                }
+    </style>
+
+@php
+
+$valorAseguradoTexto = strtoupper(
+    \App\Servicios\Catalogos::get($cotizador-&gt;valor_asegurado ?? '')
+);
+
+$valorAseguradoRaw = strtoupper(
+    trim((string) ($cotizador-&gt;valor_asegurado ?? ''))
+);
+
+$valorAseguradoComparar = $valorAseguradoTexto . ' ' . $valorAseguradoRaw;
+
+$opcionSeleccionada = null;
+
+if (
+    $valorAseguradoRaw === 'A' ||
+    strpos($valorAseguradoComparar, 'OPCION A') !== false ||
+    strpos($valorAseguradoComparar, 'OPCIÓN A') !== false ||
+    strpos($valorAseguradoComparar, '3.000') !== false ||
+    strpos($valorAseguradoComparar, '3000') !== false ||
+    strpos($valorAseguradoComparar, '35.000') !== false ||
+    strpos($valorAseguradoComparar, '35000') !== false
+) {
+    $opcionSeleccionada = 'A';
+}
+
+if (
+    $valorAseguradoRaw === 'B' ||
+    strpos($valorAseguradoComparar, 'OPCION B') !== false ||
+    strpos($valorAseguradoComparar, 'OPCIÓN B') !== false ||
+    strpos($valorAseguradoComparar, '5.000') !== false ||
+    strpos($valorAseguradoComparar, '5000') !== false ||
+    strpos($valorAseguradoComparar, '50.000') !== false ||
+    strpos($valorAseguradoComparar, '50000') !== false
+) {
+    $opcionSeleccionada = 'B';
+}
+
+if (
+    $valorAseguradoRaw === 'C' ||
+    strpos($valorAseguradoComparar, 'OPCION C') !== false ||
+    strpos($valorAseguradoComparar, 'OPCIÓN C') !== false ||
+    strpos($valorAseguradoComparar, '10.000') !== false ||
+    strpos($valorAseguradoComparar, '10000') !== false ||
+    strpos($valorAseguradoComparar, '100.000') !== false ||
+    strpos($valorAseguradoComparar, '100000') !== false
+) {
+    $opcionSeleccionada = 'C';
+}
+
+$opcionSeleccionada = $opcionSeleccionada ?? 'A';
+
+$coberturasPorOpcion = [
+    'A' =&gt; [
+        'titulo' =&gt; 'Opción A',
+        'muerte' =&gt; '$ 3.000,00',
+        'doble' =&gt; '$ 3.000,00',
+        'incapacidad' =&gt; '$ 3.000,00',
+        'gasto_medico' =&gt; '$ 1.000,00',
+    ],
+    'B' =&gt; [
+        'titulo' =&gt; 'Opción B',
+        'muerte' =&gt; '$ 5.000,00',
+        'doble' =&gt; '$ 5.000,00',
+        'incapacidad' =&gt; '$ 5.000,00',
+        'gasto_medico' =&gt; '$ 1.000,00',
+    ],
+    'C' =&gt; [
+        'titulo' =&gt; 'Opción C',
+        'muerte' =&gt; '$ 10.000,00',
+        'doble' =&gt; '$ 10.000,00',
+        'incapacidad' =&gt; '$ 10.000,00',
+        'gasto_medico' =&gt; '$ 1.000,00',
+    ],
+];
+
+$coberturaActual = $coberturasPorOpcion[$opcionSeleccionada];
+
+$coberturaOpcion = $coberturaOpcion ?? $coberturaActual['titulo'];
+$coberturaMuerteAccidental = $coberturaMuerteAccidental ?? $coberturaActual['muerte'];
+$coberturaDobleIndemnizacion = $coberturaDobleIndemnizacion ?? $coberturaActual['doble'];
+$coberturaIncapacidadTotalPermanente = $coberturaIncapacidadTotalPermanente ?? $coberturaActual['incapacidad'];
+$coberturaGastoMedico = $coberturaGastoMedico ?? $coberturaActual['gasto_medico'];
+$primaTotal = $primaTotal ?? ($cotizador-&gt;prima_total ?? '');
+
+$asistenciaHogarPorOpcion = [
+    'A' =&gt; [
+        'titulo' =&gt; 'Opción A',
+        'plomeria' =&gt; 'Incluida',
+        'electricidad' =&gt; 'Incluida',
+        'cerrajeria' =&gt; 'N/A',
+        'vidrios' =&gt; 'Incluida',
+        'conexion_profesionales' =&gt; 'Incluida',
+        'reposicion_cerradura' =&gt; '$ 50,00',
+    ],
+    'B' =&gt; [
+        'titulo' =&gt; 'Opción B',
+        'plomeria' =&gt; 'Incluida',
+        'electricidad' =&gt; 'Incluida',
+        'cerrajeria' =&gt; 'Incluida',
+        'vidrios' =&gt; 'Incluida',
+        'conexion_profesionales' =&gt; 'Incluida',
+        'reposicion_cerradura' =&gt; '$ 100,00',
+    ],
+    'C' =&gt; [
+        'titulo' =&gt; 'Opción C',
+        'plomeria' =&gt; 'Incluida',
+        'electricidad' =&gt; 'Incluida',
+        'cerrajeria' =&gt; 'Incluida',
+        'vidrios' =&gt; 'Incluida',
+        'conexion_profesionales' =&gt; 'Incluida',
+        'reposicion_cerradura' =&gt; '$ 100,00',
+    ],
+];
+
+$hogarActual = $asistenciaHogarPorOpcion[$opcionSeleccionada];
+
+$asistenciaHogarOpcion = $asistenciaHogarOpcion ?? $hogarActual['titulo'];
+$asistenciaHogarPlomeria = $asistenciaHogarPlomeria ?? $hogarActual['plomeria'];
+$asistenciaHogarElectricidad = $asistenciaHogarElectricidad ?? $hogarActual['electricidad'];
+$asistenciaHogarCerrajeria = $asistenciaHogarCerrajeria ?? $hogarActual['cerrajeria'];
+$asistenciaHogarVidrios = $asistenciaHogarVidrios ?? $hogarActual['vidrios'];
+$asistenciaHogarConexionProfesionales = $asistenciaHogarConexionProfesionales ?? $hogarActual['conexion_profesionales'];
+$asistenciaHogarReposicionCerradura = $asistenciaHogarReposicionCerradura ?? $hogarActual['reposicion_cerradura'];
+
+$mostrarOpcionA = $opcionSeleccionada === 'A';
+$mostrarOpcionB = $opcionSeleccionada === 'B';
+$mostrarOpcionC = $opcionSeleccionada === 'C';
+@endphp
+
+
+<div class="watermarkGlobal"><b>COTIZACIÓN</b></div>
+
+<div class="divContainer">
+<!-- HOJA 1 -->
+<div class="divContainerPadding">
+        <table style="width: 100%;">
+            <tbody><tr>
+                <td style="text-align: left;">
+                    <font face="Arial" size="2"><img style="width: 150px;" alt="SEGUROS ATLANTIDA SEGURATLANTIDA S.A. Logo" src="data:image/png;base64,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">
+                </font></td>
+                <td style="text-align: right;">
+                    <font face="Arial" size="2"><img style="width: 150px;" alt="ASSIST CARD Logo" src="data:image/png;base64,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">
+                </font></td>
+            </tr>
+        </tbody></table>
+        <h3 style="text-align: center;" class="redText"><font face="Arial" size="2">
+            CERTIFICADO INDIVIDUAL DE SEGURO
+        </font></h3>
+        <h3 class="grayText"><font face="Arial" size="2">
+            INFORMACIÓN GENERAL DE LA PÓLIZA
+        </font></h3>
+        <p style="text-align: justify;"><font face="Arial" size="2">
+            Nro. de Certificado: {{$contrato-&gt;numero_certificado ?? ''}}
+        </font></p>
+        <p style="text-align: justify;"><font face="Arial" size="2">
+            Yo, {{$informacion_titular-&gt;primer_nombre ?? ''}} {{$informacion_titular-&gt;segundo_nombre ?? ''}}
+            {{$informacion_titular-&gt;primer_apellido ?? ''}} {{$informacion_titular-&gt;segundo_apellido ?? ''}},
+            portador(a) de la cédula de ciudadanía Nro. {{$informacion_titular-&gt;identificacion ?? ''}},
+            solicito mi inclusión y la de mis beneficiarios en el Seguro de Viajes 
+            "{{\App\Servicios\Catalogos::get($cotizador-&gt;plan ?? '')}} {{\App\Servicios\Catalogos::get($cotizador-&gt;valor_asegurado ?? '')}}"
+            ofrecida bajo la Póliza Nro. {{$cotizador-&gt;numero_poliza ?? ''}} emitida por SEGUROS ATLANTIDA SEGURATLANTIDA S.A.,
+            con los amparos mencionados en la tabla de coberturas, de acuerdo con la forma de pago indicada.
+        </font></p>
+        <h3 class="grayText"><font face="Arial" size="2">
+            DATOS DEL ASEGURADO PRINCIPAL
+        </font></h3>
+        <table style="width: 100%;">
+            <tbody><tr>
+                <td>
+                    <font face="Arial" size="2"><b>Apellidos:</b>
+                    {{$informacion_titular-&gt;primer_apellido ?? ''}} {{$informacion_titular-&gt;segundo_apellido ?? ''}}
+                </font></td>
+                <td>
+                    <font face="Arial" size="2"><b>Nombres:</b>
+                    {{$informacion_titular-&gt;primer_nombre ?? ''}} {{$informacion_titular-&gt;segundo_nombre ?? ''}}
+                </font></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>
+                    <font face="Arial" size="2"><b>Nro. de Identificación:</b>
+                    {{$informacion_titular-&gt;identificacion ?? ''}}
+                </font></td>
+                <td>
+                    <font face="Arial" size="2"><b>Fecha de Nacimiento:</b>
+                    {{\Carbon\Carbon::parse($informacion_titular-&gt;fecha_nacimiento)-&gt;format('Y-m-d')}}
+                </font></td>
+                <td>
+                    <font face="Arial" size="2"><b>Tipo de Identificación:</b>
+                    {{\App\Servicios\Catalogos::get($informacion_titular-&gt;tipo_identificacion)}}
+                </font></td>
+            </tr>
+            <tr>
+                <td>
+                    <font face="Arial" size="2"><b>Desde:</b>
+                    {{\Carbon\Carbon::parse($cotizador-&gt;inicio_vigencia)-&gt;format('Y-m-d')}}
+                </font></td>
+                <td>
+                    <font face="Arial" size="2"><b>Hasta:</b>
+                    {{\Carbon\Carbon::parse($cotizador-&gt;fin_vigencia)-&gt;format('Y-m-d')}}
+                </font></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>
+                    <font face="Arial" size="2"><b>Origen:</b>
+                    {{\App\Servicios\Catalogos::get($cotizador-&gt;origen ?? '')}}
+                </font></td>
+                <td>
+                    <font face="Arial" size="2"><b>Destino:</b>
+                    {{\App\Servicios\Catalogos::get($cotizador-&gt;destino ?? '')}}
+                </font></td>
+                <td></td>
+            </tr>
+        </tbody></table><font face="Arial" size="2">
+        @if (!empty($beneficiarios)) 
+            </font><h3 class="grayText"><font face="Arial" size="2">
+                DATOS DE LOS BENEFICIARIOS:
+            </font></h3>
+            <div class="rTable">
+                <div class="rTableRow">
+                    <div class="rTableCell"><font face="Arial" size="2">
+                        N.-
+                    </font></div>
+                    <div class="rTableCell" style="text-align: center;"><font face="Arial" size="2">
+                        Nombres Completos
+                    </font></div>
+                    <div class="rTableCell" style="text-align: center;"><font face="Arial" size="2">
+                        Apellidos Completos
+                    </font></div>
+                    <div class="rTableCell" style="text-align: center;"><font face="Arial" size="2">
+                        Nro. de Identificación
+                    </font></div>
+                    <div class="rTableCell" style="text-align: center;"><font face="Arial" size="2">
+                        Fecha de Nacimiento
+                    </font></div>
+                    <div class="rTableCell" style="text-align: center;"><font face="Arial" size="2">
+                        Tipo de Identificación
+                    </font></div>
+                </div><font face="Arial" size="2">
+                @foreach($beneficiarios as $index =&gt; $beneficiario)
+                    </font><div class="rTableRow">
+                        <div class="rTableCell"><font face="Arial" size="2">
+                            {{$index + 1}}
+                        </font></div>
+                        <div class="rTableCell"><font face="Arial" size="2">
+                            {{$beneficiario['primer_nombre'] ?? ''}} {{$beneficiario['segundo_nombre'] ?? ''}}
+                        </font></div>
+                        <div class="rTableCell"><font face="Arial" size="2">
+                            {{$beneficiario['primer_apellido'] ?? ''}} {{$beneficiario['segundo_apellido'] ?? ''}}
+                        </font></div>
+                        <div class="rTableCell"><font face="Arial" size="2">
+                            {{$beneficiario['identificacion'] ?? ''}}
+                        </font></div>
+                        <div class="rTableCell"><font face="Arial" size="2">
+                            {{\Carbon\Carbon::parse($beneficiario['fecha_nacimiento'])-&gt;format('Y-m-d')}}
+                        </font></div>
+                        <div class="rTableCell"><font face="Arial" size="2">
+                            {{\App\Servicios\Catalogos::get($beneficiario['tipo_identificacion'] ?? '')}}
+                        </font></div>
+                    </div><font face="Arial" size="2">
+                @endforeach
+            </font></div><font face="Arial" size="2">
+        @endif
+        <br>
+        </font>
+        <!--
+            TABLA DE COBERTURAS
+            La lógica para determinar A/B/C debe resolverse FUERA de este HTML.
+
+            Variables esperadas:
+            $coberturaOpcion
+            $coberturaMuerteAccidental
+            $coberturaDobleIndemnizacion
+            $coberturaIncapacidadTotalPermanente
+            $coberturaGastoMedico
+            $primaTotal
+        -->
+        <table class="styledTable1">
+            <tbody>
+                <tr>
+                    <th class="redText" style="text-align: left;">
+                        Coberturas
+                    </th>
+                    <th class="redText" style="text-align: center;">
+                        {{ $coberturaOpcion ?? '' }}
+                    </th>
+                </tr>
+
+                <tr>
+                    <td>
+                        Muerte Accidental
+                    </td>
+                    <td style="text-align: center;">
+                        {{ $coberturaMuerteAccidental ?? '' }}
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        Doble indemnización por muerte accidental en accidente aéreo
+                    </td>
+                    <td style="text-align: center;">
+                        {{ $coberturaDobleIndemnizacion ?? '' }}
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        Incapacidad Total Permanente por accidente
+                    </td>
+                    <td style="text-align: center;">
+                        {{ $coberturaIncapacidadTotalPermanente ?? '' }}
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        Gasto Médico por accidente
+                    </td>
+                    <td style="text-align: center;">
+                        {{ $coberturaGastoMedico ?? '' }}
+                    </td>
+                </tr>
+
+                <tr>
+                    <td colspan="2">
+                        El valor total de la póliza es $ {{ $primaTotal ?? '' }}
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+    <h3 class="redHeader"><font face="Arial" size="2">
+        DEDUCIBLES:
+    </font></h3>
+    <p class="paddingText"><font face="Arial" size="2">
+        Para Gastos Médicos por accidente es de 30 dólares por asegurado y por evento.
+        <br>
+        Aplica únicamente en territorio nacional, siempre y cuando esté en el periodo de
+        su viaje hizo uso de la asistencia por accidente.
+        <br><br>
+        <b>VIGENCIA:</b>
+        <br><br>
+        La cobertura del segura iniciará del {{\Carbon\Carbon::parse($cotizador-&gt;inicio_vigencia)-&gt;format('Y-m-d')}}
+    </font></p>
+    <h3 class="redHeader"><font face="Arial" size="2">
+        NOTAS ACLARATORIAS:
+    </font></h3>
+    <p class="paddingText"><font face="Arial" size="2">
+        La presente póliza no podrá ser cancelada ni modificada de forma material en perjuicio de las
+        coberturas o de los montos contratados, sin el consentimiento previo y por escrito de la
+        concedenteUna vez iniciado el período declarado del viaje, la presente póliza no podrá ser
+        cancelada en ninguna circunstancia.
+        <br>
+        La cobertura del plan de Accidentes Personales (AP) iniciará tres (3) horas antes de la salida
+        programada del vuelo y finalizará tres (3) horas después del aterrizaje en el destino
+        correspondiente.
+    </font></p>
+    <!-- HOJA 2 -->
+<h3 class="redHeader"><font face="Arial" size="2">
+        ASISTENCIAS:
+    </font></h3>
+    <p class="paddingText"><font face="Arial" size="2">
+        SEGUROS ATLANTIDA SEGURATLANTIDA S.A., indemnizará al pagará al beneficiario o beneficiarios designados la
+        suma asegurada correspondiente al riesgo de muerte accidental, siempre que dicha muerte sea
+        consecuencia directa, exclusiva y comprobable de un accidente, de conformidad con el monto
+        establecido en las Condiciones Particulares de la póliza, y ocurra durante el período
+        declarado y asegurado como viaje.
+    </font></p>
+    <h3 class="redHeader"><font face="Arial" size="2">
+        ASISTENCIA HOGAR:
+    </font></h3>
+    <p class="paddingText">
+        <font face="Arial" size="2"><b>i. PLOMERÍA:</b><br>
+        Cuando a consecuencia de la rotura o desperfecto accidental de cañerías de las instalaciones
+        fijas de agua de la vivienda o inmueble, que origine la necesidad de reparación inmediata,
+        tuberías enterradas, fugas o pérdidas de agua por rotura de tuberías, codos, acoples de tuberías
+        internas o externas de provi-sión de agua potable, fugas a causa de daño en empaques de griferías
+        duchas o cualquier terminal de agua, fuga de agua en sanitarios, goteo en terminales de llaves
+        de agua, se enviará a un técnico especia-lizado, que realizará el procedimiento necesario
+        para restablecer el servicio, siempre y cuando el estado de las redes lo permitan. En caso
+        sea necesaria picar la pared para realizar el servicio de plomería se incluirá dentro del
+        monto de cobertura, sin embargo se excluye el procedimiento de restauración de la pared.
+        <br><br>
+        <b>• Servicios No incluidos:</b><br>
+        a) La reparación de averías o fallas de cañerías, estanques, llaves u otras instalaciones fijas
+        de agua que no se encuentren dentro o no pertenezcan a la vivienda o inmueble del usuario.<br>
+        b) La reparación de averías o fallas de cualquier elemento ajeno a las cañerías, estanques,
+        llaves u otras instalaciones fijas de agua de la vivienda o inmueble del usuario.<br>
+        c) La reparación de daños provenientes de filtración o humedad, sean o no consecuencia de la
+        rotura o desperfecto de las cañerías, estanques, llaves u otras instalaciones fijas de agua de
+        la vivienda o inmueble asegurado.<br>
+        d)  La  reparación  y  mantenimiento  de  calderas,  calefactores,  bombas,  tanques 
+        hidroneumáticos, cisternas, equipos de aire acondicionado o de calefacción central y, en general,
+        de cualquier artefacto electrodoméstico que opere conectado a las cañerías de agua<br>
+        &nbsp;&nbsp;&nbsp; a. Límite económico: Ochenta dólares ($80) por evento.<br>
+        &nbsp;&nbsp;&nbsp; b. Límite de servicios: Máximo tres (3) eventos al año.
+        <br><br>
+        <b>ii. ELECTRICIDAD:</b><br>
+        En caso de la interrupción o ausencia del suministro de energía eléctrica a la vivienda
+        proveniente de falla, avería o desperfecto de las instalaciones propias de la vivienda o
+        inmueble del usuario, tales como instalación de accesorios en terminales eléctricas menores
+        como tomacorrientes, boquillas, interruptores a excepción de descartables. Se enviará a un
+        técnico especializado, que realizará el procedimiento nece-sario para establecer el ﬂuido
+        eléctrico, siempre y cuando el estado de las redes lo permitan.
+        <br><br>
+        <b>• Servicios No incluidos:</b><br>
+        a) La reparación de elementos propios de la iluminación tales como lámparas, bombillas
+        y tubos ﬂuo-rescentes.<br>
+        b) La reparación de averías que sufran los artefactos de calefacción, electrodomésticos
+        y, en general, de cualquier avería de aparatos que funcionen por suministro eléctrico.<br>
+        &nbsp;&nbsp;&nbsp; a. Límite económico: Ochenta dólares ($80) por evento.<br>
+        &nbsp;&nbsp;&nbsp; b. Límite de servicios: Máximo tres (3) eventos al año.
+        <br><br>
+        <b>iii. CERRAJERÍA:</b><br>
+        Cuando a consecuencia de cualquier accidente que impida la salida o el ingreso de personas
+        de la vivien-da o inmueble del usuario por inutilización, cambio o reparación de chapas,
+        cerraduras o pérdida de llaves de puertas y compuertas interiores, exteriores y ventanas
+        que necesiten la intervención de un cerrajero o de servicios de emergencia, por no existir
+        otras soluciones alternativas, se enviará un técnico especializado que realizará el
+        procedimiento necesario de emergencia, siempre y cuando las circunstan-cias lo permitan.
+        <br><br>
+        <b>• Servicios No incluidos:</b><br>
+        a)  La apertura o reparación de cerraduras de guardarropas, alacenas y bodegas.<br>
+        &nbsp;&nbsp;&nbsp; a. Límite económico: Ochenta dólares ($80) por evento.<br>
+        &nbsp;&nbsp;&nbsp; b. Límite de servicios: Máximo tres (3) eventos al año.
+        <br><br>
+        <b>iv. VIDRIOS:</b><br>
+        Consiste en la rotura, por cualquier causa, de vidrios o cristales de cerramiento exterior
+        o en accesos internos o divisores de la vivienda o inmueble en cuanto tal rotura provoque
+        la necesidad inmediata de reparación o reposición de dichos vidrios o cristales para
+        recuperar la protección que prestaban a la vivienda o inmueble del usuario, se enviará
+        un técnico que realizará el procedimiento necesario de emer-gencia, siempre y cuando
+        las circunstancias lo permitan.
+        <br><br>
+        <b>• Servicios No incluidos:</b><br>
+        a) Cualquier clase de espejos.<br>
+        &nbsp;&nbsp;&nbsp; a. Límite económico: Ochenta dólares ($80) por evento.<br>
+        &nbsp;&nbsp;&nbsp; b. Límite de servicios: Máximo tres (3) eventos al año.
+    </font></p>
+<!-- HOJA 3 -->
+<p class="paddingText">
+        <font face="Arial" size="2"><b>v. CONEXIÓN CON PROFESIONALES:</b><br>
+        En caso de requerimiento del cliente, UNIK le indicará los lugares y canales de contacto
+        (correo electróni-co,  teléfono  celular,  página  web)  de:  Plomeros,  cerrajería, 
+        electricidad,  limpieza  de  muebles,  vidrios, jardinería, pintura, lavado de alfombras,
+        electrónica, mudanzas, conductores profesionales, carpintería, hoteles, talleres mecánicos.
+        El costo del servicio está a cargo del beneficiario.<br>
+        • Límite Económico: Servicio.<br>
+        • Límite: Sin límite de eventos.
+        <br><br>
+        <b>vi. ASISTENCIA REPOSICIÓN CERRADURA POR ROBO VIVIENDA:</b><br>
+        En caso de que la vivienda del beneficiario haya sido objeto de un intento de robo o vulneración
+        de acce-sos mientras el titular se encuentre de viaje, y como consecuencia se hayan producido
+        daños en cerradu-ras, puertas o mecanismos de seguridad que comprometan la protección del inmueble,
+        UNIK coordinará y asumirá el costo del servicio de reparación o reposición de cerraduras.<br>
+        El servicio incluye el envío de personal especializado (cerrajero) al domicilio afectado, con
+        el fin de resta-blecer las condiciones mínimas de seguridad del inmueble, mediante la reparación
+        o sustitución de la cerradura dañada, utilizando materiales estándar.<br>
+        • Límite del servicio: Hasta límite plan contratado.<br>
+        • Límite ventos: Uno (1)
+        <br><br>
+        <b>vii. HOTEL PARA MASCOTAS:</b><br>
+        En caso de viaje al exterior del dueño de la mascota, se cubrirán los gastos de la estancia de la
+        mascota en un hotel por un máximo de tres (3) días.<br>
+        El servicio incluye:<br>
+        • Coordinación de alojamiento en guarderías o hoteles para mascotas afiliados.<br>
+        • Cuidado básico de la mascota durante el período cubierto.<br>
+        • Alimentación estándar durante la estancia.<br>
+        • Supervisión general por parte del establecimiento.<br>
+        • Límite económico: hasta $25 por día.
+    </font></p>
+    <p class="paddingText redText">
+        <font face="Arial" size="2"><b>Detalle cobertura</b>
+    </font></p>
+    <div class="paddingText">
+        <table class="styledTable1">
+            <tbody>
+                <tr>
+                    <th class="redText" style="text-align: left;">
+                        <font face="Arial" size="2">Asistencia Hogar</font>
+                    </th>
+                    <th class="redText" style="text-align: center;">
+                        <font face="Arial" size="2">{{ $asistenciaHogarOpcion }}</font>
+                    </th>
+                </tr>
+                <tr>
+                    <td><font face="Arial" size="2">Plomería</font></td>
+                    <td style="text-align: center;"><font face="Arial" size="2">{{ $asistenciaHogarPlomeria }}</font></td>
+                </tr>
+                <tr>
+                    <td><font face="Arial" size="2">Electricidad</font></td>
+                    <td style="text-align: center;"><font face="Arial" size="2">{{ $asistenciaHogarElectricidad }}</font></td>
+                </tr>
+                <tr>
+                    <td><font face="Arial" size="2">Cerrajería</font></td>
+                    <td style="text-align: center;"><font face="Arial" size="2">{{ $asistenciaHogarCerrajeria }}</font></td>
+                </tr>
+                <tr>
+                    <td><font face="Arial" size="2">Vidrios</font></td>
+                    <td style="text-align: center;"><font face="Arial" size="2">{{ $asistenciaHogarVidrios }}</font></td>
+                </tr>
+                <tr>
+                    <td><font face="Arial" size="2">Conexión Profesionales</font></td>
+                    <td style="text-align: center;"><font face="Arial" size="2">{{ $asistenciaHogarConexionProfesionales }}</font></td>
+                </tr>
+                <tr>
+                    <td><font face="Arial" size="2">Reposición cerradura</font></td>
+                    <td style="text-align: center;"><font face="Arial" size="2">{{ $asistenciaHogarReposicionCerradura }}</font></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <font face="Arial" size="2"><br>
+    </font><h3 class="redHeader"><font face="Arial" size="2">
+        ASISTENCIA VIAJES:
+    </font></h3>
+    @if ($mostrarOpcionA)
+    <p class="paddingText"><font face="Arial" size="2">
+        i. OPCION A
+    </font></p>
+    <div class="paddingText">
+        <table class="styledTable2">
+            <tbody><tr>
+                <td colspan="2">
+                    <font face="Arial" size="2"><b>Monto Máximo Global (1)</b>
+                </font></td>
+                <td><font face="Arial" size="2">
+                    USD 35,000
+                </font></td>
+            </tr>
+            <tr>
+                <td colspan="2"><font face="Arial" size="2">
+                    Asistencia Médica en caso de Accidente
+                </font></td>
+                <td><font face="Arial" size="2">
+                    Hasta USD 35,000
+                </font></td>
+            </tr>
+            <tr>
+                <td colspan="2"><font face="Arial" size="2">
+                    Asistencia Médica en caso de Enfermedad no preexistente (incluido COVID-19)
+                </font></td>
+                <td><font face="Arial" size="2">
+                    Hasta USD 35,000
+                </font></td>
+            </tr>
+            <tr>
+                <td colspan="2"><font face="Arial" size="2">
+                    Dolencias Preexistentes y Dolencias crónicas
+                </font></td>
+                <td><font face="Arial" size="2">
+                    Hasta USD 10,000
+                </font></td>
+            </tr>
+            <tr>
+                <td colspan="2"><font face="Arial" size="2">
+                    Odontología de urgencia
+                </font></td>
+                <td><font face="Arial" size="2">
+                    Hasta USD 500
+                </font></td>
+            </tr>
+            <tr>
+                <td colspan="2"><font face="Arial" size="2">
+                    Medicamentos en asistencias ambulatorias
+                </font></td>
+                <td><font face="Arial" size="2">
+                    Hasta USD 800
+                </font></td>
+            </tr>
+            <tr>
+                <td colspan="2"><font face="Arial" size="2">
+                    Medicamentos en asistencias con Hospitalización
+                </font></td>
+                <td><font face="Arial" size="2">
+                    Incluido
+                </font></td>
+            </tr>
+            <tr>
+                <td colspan="2"><font face="Arial" size="2">
+                    Práctica de deportes
+                </font></td>
+                <td><font face="Arial" size="2">
+                    Hasta USD 10,000
+                </font></td>
+            </tr>
+            <tr>
+                <td colspan="2"><font face="Arial" size="2">
+                    Estado de embarazo (hasta la semana 26)
+                </font></td>
+                <td><font face="Arial" size="2">
+                    Hasta USD 10,000
+                </font></td>
+            </tr>
+            <tr>
+                <td colspan="2"><font face="Arial" size="2">
+                    Prótesis y ortesis
+                </font></td>
+                <td><font face="Arial" size="2">
+                    Hasta USD 1,300
+                </font></td>
+            </tr>
+            <tr>
+                <td colspan="2"><font face="Arial" size="2">
+                    Traslados Sanitarios
+                </font></td>
+                <td><font face="Arial" size="2">
+                    Incluido
+                </font></td>
+            </tr>
+            <tr>
+                <td colspan="2"><font face="Arial" size="2">
+                    Repatriaciones (Sanitaria o funeraria)
+                </font></td>
+                <td><font face="Arial" size="2">
+                    Incluido
+                </font></td>
+            </tr>
+            <tr>
+                <td colspan="2"><font face="Arial" size="2">
+                    Regreso de Acompañante del titular repatriado
+                </font></td>
+                <td><font face="Arial" size="2">
+                    Incluido
+                </font></td>
+            </tr>
+            <tr>
+                <td colspan="2"><font face="Arial" size="2">
+                    Traslado de un familiar
+                </font></td>
+                <td><font face="Arial" size="2">
+                    Incluido
+                </font></td>
+            </tr>
+            <tr>
+                <td><font face="Arial" size="2">
+                    Estancia de un familia
+                </font></td>
+                <td><font face="Arial" size="2">
+                    Por día USD 100
+                </font></td>
+                <td><font face="Arial" size="2">
+                    Máximo USD 400
+                </font></td>
+            </tr>
+            <tr>
+                <td><font face="Arial" size="2">
+                    Gastos de Hotel por reposo forzoso luego de una hospitalización
+                </font></td>
+                <td><font face="Arial" size="2">
+                    Por día USD 180
+                </font></td>
+                <td><font face="Arial" size="2">
+                    Máximo USD 900
+                </font></td>
+            </tr>
+        </tbody></table>
+    </div>
+<!-- HOJA 4 -->
+<div class="paddingText">
+        <table class="styledTable2">
+            <tbody>
+            <tr>
+                <td colspan="2"><font face="Arial" size="2">
+                    Acompañamiento de menores y mayores
+                </font></td>
+                <td><font face="Arial" size="2">
+                    Incluido
+                </font></td>
+            </tr>
+            <tr>
+                <td colspan="2"><font face="Arial" size="2">
+                    Regreso anticipado por siniestro grave en el domicilio
+                </font></td>
+                <td><font face="Arial" size="2">
+                    Incluido
+                </font></td>
+            </tr>
+            <tr>
+                <td colspan="2"><font face="Arial" size="2">
+                    Diferencia de tarifa por viaje de regreso retrasado o anticipado
+                </font></td>
+                <td><font face="Arial" size="2">
+                    Incluido
+                </font></td>
+            </tr>
+            <tr>
+                <td><font face="Arial" size="2">
+                    Asistencia legal / adelanto en concepto de préstamo
+                </font></td>
+                <td><font face="Arial" size="2">
+                    Préstamo
+                </font></td>
+                <td><font face="Arial" size="2">
+                    Hasta USD 8,000
+                </font></td>
+            </tr>
+            <tr>
+                <td><font face="Arial" size="2">
+                    Anticipo de fondos para fianzas por responsabilidad en un accidente
+                </font></td>
+                <td><font face="Arial" size="2">
+                    Préstamo
+                </font></td>
+                <td><font face="Arial" size="2">
+                    Hasta USD 8,000
+                </font></td>
+            </tr>
+            <tr>
+                <td colspan="2"><font face="Arial" size="2">
+                    Asistencia en caso de robo o extravío de documentos
+                </font></td>
+                <td><font face="Arial" size="2">
+                    Incluido
+                </font></td>
+            </tr>
+            <tr>
+                <td colspan="2"><font face="Arial" size="2">
+                    Asistencia legal para realizar reclamos a raíz de accidentes
+                </font></td>
+                <td><font face="Arial" size="2">
+                    Incluido
+                </font></td>
+            </tr>
+            <tr>
+                <td colspan="2"><font face="Arial" size="2">
+                    Telemedicina - Consultas médicas online
+                </font></td>
+                <td><font face="Arial" size="2">
+                    Incluido
+                </font></td>
+            </tr>
+            <tr>
+                <td colspan="2"><font face="Arial" size="2">
+                    Asesoramiento por pérdida o demora de equipaje
+                </font></td>
+                <td><font face="Arial" size="2">
+                    Incluido
+                </font></td>
+            </tr>
+            <tr>
+                <td><font face="Arial" size="2">
+                    Indemnización por demora en la entrega del equipaje (2)
+                </font></td>
+                <td><font face="Arial" size="2">
+                    Más de 8 horas
+                </font></td>
+                <td><font face="Arial" size="2">
+                    USD 50 cada 8 horas - Máximo USD 100
+                </font></td>
+            </tr>
+            <tr>
+                <td><font face="Arial" size="2">
+                    Indemnización por pérdida de equipaje (2)
+                </font></td>
+                <td><font face="Arial" size="2">
+                    Complementario - USD 80 por Kg
+                </font></td>
+                <td><font face="Arial" size="2">
+                    Hasta USD 800
+                </font></td>
+            </tr>
+        </tbody></table>
+    </div>
+    <p class="paddingText"><font face="Arial" size="2">
+        (1) Monto Máximo Global (MMG): Tope máximo de gastos que Assist Card cubrirá por todo concepto.
+        Los Sublímites de cada servicio son las sumas máximas aplicables a cada uno de ellos. La suma
+        total de gastos no podrá superar el MMG, considerando también aquellos sublimites que se indican
+        como Incluido.<br>
+        (2) Los servicios indicados están amparados por pólizas contratadas con compañías de seguros
+        y aplican las exclusiones de uso habitual y/o legal para este tipo de coberturas y aprobadas
+        por el Organismo Contralor de Seguros del país en que se emita el producto ASSIST CARD.
+    </font></p>
+    @endif
+    @if ($mostrarOpcionB)
+    <p class="paddingText"><font face="Arial" size="2">
+        ii. OPCION B:
+    </font></p>
+    <div class="paddingText">
+        <table class="styledTable2">
+            <tbody><tr>
+                <td colspan="2">
+                    <font face="Arial" size="2"><b>Monto Máximo Global (1)</b>
+                </font></td>
+                <td><font face="Arial" size="2">
+                    USD 50,000
+                </font></td>
+            </tr>
+            <tr>
+                <td colspan="2"><font face="Arial" size="2">
+                    Asistencia Médica en caso de Accidente
+                </font></td>
+                <td><font face="Arial" size="2">
+                    Hasta USD 50,000
+                </font></td>
+            </tr>
+            <tr>
+                <td colspan="2"><font face="Arial" size="2">
+                    Asistencia Médica en caso de Enfermedad no preexistente (incluido COVID-19)
+                </font></td>
+                <td><font face="Arial" size="2">
+                    Hasta USD 50,000
+                </font></td>
+            </tr>
+            <tr>
+                <td colspan="2"><font face="Arial" size="2">
+                    Dolencias Preexistentes y Dolencias crónicas
+                </font></td>
+                <td><font face="Arial" size="2">
+                    Hasta USD 10,000
+                </font></td>
+            </tr>
+            <tr>
+                <td colspan="2"><font face="Arial" size="2">
+                    Odontología de urgencia
+                </font></td>
+                <td><font face="Arial" size="2">
+                    Hasta USD 500
+                </font></td>
+            </tr>
+            <tr>
+                <td colspan="2"><font face="Arial" size="2">
+                    Medicamentos en asistencias ambulatorias
+                </font></td>
+                <td><font face="Arial" size="2">
+                    Hasta USD 1,000
+                </font></td>
+            </tr>
+            <tr>
+                <td colspan="2"><font face="Arial" size="2">
+                    Medicamentos en asistencias con Hospitalización
+                </font></td>
+                <td><font face="Arial" size="2">
+                    Incluido
+                </font></td>
+            </tr>
+            <tr>
+                <td colspan="2"><font face="Arial" size="2">
+                    Práctica de deportes
+                </font></td>
+                <td><font face="Arial" size="2">
+                    Hasta USD 10,000
+                </font></td>
+            </tr>
+            <tr>
+                <td colspan="2"><font face="Arial" size="2">
+                    Estado de embarazo (hasta la semana 26)
+                </font></td>
+                <td><font face="Arial" size="2">
+                    Hasta USD 10,000
+                </font></td>
+            </tr>
+            <tr>
+                <td colspan="2"><font face="Arial" size="2">
+                    Prótesis y ortesis
+                </font></td>
+                <td><font face="Arial" size="2">
+                    Hasta USD 2,500
+                </font></td>
+            </tr>
+            <tr>
+                <td colspan="2"><font face="Arial" size="2">
+                    Traslados Sanitarios
+                </font></td>
+                <td><font face="Arial" size="2">
+                    Incluido
+                </font></td>
+            </tr>
+            <tr>
+                <td colspan="2"><font face="Arial" size="2">
+                    Repatriaciones (Sanitaria o funeraria)
+                </font></td>
+                <td><font face="Arial" size="2">
+                    Incluido
+                </font></td>
+            </tr>
+            <tr>
+                <td colspan="2"><font face="Arial" size="2">
+                    Regreso de Acompañante del titular repatriado
+                </font></td>
+                <td><font face="Arial" size="2">
+                    Incluido
+                </font></td>
+            </tr>
+            <tr>
+                <td colspan="2"><font face="Arial" size="2">
+                    Traslado de un familiar
+                </font></td>
+                <td><font face="Arial" size="2">
+                    Incluido
+                </font></td>
+            </tr>
+            <tr>
+                <td><font face="Arial" size="2">
+                    Estancia de un familia
+                </font></td>
+                <td><font face="Arial" size="2">
+                    Por día USD 100
+                </font></td>
+                <td><font face="Arial" size="2">
+                    Máximo USD 400
+                </font></td>
+            </tr>
+            <tr>
+                <td><font face="Arial" size="2">
+                    Gastos de Hotel por reposo forzoso luego de una hospitalización
+                </font></td>
+                <td><font face="Arial" size="2">
+                    Por día USD 180
+                </font></td>
+                <td><font face="Arial" size="2">
+                    Máximo USD 900
+                </font></td>
+            </tr>
+            <tr>
+                <td colspan="2"><font face="Arial" size="2">
+                    Acompañamiento de menores y mayores
+                </font></td>
+                <td><font face="Arial" size="2">
+                    Incluido
+                </font></td>
+            </tr>
+            <tr>
+                <td colspan="2"><font face="Arial" size="2">
+                    Regreso anticipado por siniestro grave en el domicilio
+                </font></td>
+                <td><font face="Arial" size="2">
+                    Incluido
+                </font></td>
+            </tr>
+            <tr>
+                <td colspan="2"><font face="Arial" size="2">
+                    Diferencia de tarifa por viaje de regreso retrasado o anticipado
+                </font></td>
+                <td><font face="Arial" size="2">
+                    Incluido
+                </font></td>
+            </tr>
+            <tr>
+                <td><font face="Arial" size="2">
+                    Asistencia legal / adelanto en concepto de préstamo
+                </font></td>
+                <td><font face="Arial" size="2">
+                    Préstamo
+                </font></td>
+                <td><font face="Arial" size="2">
+                    Hasta USD 8,000
+                </font></td>
+            </tr>
+            <tr>
+                <td><font face="Arial" size="2">
+                    Anticipo de fondos para fianzas por responsabilidad en un accidente
+                </font></td>
+                <td><font face="Arial" size="2">
+                    Préstamo
+                </font></td>
+                <td><font face="Arial" size="2">
+                    Hasta USD 8,000
+                </font></td>
+            </tr>
+            <tr>
+                <td colspan="2"><font face="Arial" size="2">
+                    Asistencia en caso de robo o extravío de documentos
+                </font></td>
+                <td><font face="Arial" size="2">
+                    Incluido
+                </font></td>
+            </tr>
+            <tr>
+                <td colspan="2"><font face="Arial" size="2">
+                    Asistencia legal para realizar reclamos a raíz de accidentes
+                </font></td>
+                <td><font face="Arial" size="2">
+                    Incluido
+                </font></td>
+            </tr>
+            <tr>
+                <td colspan="2"><font face="Arial" size="2">
+                    Telemedicina - Consultas médicas online
+                </font></td>
+                <td><font face="Arial" size="2">
+                    Incluido
+                </font></td>
+            </tr>
+            <tr>
+                <td colspan="2"><font face="Arial" size="2">
+                    Asesoramiento por pérdida o demora de equipaje
+                </font></td>
+                <td><font face="Arial" size="2">
+                    Incluido
+                </font></td>
+            </tr>
+        </tbody></table>
+    </div>
+    <p class="paddingText"><font face="Arial" size="2">
+        (1) Monto Máximo Global (MMG): Tope máximo de gastos que Assist Card cubrirá por todo
+        concepto. Los Sublímites de cada  servicio  son las sumas  máximas  aplicables a cada
+        uno  de ellos. La  suma  total de gastos no podrá superar el MMG, considerando también
+        aquellos sublimites que se indican como Incluido.<br>
+        (2) Los servicios indicados están amparados por pólizas contratadas con compañías de
+        seguros y aplican las exclusiones de uso habitual y/o legal para este tipo de coberturas
+        y aprobadas por el Organismo Con-tralor de Seguros del país en que se emita el producto
+        ASSIST CARD.
+    </font></p>
+    @endif
+    @if ($mostrarOpcionC)
+    <p class="paddingText"><font face="Arial" size="2">
+        iii. OPCION C:
+    </font></p>
+    <div class="paddingText">
+        <table class="styledTable2">
+            <tbody><tr>
+                <td colspan="2">
+                    <font face="Arial" size="2"><b>Monto Máximo Global (1)</b>
+                </font></td>
+                <td><font face="Arial" size="2">
+                    USD 100,000
+                </font></td>
+            </tr>
+            <tr>
+                <td colspan="2"><font face="Arial" size="2">
+                    Asistencia Médica en caso de Accidente
+                </font></td>
+                <td><font face="Arial" size="2">
+                    Hasta USD 100,000
+                </font></td>
+            </tr>
+            <tr>
+                <td colspan="2"><font face="Arial" size="2">
+                    Asistencia Médica en caso de Enfermedad no preexistente (incluido COVID-19)
+                </font></td>
+                <td><font face="Arial" size="2">
+                    Hasta USD 100,000
+                </font></td>
+            </tr>
+            <tr>
+                <td colspan="2"><font face="Arial" size="2">
+                    Dolencias Preexistentes y Dolencias crónicas
+                </font></td>
+                <td><font face="Arial" size="2">
+                    Hasta USD 10,000
+                </font></td>
+            </tr>
+        </tbody></table>
+    </div>
+<!-- HOJA 5 -->
+<div class="paddingText">
+        <table class="styledTable2">
+            <tbody>
+            <tr>
+                <td colspan="2"><font face="Arial" size="2">
+                    Odontología de urgencia
+                </font></td>
+                <td><font face="Arial" size="2">
+                    Hasta USD 500
+                </font></td>
+            </tr>
+            <tr>
+                <td colspan="2"><font face="Arial" size="2">
+                    Medicamentos en asistencias ambulatorias
+                </font></td>
+                <td><font face="Arial" size="2">
+                    Hasta USD 1,000
+                </font></td>
+            </tr>
+            <tr>
+                <td colspan="2"><font face="Arial" size="2">
+                    Medicamentos en asistencias con Hospitalización
+                </font></td>
+                <td><font face="Arial" size="2">
+                    Incluido
+                </font></td>
+            </tr>
+            <tr>
+                <td colspan="2"><font face="Arial" size="2">
+                    Práctica de deportes
+                </font></td>
+                <td><font face="Arial" size="2">
+                    Hasta USD 10,000
+                </font></td>
+            </tr>
+            <tr>
+                <td colspan="2"><font face="Arial" size="2">
+                    Estado de embarazo (hasta la semana 26)
+                </font></td>
+                <td><font face="Arial" size="2">
+                    Hasta USD 10,000
+                </font></td>
+            </tr>
+            <tr>
+                <td colspan="2"><font face="Arial" size="2">
+                    Prótesis y ortesis
+                </font></td>
+                <td><font face="Arial" size="2">
+                    Hasta USD 2,500
+                </font></td>
+            </tr>
+            <tr>
+                <td colspan="2"><font face="Arial" size="2">
+                    Traslados Sanitarios
+                </font></td>
+                <td><font face="Arial" size="2">
+                    Incluido
+                </font></td>
+            </tr>
+            <tr>
+                <td colspan="2"><font face="Arial" size="2">
+                    Repatriaciones (Sanitaria o funeraria)
+                </font></td>
+                <td><font face="Arial" size="2">
+                    Incluido
+                </font></td>
+            </tr>
+            <tr>
+                <td colspan="2"><font face="Arial" size="2">
+                    Regreso de Acompañante del titular repatriado
+                </font></td>
+                <td><font face="Arial" size="2">
+                    Incluido
+                </font></td>
+            </tr>
+            <tr>
+                <td colspan="2"><font face="Arial" size="2">
+                    Traslado de un familiar
+                </font></td>
+                <td><font face="Arial" size="2">
+                    Incluido
+                </font></td>
+            </tr>
+            <tr>
+                <td><font face="Arial" size="2">
+                    Estancia de un familia
+                </font></td>
+                <td><font face="Arial" size="2">
+                    Por día USD 100
+                </font></td>
+                <td><font face="Arial" size="2">
+                    Máximo USD 400
+                </font></td>
+            </tr>
+            <tr>
+                <td><font face="Arial" size="2">
+                    Gastos de Hotel por reposo forzoso luego de una hospitalización
+                </font></td>
+                <td><font face="Arial" size="2">
+                    Por día USD 180
+                </font></td>
+                <td><font face="Arial" size="2">
+                    Máximo USD 900
+                </font></td>
+            </tr>
+            <tr>
+                <td colspan="2"><font face="Arial" size="2">
+                    Acompañamiento de menores y mayores
+                </font></td>
+                <td><font face="Arial" size="2">
+                    Incluido
+                </font></td>
+            </tr>
+            <tr>
+                <td colspan="2"><font face="Arial" size="2">
+                    Regreso anticipado por siniestro grave en el domicilio
+                </font></td>
+                <td><font face="Arial" size="2">
+                    Incluido
+                </font></td>
+            </tr>
+            <tr>
+                <td colspan="2"><font face="Arial" size="2">
+                    Diferencia de tarifa por viaje de regreso retrasado o anticipado
+                </font></td>
+                <td><font face="Arial" size="2">
+                    Incluido
+                </font></td>
+            </tr>
+            <tr>
+                <td><font face="Arial" size="2">
+                    Asistencia legal / adelanto en concepto de préstamo
+                </font></td>
+                <td><font face="Arial" size="2">
+                    Préstamo
+                </font></td>
+                <td><font face="Arial" size="2">
+                    Hasta USD 8,000
+                </font></td>
+            </tr>
+            <tr>
+                <td><font face="Arial" size="2">
+                    Anticipo de fondos para fianzas por responsabilidad en un accidente
+                </font></td>
+                <td><font face="Arial" size="2">
+                    Préstamo
+                </font></td>
+                <td><font face="Arial" size="2">
+                    Hasta USD 8,000
+                </font></td>
+            </tr>
+            <tr>
+                <td colspan="2"><font face="Arial" size="2">
+                    Asistencia en caso de robo o extravío de documentos
+                </font></td>
+                <td><font face="Arial" size="2">
+                    Incluido
+                </font></td>
+            </tr>
+            <tr>
+                <td colspan="2"><font face="Arial" size="2">
+                    Asistencia legal para realizar reclamos a raíz de accidentes
+                </font></td>
+                <td><font face="Arial" size="2">
+                    Incluido
+                </font></td>
+            </tr>
+            <tr>
+                <td colspan="2"><font face="Arial" size="2">
+                    Telemedicina - Consultas médicas online
+                </font></td>
+                <td><font face="Arial" size="2">
+                    Incluido
+                </font></td>
+            </tr>
+            <tr>
+                <td colspan="2"><font face="Arial" size="2">
+                    Asesoramiento por pérdida o demora de equipaje
+                </font></td>
+                <td><font face="Arial" size="2">
+                    Incluido
+                </font></td>
+            </tr>
+            <tr>
+                <td><font face="Arial" size="2">
+                    Indemnización por demora en la entrega del equipaje (2)
+                </font></td>
+                <td><font face="Arial" size="2">
+                    Más de 8 horas
+                </font></td>
+                <td><font face="Arial" size="2">
+                    USD 50 cada 8 horas - Máximo USD 100
+                </font></td>
+            </tr>
+            <tr>
+                <td><font face="Arial" size="2">
+                    Indemnización por pérdida de equipaje (2)
+                </font></td>
+                <td><font face="Arial" size="2">
+                    Complementario - USD 80 por Kg
+                </font></td>
+                <td><font face="Arial" size="2">
+                    Hasta USD 800
+                </font></td>
+            </tr>
+        </tbody></table>
+    </div>
+    <p class="paddingText"><font face="Arial" size="2">
+        (1) Monto Máximo Global (MMG): Tope máximo de gastos que Assist Card cubrirá port
+        odo concepto. Los Sublímites de cada  servicio  son las sumas  máximas  aplicables
+        a cada  uno  de ellos. La  suma  total de gastos no podrá superar el MMG, considerando
+        también aquellos sublimites que se indican como Incluido.<br>
+        (2) Los servicios indicados están amparados por pólizas contratadas con compañías de
+        seguros y aplican las exclusiones de uso habitual y/o legal para este tipo de coberturas
+        y aprobadas por el Organismo Con-tralor de Seguros del país en que se emita el
+        producto ASSIST CARD.
+    </font></p>
+    @endif
+    <h3 class="redHeader"><font face="Arial" size="2">
+        BENEFICIARIOS:
+    </font></h3>
+    <p class="paddingText"><font face="Arial" size="2">
+        SEGUROS ATLANTIDA SEGURATLANTIDA S.A., indemnizará al pagará al beneficiario o beneficiarios designados la
+        suma asegurada correspondiente al riesgo de muerte accidental, siempre que dicha muerte
+        sea consecuencia directa, exclusiva y comprobable de un accidente, de conformidad con el
+        monto establecido en las Condiciones Particulares de la póliza, y ocurra durante el
+        período declarado y asegurado como viaje.
+    </font></p>
+    <h3 class="redHeader"><font face="Arial" size="2">
+        CONDICIONES DE TERMINACIÓN DEL SEGURO:
+    </font></h3>
+    <p class="paddingText"><font face="Arial" size="2">
+        A. Por renuncia del Asegurado a continuar con el mismo.
+        <br>
+        B. Al cumplir el Asegurado o beneficiarios setenta y cinco (75) años de edad,
+        <br>
+        C. En el momento que el Asegurado fallece.
+        <br><br>
+        En el caso previsto en el literal b) el seguro quedará rescindido a las veinticuatro (24)
+        horas en que se haya producido tal hecho.
+    </font></p>
+    <h3 class="redHeader"><font face="Arial" size="2">
+        EDADES DE INGRESO Y PERMANENCIA:
+    </font></h3>
+    <p class="paddingText">
+        <font face="Arial" size="2"><b>Titular y/o Beneficiarios:</b>
+        <br><br>
+        • Edad máxima de ingreso: 75 años.
+        <br>
+        • Límite de Permanencia: Hasta los 75 años
+    </font></p>
+    <h3 class="redHeader"><font face="Arial" size="2">
+        EXCLUSIONES:
+    </font></h3>
+    <p class="paddingText"><font face="Arial" size="2">
+        Las detalladas en las condiciones generales y particulares de la póliza. Para acceder
+        a las condiciones por favor ingrese a la página web: <b>www.segurosatlantida.ec</b>
+    </font></p>
+<!-- HOJA 6 -->
+<p class="paddingText">
+        <font face="Arial" size="2"><b>Aviso de siniestro:</b>
+        <br><br>
+        Deberá notificarse a la Compañía por escrito de cualquier lesión o muerte que pudiere
+        dar motivo a reclamación por beneficios cubiertos bajo este anexo, dentro de los cinco
+        (5) días siguientes a la fecha en que tuvo conocimiento del accidente que causó tal
+        lesión o muerte.
+    </font></p>
+    <h3 class="redHeader"><font face="Arial" size="2">
+        PROCEDIMIENTO DE RECLAMOS:
+    </font></h3>
+    <p class="paddingText">
+        <font face="Arial" size="2"><b>Muerte Accidental</b>
+        <br><br>
+        La formalización de la reclamación se entenderá realizada cuando el Asegurado dé aviso
+        de siniestro y entregue todos los documentos que se detallan a continuación:
+        <br>
+        1. Completar el formulario de reclamos de <b>SEGUROS ATLANTIDA SEGURATLANTIDA S.A.</b>, que podrá ser
+        solicitado en las oficinas de SEGUROS ATLANTIDA SEGURATLANTIDA S.A., o descargarlo en la página web:
+        www.segurosatlantida.ec
+        <br>
+        2. Partida de Nacimiento (original o copia certificada)
+        <br>
+        3. Cédula de identidad o ciudadanía (copia)
+        <br>
+        4. Cédulas de beneficiarios legales (copia)
+        <br>
+        5. Acta de levantamiento de cadáver (original o copia certificada)
+        <br>
+        6. Parte policial (copia certificada)
+        <br>
+        7. Partida de defunción (original o copia certificada)
+        <br>
+        8. Historia clínica completa (copia certificada)
+        <br>
+        9. Informe de Alcoholemia y pruebas toxicológicas
+        <br>
+        10. Protocolo de autopsia (copia certificada)
+        <br>
+        11. Posesión efectiva de bienes, de no contar con designación de beneficiarios
+        (original o copia certificada).
+        <br><br>
+        <b>Incapacidad Total y Permanente por accidente</b>
+        <br><br>
+        La formalización de la reclamación se entenderá realizada cuando el Asegurado dé aviso
+        de siniestro y entregue todos los documentos que se detallan a continuación:
+        <br>
+        1. Completar el formulario de reclamos de <b>SEGUROS ATLANTIDA SEGURATLANTIDA S.A.</b>, que
+        podrá ser solicitado en las oficinas de SEGUROS ATLANTIDA SEGURATLANTIDA S.A., o descargarlo
+        en la página web: www.segurosatlantida.ec
+        <br>
+        2. Cédula de identidad o ciudadanía del Asegurado (copia)
+        <br>
+        3. Aviso o notificaciónde la reclamación (notificación de acuerdo con las condiciones de póliza)
+        <br>
+        4. Copia de historia clínica.
+        <br>
+        5. Exámenes probatorios en caso de requerirlos.
+        <br>
+        6. Certificado emitido por el CONADIS o certificado emitido por el IESS que determinen
+        la incapacidad debidamente justificada por la entidad competente y porcentaje de la misma.
+        <br>
+        7. En el caso de no estar clara la incapacidad, el Médico Auditor designado por SEGUROS
+        ATLANTIDA SEGURATLANTIDA S.A. tendrá que examinar a la persona asegurada para confirmar esta incapacidad o se
+        deberá pedir una valoración por un especialista.
+        <br><br>
+        <b>Gastos Médicos por accidente</b>
+        <br><br>
+        La formalización de la reclamación se entenderá realizada cuando el Asegurado dé aviso
+        de siniestro y entregue todos los documentos que se detallan a continuación:
+        <br>
+        1.Completar el formulario de reclamos de SEGUROS ATLANTIDA SEGURATLANTIDA S.A., que podrá ser solicitado
+        en las oficinas de SEGUROS ATLANTIDA SEGURATLANTIDA S.A., o descargarlo en la página web: www.segurosatlantida.ec
+        <br>
+        2. Cédula de identidad o ciudadanía del Asegurado (copia)
+        <br>
+        3. Parte Policial (cuando sea un accidente de tránsito)
+        <br>
+        4. Facturas Originales
+        <br>
+        5. Copia de la Historia Clínica completa
+        <br>
+        6. Hoja 08 de emergencia entregado en clínicas en casos de accidentes.
+    </font></p>
+    <h3 class="redHeader"><font face="Arial" size="2">
+        PAGO DE LA INDEMNIZACIÓN:
+    </font></h3>
+    <p class="paddingText"><font face="Arial" size="2">
+        • Recibida la notificación de la ocurrencia, la Compañía tramitará el caso una vez que
+        el Asegurado o Beneficiario formalice su solicitud presentando todos los documentos previstos
+        en la póliza y pertinentes al siniestro que demuestren su ocurrencia y la cuantía del daño
+        sufridos.
+        <br>
+        • De ser necesario, la Compañía podrá contar con un ajuste a cargo de un perito ajustador
+        debidamente autorizado y con credencial emitida por la autoridad competente.
+        <br>
+        • Una vez concluido el análisis, la Compañía podrá aceptar o negar la cobertura motivando
+        su decisión, de conformidad con la ley, en el plazo de treinta (30) días, contados a partir
+        de la formalización de la solicitud de pago del siniestro. A falta de respuesta en este
+        lapso, se entenderá aceptada.
+        <br>
+        • La Compañía deberá proceder al pago dentro del plazo de los diez (10) días posteriores a
+        la aceptación.
+        <br>
+        • La Compañía no estará obligada a pagar en ningún caso intereses, daños y/o perjuicios por
+        los valores que adeude al Asegurado, como resultado de un siniestro, cuyo pago fuere diferido
+        con motivo de cualquier acción judicial entre el Asegurado y la Compañía o con motivo de
+        retención, embargo o cualquier otra medida precautelaría solicitada por terceros y ordenada
+        por autoridad competente.
+        <br>
+        • Las medidas tomadas por la Compañía con el objeto de inspeccionar, disminuir o evitar
+        pérdidas o daños, o de preservar o reforzar cualquier derecho de recuperación no constituye
+        una admisión de responsabilidad.
+    </font></p>
+    <!-- HOJA 7 -->
+<h3 class="redHeader"><font face="Arial" size="2">
+        LICITUD DE FONDOS
+    </font></h3>
+    <p class="paddingText"><font face="Arial" size="2">
+        El(la) suscrito(a), en calidad de asegurado(a) y/o solicitante, declaro bajo juramento,
+        prevenido(a) de la gravedad del delito de perjuro, que el seguro contratado con SEGUROS
+        ATLANTIDA SEGURATLANTIDA S.A., ampara bienes, garantías y/o contratos de procedencia lícita,
+        los mismos que no provienen ni provendrán de  ninguna  actividad  relacionada  con  el 
+        narcotráfico,  el lavado de  activos  o  el  financiamiento  del terrorismo, o cualquier
+        actividad sancionada por la ley de prevención de lavado de activos y financiamiento de delitos.
+        De igual manera declaro que el origen y destino de los fondos entregados en la presente o
+        en futuras transacciones comerciales relacionadas con este contrato de seguros, tienen
+        origen y destino lícito y no guardan relación con las actividades antes mencionadas.
+        <br><br>
+        Autorizo expresa y voluntariamente a SEGUROS ATLANTIDA SEGURATLANTIDA S.A., a realizar el
+        análisis y las verificaciones que considere necesarias para corroborar la licitud de los fondos
+        y/o bienes relacionados amparados y/o comprometidos en este contrato de seguro; e, informar
+        a las autoridades competentes, si fuera el caso, sobre los resultados de dicho análisis o
+        verificaciones; así como autorizo de forma expresa, voluntaria e irrevocable a todas las
+        personas naturales o jurídicas, de derecho público o privado, a facilitar toda la información
+        que SEGUROS ATLANTIDA SEGURATLANTIDA S.A., les requiera, inclusive facultando el levantamiento
+        del sigilo bancario en caso de orden emitida por parte de la autoridad competente, incluida
+        la revisión y verificación de mis datos en los buró de información crediticia.
+        <br><br>
+        Declaro que soy el beneficiario final del contrato de seguro y en caso de no serlo, manifiesto
+        que el beneficiario final es la persona natural que ejerce el control efectivo y final de esta
+        póliza, cuyos datos completos han sido proporcionados de manera veraz y actualizada a SEGUROS
+        ATLANTIDA SEGURATLANTIDA S.A., comprometiéndome a informar oportunamente cualquier cambio.
+        <br><br>
+        Declaro que toda la información suministrada es veraz, completa y actualizada; y, me comprometo
+        a notificar cualquier modificación relevante.
+        <br><br>
+        Reconozco que SEGUROS ATLANTIDA SEGURATLANTIDA S.A., no será responsable por consecuencia alguna
+        derivada de la falsedad, inexactitud u omisión de la información que he proporcionado, exonerando
+        a SEGUROS ATLANTIDA SEGURATLANTIDA S.A. de cualquier responsabilidad administrativa, civil penal
+        o de otra naturaleza, que se le pretenda imputar como resultado del error o falsedad de mis
+        declaraciones.
+    </font></p>
+    <h3 class="redHeader"><font face="Arial" size="2">
+        CLAÚSULA DE LIMITACIÓN DE RESPONSABILIDAD POR SANCIONES
+    </font></h3>
+    <p class="paddingText"><font face="Arial" size="2">
+        La cobertura otorgada bajo la presente póliza no ampara ninguna exposición proveniente
+        o relacionada con ningún país, organización, o persona natural o jurídica que se encuentre
+        actualmente sancionado, embargado o con el cual existan limitaciones comerciales impuestas
+        por la “Oficia de Control de Activos Extranjeros” del Departamento de Tesorería de Estados
+        Unidos, con sus siglas en inglés U.S. Treasury Department: Office of Foreign Assets Control,
+        la Organización de las Naciones Unidas, la Unión Europea o el Reino Unido.
+        <br><br>
+        En esa medida, en ningún caso la presente póliza otorgará cobertura ni el Asegurador será
+        responsable de pagar reclamación o beneficio alguno en aquellos casos en los que el pago
+        de dichas reclamaciones o el otorgamiento de dichos beneficios puedan exponer al Asegurador
+        a una sanción, prohibición o restricción a nivel local y/o internacional.
+    </font></p>
+    <p class="paddingText"><font face="Arial" size="2">
+        Todos los demás términos y condiciones de la Póliza, con excepción de lo establecido en
+        este Anexo, quedan en pleno vigor y sin modificación alguna.
+        <br><br>
+        Nota: La Superintendencia de Compañías, Valores y Seguros para efectos de control a asignado
+        el presente Anexo el Registro No. SCVS-3-4-CA-18-242004419-29052020 de 29 de mayo del 2020.
+    </font></p>
+    <h3 class="redHeader"><font face="Arial" size="2">
+        DECLARACIONES Y AUTORIZACIONES DEL ASEGURADO
+    </font></h3>
+    <p class="paddingText">
+        <font face="Arial" size="2"><b>DECLARO:</b><br><br>
+        • Haber sido informado de forma previa, completa, clara y precisa sobre las condiciones,
+        términos, costos y coberturas contratadas con SEGUROS ATLANTIDA SEGURATLANTIDA S.A., que constan en el
+        Instructivo que me ha sido proporcionado al momento de la suscripción del presente documento,
+        y que además he tomado voluntariamente el seguro contratado.
+        <br>
+        • Las declaraciones contenidas en este documento son exactas, completas y verídicas en la
+        forma que aparecen descritas, por tanto la falsedad, omisión error o reticencia de ellas
+        son causa de nulidad (artículo 710 del código de comercio).
+    </font></p>
+    <h3 class="redHeader"><font face="Arial" size="2">
+        AUTORIZACIONES DEL ASEGURADO
+    </font></h3>
+    <p class="paddingText"><font face="Arial" size="2">
+        De conformidad con lo establecido en la Constitución de la República del Ecuador, la
+        Ley Orgánica de Protección de Datos Personales, su Reglamento y demás normativa ampliatoria
+        o modificatoria, el Contratante y/o Asegurado brinda(n) su consentimiento libre, voluntario
+        y expreso para el tratamiento y transferencia de sus datos personales, en los siguientes
+        términos.
+    </font></p>
+<!-- HOJA 8 -->
+<p class="paddingText">
+        <font face="Arial" size="2"><b>Autorización de tratamiento de datos:</b>
+        <br><br>
+        El Contratante y/o Asegurado autoriza(n) a SEGUROS ATLANTIDA SEGURATLANTIDA S.A. que
+        cualquier información incluida en la presente Póliza o derivada del contrato de seguros
+        sea compilada, almacenada, consultada, usada, procesada para las siguientes finalidades
+        durante la relación contractual:
+        <br><br>
+        1. i) Para la ejecución de los contratos de seguros celebrados con SEGUROS ATLANTIDA SEGURATLANTIDA
+        S.A., ii) para control, reporte y prevención de fraude, iii) para control, reporte y prevención de lavado
+        de activos, financiamiento del terrorismo y otros delitos, iv) para la gestión de ambientes de Tecnología y
+        para garantizar la seguridad de estos, v) para la elaboración de los estudios técnico-actuariales, estadísticas,
+        encuestas, análisis de tendencias de mercado y estudios de técnica aseguradora;<br>
+        2. Para realizar encuestas sobre satisfacción en los servicios prestados por SEGUROS ATLANTIDA SEGURATLANTIDA
+        S.A.<br>
+        3. Para el envío de información comercial y ofertas/cotizaciones relacionadas con los contratos celebrados
+        y para ofrecer otros productos y servicios de SEGUROS ATLANTIDA SEGURATLANTIDA S.A.
+        <br><br>
+        <b>Autorización para transferencia de datos:</b>
+        <br><br>
+        El Contratante y/o Asegurado autoriza(n) a SEGUROS ATLANTIDA SEGURATLANTIDA S.A. que cualquier
+        información incluida en la presente Póliza o derivada de los contratos de seguros celebrados
+        con SEGUROS ATLANTIDA SEGURATLANTIDA S.A. sea compartida, intercambiada, transferida, circulada,
+        divulgada, consultada, ofrecida a: i) la Matriz de SEGUROS ATLANTIDA SEGURATLANTIDA S.A., sus
+        subsidiarias y filiales de la Matriz o de SEGUROS ATLANTIDA SEGURATLANTIDA S.A., a las personas
+        jurídicas vinculadas al Grupo de empresas de la Matriz, ii) a las personas jurídicas que
+        administren bases de datos para efectos de prevención y control de fraudes y prevención de
+        lavado de activos, financiamiento del terrorismo y otros delitos, la elaboración de estudios
+        técnico actuariales, estadísticas, análisis de tendencias de mercado y estudios de técnica aseguradora,
+        iii) a los países donde se encuentran alojadas las bases de datos y/o servidores contratados
+        por SEGUROS ATLANTIDA SEGURATLANTIDA S.A. en aquellos casos en que por razones de eficiencia
+        y almacenamiento de datos sea requerido, iv) a terceras partes que requirieran la información
+        para prestación de servicios derivados del contrato de seguros.
+        <br><br>
+        <b>Autorización para el tratamiento de información financiera, comercial y crediticia:</b>
+        <br><br>
+        El Contratante y/o Asegurado autoriza(n) a SEGUROS ATLANTIDA SEGURATLANTIDA S.A. para que,
+        con fines de vinculación, estadísticos, de tarificación, de análisis de riesgo, de actualización
+        de datos, control, supervisión y de información comercial, procese, reporte, conserve, consulte
+        y/u obtenga cualquier información de carácter financiero, comercial, crediticio de servicios y
+        personales de las centrales de información crediticia legalmente establecidas en Ecuador.
+        <br>
+        Todos los demás términos y condiciones de la Póliza, con excepción de lo establecido en esta
+        cláusula, quedan en pleno vigor y sin modificación alguna.
+        <br><br>
+        El Contratante y/o Asegurado podrá solicitar a la Superintendencia de Compañías, Valores y
+        Seguros la verificación de este texto.
+        <br><br>
+        Nota: La Superintendencia de Compañías, Valores y Seguros para efectos de control asignó a
+        la presente cláusula el número de registro SCVS-3-4-CA-167-282004423-25052023, de 25 de mayo
+        de 2023.
+    </font></p>
+    <font face="Arial" size="2"><br>
+    </font><div style="text-align: center;">
+        <font face="Arial" size="2"><img alt="Firma" width="180" src="data:image/png;base64,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8f4/Hnxw4tOvL16ft3nLlkXffPrq00+On/hOJ1MyQGpa/uV/zr9g3FOvfTZn6br8LbkbVi14+v5brrnsglMU8Tnjrrn+3idf+3bO/LyS2oItufPfemLcZRNeeuuzRWty8nJWrfjmzUfvuO72vz3/6ZoaXzRWlzf/lccfuuGuxxet35y7OXf9qsXLli1bu5OgM7kyB3aAkZg/YOJs+OiZh/4y/sGn3qpimRwu0941c56574EHXpozIDFEYkGrlI/Jy103491H7rnp2uvvfP69+Ws37BvgizpRh4pY7vfa60s2bc5Zm7NxM/ydM/mlO2+85canP/2yVmIPJ/pTIr5k3FX3PP3e9wtXrlww84OXHgapXXzfjDk7yAqtpK4gd9I/7v/LHyfcfPczK/O21mOYDHz7oSIeUolrV350141/ueex5z+fs2Lrls1zP3vjb3fcAJ0q4xM7PEohI++HWRvWb9ict2XL+sXLp71y+x/HPfKvL3Jrab++P3GmiDgesLHJ7esXfvvaf17513P/ePyRB+689dbx117/6PNvLt1WwZSoE07h5y8/ectNd/39P58VVDbWNzVtXzn3vX/+30WX3bcX17d396b3nrz34nG3r96HHzJ7R5JRn1297stXH7jh6lO1xHc98urc/GahXD1s1Tft2fziHRMunfBobgVG7wkmQg67oOW7d566/db7n5y0wOALNRStnvTS0/c89sqOWjSR3AOeNJFIpLL0Hj9MyA4jYNdx2/Keu+vmKy6e8H8vfoLqF/DF/JL18//z6H1X3fB/JRimwYNkScZCalLhh6/8/baHXphfzLK6wz+Z2CkiYT+T0gm+LhaLa6wu3/T9Ow/cdt359/77oZVknT/GSIn4j9f99eN1zWywmTJGzYavLwObffFbUxZ2GCIwjfRu+ObNB/56799fnq2PJqOj+x1SyiEirhjg0xe+8dAN197y3sy13XLbSDKm6K6c8vozlxy0xI6AzaQmtNYR8LiODnRTZUHR8vfv+9OVdz325pIC1NgVMcwlgEQ86rToNcJebH3Jqnkz337mwfFXjbvrH5MWbm8KKTpf/L8HLvzDBZdcOu6aa665NrONv+66e3a0ktatXvDc3X+97JoXUf1ST2pyHQsFcBtnv/zgrQdEXHtyIr7jtcnrmcNRxI2JWZoLVj1w5VXjHn23gcxK3WOAuZN7++KP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">
+    </font></div>
+    <font face="Arial" size="2"><br>
+    </font><p style="text-align: center;">
+        <font face="Arial" size="2"><small>Para solicitar asistencia escríbenos a nuestro chat de WhatsApp al</small>
+        <br>
+        <small>+593 984 900 754 o al +54 9112 7039 665</small>
+    </font></p>
+    <font face="Arial" size="2"><br>
+    </font><table style="width: 100%;">
+        <tbody><tr>
+            <td style="text-align: center;"><font face="Arial" size="2">
+                América Latina<br>
+                +54 (11) 5555-1500
+            </font></td>
+            <td style="text-align: center;"><font face="Arial" size="2">
+                Norteamérica<br>
+                +1 800-874-2223
+            </font></td>
+            <td style="text-align: center;"><font face="Arial" size="2">
+                Europa<br>
+                +34 (91) 788-3333
+            </font></td>
+            <td style="text-align: center;"><font face="Arial" size="2">
+                Asia<br>
+                +82 (2) 2023-5858
+            </font></td>
+        </tr>
+    </tbody></table>
+    
+    <div class="finalFooter">
+        <p class="footerAddress">
+            <font face="Arial" size="2">
+                SEGUROS ATLANTIDA SEGURATLANTIDA S.A., Av. Simón Bolivar y vía a Nayón, Centro Corporativo Ekopark,
+                <br>
+                oficinas P7.01, Torre 5., Quito, Ecuador, +593 24 019 8104
+            </font>
+        </p>
+        <table class="footerBottom">
+            <tbody>
+                <tr>
+                    <td style="padding: 0;">
+                        <div class="divLine"></div>
+                    </td>
+                    <td class="redText footerWebsite">
+                        <font face="Arial" size="2"><b>www.segurosatlantida.ec</b></font>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    
+</div>
