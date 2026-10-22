@@ -270,7 +270,7 @@ Autorizo a SEGUROS ATLÁNTIDA S.A. para que con fines de vinculación, estadíst
 
 <p class="body-p small"><strong>NOTA:</strong> Cualquier discrepancia entre las condiciones generales y particulares de la presente póliza, y el contenido de este certificado, prevalecerán las condiciones de la póliza.</p>
 
-<p class="body-p" style="margin-top:10px;">En testimonio de lo cual se extiende, firma y sella la presente solicitud — certificado en la ciudad de {{isset($informacion_titular-&gt;ciudad)?$informacion_titular-&gt;ciudad:'XXXX'}} República del Ecuador al {{isset($cotizador-&gt;fecha_emision)?\Carbon\Carbon::parse($cotizador-&gt;fecha_emision)-&gt;format('d'):'XX'}} del mes de {{isset($cotizador-&gt;fecha_emision)?\Carbon\Carbon::parse($cotizador-&gt;fecha_emision)-&gt;translatedFormat('F'):'XX'}} del {{isset($cotizador-&gt;fecha_emision)?\Carbon\Carbon::parse($cotizador-&gt;fecha_emision)-&gt;format('Y'):'202X'}}.</p>
+<p class="body-p" style="margin-top:10px;">En testimonio de lo cual se extiende, firma y sella la presente solicitud — certificado en la ciudad de {{isset($informacion_titular-&gt;ciudad)?$informacion_titular-&gt;ciudad:'XXXX'}} República del Ecuador al {{isset($cotizador-&gt;fecha_emision)?\Carbon\Carbon::parse($cotizador-&gt;fecha_emision)-&gt;format('d'):'XX'}} del mes de {{isset($cotizador-&gt;fecha_emision)?\Carbon\Carbon::parse($cotizador-&gt;fecha_emision)-&gt;locale('es')-&gt;translatedFormat('F'):'XX'}} del {{isset($cotizador-&gt;fecha_emision)?\Carbon\Carbon::parse($cotizador-&gt;fecha_emision)-&gt;format('Y'):'202X'}}.</p>
 
 <table class="signatures">
   <tr>

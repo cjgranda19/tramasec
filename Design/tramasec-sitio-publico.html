@@ -1,0 +1,503 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500&family=Public+Sans:wght@400;500;600&family=Schibsted+Grotesk:wght@500;600&display=swap">
+<title>Tramasec</title>
+<meta name="description" content="Tecnología, datos y seguridad para bancos, cooperativas y comercios.">
+<style>:root{--surface:#ffffff;--surface-soft:#f3f8fb;--celeste-100:#e6f4fc;--celeste-200:#c4e5f7;--celeste-400:#5cbbea;--celeste-700:#0b6fa4;--celeste-800:#0a5f8e;--ink:#0b2a3f;--ink-muted:#4a6475;--on-ink:#e6f4fc;--on-ink-muted:#a9c9dc;--on-primary:#ffffff;--line:#d4e6f0;--line-strong:#77909f;--success:#1c7a52;--success-soft:#e7f5ee;--warning:#9a5a06;--warning-soft:#fdf3e3;--danger:#b42318;--space-1:4px;--space-2:8px;--space-3:16px;--space-4:24px;--space-5:40px;--space-6:96px;--radius-sm:6px;--radius-md:10px;--radius-lg:20px;--radius-full:999px;--shadow-pop:0 8px 24px rgba(11, 42, 63, 0.12);--font-display:"Schibsted Grotesk", "Helvetica Neue", Arial, sans-serif;--font-sans:"Public Sans", "Helvetica Neue", Arial, sans-serif;--font-mono:"IBM Plex Mono", ui-monospace, Menlo, monospace;}</style>
+<style>
+html{scroll-behavior:smooth}body{margin:0;background:var(--surface)}
+.site *{box-sizing:border-box;margin:0;padding:0}
+.site{background:var(--surface);color:var(--ink);font-family:var(--font-sans);font-size:16px;line-height:26px;-webkit-font-smoothing:antialiased}
+.site a{color:inherit;text-decoration:none}
+.site button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+.site input,.site textarea,.site select{font:inherit}
+.site svg.i{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;flex:none}
+.site :focus-visible{outline:2px solid var(--celeste-700);outline-offset:2px}
+.site .w{max-width:1200px;margin:0 auto;padding:0 64px}
+.site .eb{font-family:var(--font-mono);font-size:12px;line-height:16px;letter-spacing:.08em;font-weight:500;color:var(--celeste-700);text-transform:uppercase}
+.site .h1{font-family:var(--font-display);font-weight:600;font-size:40px;line-height:46px;letter-spacing:-.015em}
+.site .h2{font-family:var(--font-display);font-weight:600;font-size:22px;line-height:28px}
+.site .lead{font-size:19px;line-height:30px;color:var(--ink-muted)}
+.site .mut{color:var(--ink-muted)}
+.site .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:46px;padding:0 20px;border-radius:var(--radius-sm);font-size:15px;font-weight:600;border:1px solid transparent;white-space:nowrap;transition:background .15s}
+.site .btn svg.i{width:18px;height:18px}
+.site .btn-p{background:var(--celeste-700);color:var(--on-primary)}
+.site .btn-p:hover{background:var(--celeste-800)}
+.site .btn-s{border-color:var(--line-strong);background:var(--surface);color:var(--ink)}
+.site .btn-s:hover{background:var(--surface-soft)}
+.site .btn-l{background:var(--surface);color:var(--ink)}
+.site .btn-l:hover{background:var(--celeste-100)}
+.site .lnk{display:inline-flex;align-items:center;gap:6px;font-weight:600;font-size:15px;color:var(--celeste-700)}
+.site .lnk svg.i{width:16px;height:16px;transition:transform .15s}
+.site .lnk:hover svg.i{transform:translateX(3px)}
+.site .lnk:hover span{text-decoration:underline}
+.site .hd{position:sticky;top:0;z-index:30;background:rgba(255,255,255,.96);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.site .hd .w{height:76px;display:flex;align-items:center;gap:40px}
+.site .brand{font-family:var(--font-display);font-weight:600;font-size:24px;letter-spacing:-.02em;display:flex;align-items:center;gap:10px}
+.site .brand .dot{width:22px;height:11px;border-radius:22px 22px 0 0;background:var(--celeste-400)}
+.site .snav{display:flex;gap:6px;flex:1;justify-content:center}
+.site .snav a{padding:8px 14px;border-radius:var(--radius-sm);font-size:15px;font-weight:500;color:var(--ink-muted);position:relative}
+.site .snav a:hover{color:var(--ink);background:var(--surface-soft)}
+.site .snav a.on{color:var(--ink)}
+.site .snav a.on:after{content:"";position:absolute;left:14px;right:14px;bottom:-19px;height:3px;border-radius:3px 3px 0 0;background:var(--celeste-700)}
+.site .burger{display:none;width:44px;height:44px;place-items:center;border-radius:var(--radius-sm);margin-left:auto}
+.site .burger:hover{background:var(--surface-soft)}
+.site .mnav{position:fixed;inset:0;z-index:60;background:var(--surface);display:flex;flex-direction:column;transform:translateX(100%);transition:transform .25s;visibility:hidden}
+.site .mnav.open{transform:none;visibility:visible}
+.site .mnav .top{height:64px;display:flex;align-items:center;justify-content:space-between;padding:0 12px 0 20px;border-bottom:1px solid var(--line)}
+.site .mnav ul{list-style:none;padding:12px 20px;flex:1}
+.site .mnav li a{display:flex;align-items:center;justify-content:space-between;padding:18px 0;border-bottom:1px solid var(--line);font-family:var(--font-display);font-size:22px;font-weight:600}
+.site .mnav li a.on{color:var(--celeste-700)}
+.site .mnav li a svg.i{color:var(--ink-muted)}
+.site .mnav .bot{padding:20px;border-top:1px solid var(--line);display:grid;gap:14px;background:var(--surface-soft)}
+.site .mnav .bot .btn{width:100%}
+.site .mnav .bot small{color:var(--ink-muted);font-size:13px;line-height:20px}
+.site .hero{background:var(--celeste-100);overflow:hidden}
+.site .hero .w{display:grid;grid-template-columns:1.05fr .95fr;gap:48px;padding-top:88px;padding-bottom:96px;align-items:center}
+.site .hero h1{font-family:var(--font-display);font-weight:600;font-size:64px;line-height:66px;letter-spacing:-.02em;margin:20px 0 24px}
+.site .hero h1 em{font-style:normal;color:var(--celeste-700)}
+.site .hero .lead{max-width:40ch}
+.site .hero .ac{display:flex;gap:12px;margin-top:36px;flex-wrap:wrap}
+.site .sky{position:relative;height:420px;border-radius:var(--radius-lg);background:var(--celeste-200);overflow:hidden}
+.site .sky .sun{position:absolute;width:220px;height:220px;border-radius:50%;background:var(--surface);right:70px;top:60px}
+.site .sky .c1{position:absolute;left:-40px;bottom:-120px;width:360px;height:260px;border-radius:50%;background:var(--celeste-400)}
+.site .sky .c2{position:absolute;left:220px;bottom:-150px;width:420px;height:260px;border-radius:50%;background:var(--celeste-700)}
+.site .sky .rule{position:absolute;left:0;right:0;height:1px;background:var(--surface);opacity:.7}
+.site .hnote{position:absolute;left:28px;top:28px;background:var(--surface);border-radius:var(--radius-md);padding:16px 18px;width:260px;box-shadow:var(--shadow-pop)}
+.site .hnote .eb{font-size:11px;color:var(--success);display:flex;gap:6px;align-items:center}
+.site .hnote .eb:before{content:"";width:7px;height:7px;border-radius:50%;background:currentColor}
+.site .hnote b{display:block;font-size:15px;line-height:22px}
+.site .hnote span{font-size:13px;line-height:19px;color:var(--ink-muted)}
+.site .ph{background:var(--celeste-100);position:relative;overflow:hidden}
+.site .ph .w{padding-top:56px;padding-bottom:64px;position:relative;z-index:1}
+.site .ph .crumb{display:flex;gap:8px;align-items:center;font-size:14px;color:var(--ink-muted);margin-bottom:28px}
+.site .ph .crumb a:hover{color:var(--ink);text-decoration:underline}
+.site .ph .crumb svg.i{width:14px;height:14px}
+.site .ph h1{font-family:var(--font-display);font-weight:600;font-size:52px;line-height:56px;letter-spacing:-.02em;margin:16px 0 18px;max-width:18ch}
+.site .ph .lead{max-width:52ch}
+.site .ph .ac{display:flex;gap:12px;margin-top:28px}
+.site .ph .arc{position:absolute;right:-60px;bottom:-190px;width:520px;height:340px;border-radius:50%;background:var(--celeste-200)}
+.site .ph .arc2{position:absolute;right:250px;bottom:-230px;width:360px;height:300px;border-radius:50%;background:var(--celeste-400)}
+.site .ph .sunb{position:absolute;right:140px;top:44px;width:110px;height:110px;border-radius:50%;background:var(--surface)}
+.site .ph .ico-big{width:64px;height:64px;border-radius:var(--radius-md);background:var(--surface);color:var(--celeste-700);display:grid;place-items:center;margin-bottom:22px}
+.site .ph .ico-big svg.i{width:34px;height:34px}
+.site .sec{padding:96px 0}
+.site .alt{background:var(--surface-soft)}
+.site .sh{display:grid;grid-template-columns:300px 1fr;gap:40px;margin-bottom:52px}
+.site .sh .lead{margin-top:14px;max-width:54ch}
+.site .sh .row{display:flex;justify-content:space-between;align-items:flex-end;gap:24px}
+.site .txt{display:grid;grid-template-columns:300px 1fr;gap:40px}
+.site .txt .body p{color:var(--ink-muted);max-width:62ch;margin-top:16px}
+.site .txt .body .cols{display:grid;grid-template-columns:1fr 1fr;gap:32px}
+.site .txt blockquote{font-family:var(--font-display);font-size:32px;line-height:40px;font-weight:500;letter-spacing:-.01em;max-width:24ch}
+.site .txt blockquote u{text-decoration:none;box-shadow:inset 0 -10px 0 var(--celeste-200)}
+.site .facts{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--line);margin-top:48px}
+.site .facts div{padding:22px 24px 0 0}
+.site .facts div+div{padding-left:24px;border-left:1px solid var(--line)}
+.site .facts strong{display:block;font-family:var(--font-display);font-size:26px;line-height:32px;font-weight:600;white-space:nowrap}
+.site .facts span{font-size:14px;color:var(--ink-muted)}
+.site .grid{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--line);border-left:1px solid var(--line);background:var(--surface);border-radius:var(--radius-md);overflow:hidden}
+.site .cell{padding:32px 28px 28px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);display:flex;flex-direction:column;min-height:280px;transition:background .15s}
+.site a.cell:hover{background:var(--surface-soft)}
+.site a.cell:hover .ico{background:var(--celeste-700);color:var(--on-primary)}
+.site .cell .n{font-family:var(--font-mono);font-size:12px;color:var(--ink-muted);letter-spacing:.08em;align-self:flex-end;margin-bottom:-18px}
+.site .ico{width:56px;height:56px;border-radius:var(--radius-md);background:var(--celeste-100);color:var(--celeste-700);display:grid;place-items:center;margin-bottom:28px;transition:background .15s,color .15s}
+.site .ico svg.i{width:30px;height:30px}
+.site .cell h3{font-family:var(--font-display);font-size:22px;line-height:28px;font-weight:600;margin-bottom:10px}
+.site .cell p{font-size:15px;line-height:24px;color:var(--ink-muted);flex:1}
+.site .cell .lnk{margin-top:20px}
+.site .grid.two{grid-template-columns:repeat(2,1fr)}
+.site .grid.two .cell{min-height:0}
+.site .aud{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.site .aud div{padding-top:24px;border-top:3px solid var(--celeste-400)}
+.site .aud h3{font-family:var(--font-display);font-size:22px;line-height:28px;font-weight:600;margin:10px 0 8px}
+.site .aud p{color:var(--ink-muted);font-size:15px;line-height:24px}
+.site .team{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+.site .pf{height:260px;border-radius:var(--radius-md);background:var(--celeste-100);position:relative;overflow:hidden;margin-bottom:18px}
+.site .pf i{position:absolute;left:50%;bottom:-70px;transform:translateX(-50%);width:170px;height:170px;border-radius:50%;background:var(--celeste-200)}
+.site .pf b{position:absolute;left:50%;top:62px;transform:translateX(-50%);width:84px;height:84px;border-radius:50%;background:var(--celeste-400);display:grid;place-items:center;color:var(--ink)}
+.site .pf b svg.i{width:34px;height:34px}
+.site .team h3{font-family:var(--font-display);font-size:18px;line-height:24px;font-weight:600}
+.site .team span{font-size:14px;color:var(--ink-muted)}
+.site .tl{position:relative;display:grid;grid-auto-flow:column;grid-auto-columns:1fr;gap:24px;padding-top:40px}
+.site .tl:before{content:"";position:absolute;left:0;right:0;top:11px;height:3px;background:var(--celeste-400);border-radius:3px}
+.site .tl .y{position:relative}
+.site .tl .y:before{content:"";position:absolute;top:-37px;left:0;width:13px;height:13px;border-radius:50%;background:var(--surface);border:3px solid var(--celeste-700)}
+.site .tl strong{font-family:var(--font-mono);font-size:13px;letter-spacing:.08em;color:var(--celeste-700);text-transform:uppercase}
+.site .tl h3{font-family:var(--font-display);font-size:18px;line-height:24px;font-weight:600;margin:6px 0}
+.site .tl p{font-size:14px;line-height:22px;color:var(--ink-muted)}
+.site .it2{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
+.site .it2.r .im{order:2}
+.site .it2 .im{height:400px;border-radius:var(--radius-lg);overflow:hidden}
+.site .it2 .h1{margin:16px 0 0}
+.site .it2 p{color:var(--ink-muted);margin-top:16px;max-width:52ch}
+.site .it2 ul{list-style:none;margin-top:24px;display:grid;gap:12px}
+.site .it2 li{display:flex;gap:12px;align-items:flex-start}
+.site .it2 li svg.i{color:var(--celeste-700);width:20px;height:20px;margin-top:3px}
+.site .th-img{position:relative;width:100%;height:100%;overflow:hidden;background:var(--celeste-100)}
+.site .th-img i{position:absolute;border-radius:50%}
+.site .v1 i:nth-child(1){width:60%;height:70%;left:-10%;bottom:-35%;background:var(--celeste-400)}
+.site .v1 i:nth-child(2){width:70%;height:80%;left:35%;bottom:-45%;background:var(--celeste-700)}
+.site .v1 i:nth-child(3){width:26%;height:40%;right:14%;top:12%;background:var(--surface)}
+.site .v2{background:var(--ink)}
+.site .v2 i:nth-child(1){width:44%;height:66%;left:10%;top:16%;background:var(--celeste-400)}
+.site .v2 i:nth-child(2){width:44%;height:66%;left:46%;top:16%;background:var(--celeste-200);opacity:.9}
+.site .v4{background:var(--celeste-700)}
+.site .v4 i:nth-child(1){width:34%;height:52%;left:12%;top:24%;background:var(--celeste-100);border-radius:12%}
+.site .v4 i:nth-child(2){width:34%;height:52%;left:54%;top:24%;background:var(--celeste-400);border-radius:12%}
+.site .v5 i:nth-child(1){width:120%;height:60%;left:-10%;bottom:-20%;background:var(--celeste-200)}
+.site .v5 i:nth-child(2){width:30%;height:44%;left:20%;top:16%;background:var(--celeste-700)}
+.site .v5 i:nth-child(3){width:18%;height:26%;left:58%;top:26%;background:var(--celeste-400)}
+.site .img-lbl{position:absolute;left:16px;bottom:16px;background:rgba(255,255,255,.92);border-radius:var(--radius-sm);padding:6px 10px;font-size:12px;line-height:16px;color:var(--ink-muted);font-family:var(--font-mono);letter-spacing:.04em}
+.site .cta{background:var(--ink);color:var(--on-ink);position:relative;overflow:hidden}
+.site .cta .w{padding-top:72px;padding-bottom:72px;display:flex;align-items:center;justify-content:space-between;gap:48px;position:relative;z-index:1}
+.site .cta .h1{color:var(--on-ink);max-width:20ch}
+.site .cta p{color:var(--on-ink-muted);margin-top:12px;font-size:17px;max-width:48ch}
+.site .cta .ac{display:flex;gap:12px;flex:none}
+.site .cta .arc{position:absolute;right:-80px;top:-160px;width:420px;height:320px;border-radius:50%;background:var(--celeste-700);opacity:.55}
+.site .cta .btn-s{background:transparent;color:var(--on-ink);border-color:var(--on-ink-muted)}
+.site .cta .btn-s:hover{background:rgba(169,201,220,.12)}
+.site .related{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.site .related a{display:flex;gap:16px;align-items:center;padding:18px 20px;border:1px solid var(--line);border-radius:var(--radius-md);background:var(--surface)}
+.site .related a:hover{border-color:var(--line-strong)}
+.site .related .ico{width:44px;height:44px;margin:0}
+.site .related .ico svg.i{width:24px;height:24px}
+.site .related b{font-family:var(--font-display);font-weight:600;font-size:17px;flex:1}
+.site .related a>svg.i{color:var(--celeste-700)}
+.site .ct{display:grid;grid-template-columns:1fr 1.1fr;gap:72px;align-items:start}
+.site .ci{list-style:none;margin-top:36px;border-top:1px solid var(--line)}
+.site .ci li{display:flex;gap:16px;padding:20px 0;border-bottom:1px solid var(--line);align-items:flex-start}
+.site .ci li svg.i{color:var(--celeste-700);margin-top:2px}
+.site .ci b{display:block;font-size:14px;line-height:20px}
+.site .ci span{font-size:15px;color:var(--ink-muted)}
+.site .ci span.pd{font-style:italic}
+.site .frm{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius-md);padding:36px;display:grid;gap:18px}
+.site .frm .two{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.site .fld{display:grid;gap:6px}
+.site .fld label{font-size:14px;font-weight:600}
+.site .fld label small{font-weight:400;color:var(--ink-muted)}
+.site .inp{width:100%;font-size:15px;border:1px solid var(--line-strong);border-radius:var(--radius-sm);padding:11px 14px;color:var(--ink);background:var(--surface);min-height:46px}
+.site .inp::placeholder{color:#8aa0ae}
+.site textarea.inp{min-height:128px;resize:vertical;line-height:24px}
+.site .inp.bad{border-color:var(--danger)}
+.site .err{font-size:13px;color:var(--danger);display:flex;gap:6px;align-items:center}
+.site .err svg.i{width:15px;height:15px}
+.site .chips{display:flex;flex-wrap:wrap;gap:8px}
+.site .chip{height:38px;padding:0 14px;border:1px solid var(--line-strong);border-radius:var(--radius-full);font-size:14px;font-weight:500;display:inline-flex;align-items:center;gap:6px}
+.site .chip.on{background:var(--celeste-700);border-color:var(--celeste-700);color:var(--on-primary)}
+.site .chip svg.i{width:15px;height:15px}
+.site .chk{display:flex;gap:10px;align-items:flex-start;font-weight:400;font-size:14px;line-height:21px;color:var(--ink-muted);cursor:pointer;text-align:left}
+.site .box{width:20px;height:20px;border:1px solid var(--line-strong);border-radius:4px;display:grid;place-items:center;background:var(--surface);flex:none;margin-top:1px}
+.site .box.on{background:var(--celeste-700);border-color:var(--celeste-700);color:var(--on-primary)}
+.site .box svg.i{width:14px;height:14px;stroke-width:2.2}
+.site .chk a{color:var(--celeste-700);text-decoration:underline}
+.site .file{border:1.5px dashed var(--line-strong);border-radius:var(--radius-md);padding:18px;display:flex;align-items:center;gap:14px;background:var(--surface-soft);text-align:left;width:100%}
+.site .file .ico{width:44px;height:44px;margin:0;background:var(--surface)}
+.site .file .ico svg.i{width:22px;height:22px}
+.site .file b{display:block;font-size:14px}
+.site .file span{font-size:13px;color:var(--ink-muted)}
+.site .done{text-align:center;padding:24px 8px;display:grid;justify-items:center;gap:12px}
+.site .done .ico{width:64px;height:64px;border-radius:50%;background:var(--success-soft);color:var(--success);margin:0}
+.site .done h3{font-family:var(--font-display);font-size:24px;line-height:30px;font-weight:600}
+.site .done p{color:var(--ink-muted);max-width:40ch}
+.site .jobs{display:grid;gap:12px}
+.site .job{display:grid;grid-template-columns:1fr auto;gap:8px 24px;align-items:center;padding:22px 24px;border:1px solid var(--line);border-radius:var(--radius-md);background:var(--surface)}
+.site .job h3{font-family:var(--font-display);font-size:19px;font-weight:600}
+.site .job .meta{display:flex;gap:16px;font-size:14px;color:var(--ink-muted);flex-wrap:wrap}
+.site .job .meta span{display:flex;gap:6px;align-items:center}
+.site .job .meta svg.i{width:16px;height:16px}
+.site .empty-note{border:1px dashed var(--line-strong);border-radius:var(--radius-md);padding:28px;color:var(--ink-muted);text-align:center;background:var(--surface)}
+.site .nf{min-height:calc(100vh - 76px - 360px);display:grid;place-items:center;text-align:center;padding:96px 24px;background:var(--celeste-100);position:relative;overflow:hidden}
+.site .nf .num{font-family:var(--font-display);font-weight:600;font-size:160px;line-height:1;color:var(--celeste-200);letter-spacing:-.04em}
+.site .nf h1{font-family:var(--font-display);font-weight:600;font-size:36px;line-height:42px;margin-top:-30px;position:relative}
+.site .nf p{color:var(--ink-muted);margin:12px auto 28px;max-width:44ch}
+.site .nf .ac{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.site .ft{background:var(--ink);color:var(--on-ink);padding:72px 0 32px}
+.site .ft .top{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:40px;padding-bottom:48px;border-bottom:1px solid rgba(169,201,220,.22)}
+.site .ft h4{font-family:var(--font-mono);font-size:12px;letter-spacing:.08em;color:var(--on-ink-muted);font-weight:500;margin-bottom:16px}
+.site .ft ul{list-style:none;display:grid;gap:10px;font-size:15px}
+.site .ft ul a:hover{text-decoration:underline}
+.site .ft p{color:var(--on-ink-muted);font-size:15px;max-width:34ch;margin-top:16px}
+.site .ft .bot{display:flex;justify-content:space-between;gap:16px;padding-top:24px;font-size:13px;color:var(--on-ink-muted);flex-wrap:wrap}
+.site .ft .soc{display:flex;gap:8px;margin-top:22px}
+.site .ft .soc a{width:38px;height:38px;border-radius:var(--radius-sm);border:1px solid rgba(169,201,220,.3);display:grid;place-items:center;color:var(--on-ink-muted)}
+.site .ft .soc a:hover{color:var(--on-ink);border-color:var(--on-ink-muted)}
+.site .ft .soc svg.i{width:18px;height:18px}
+.site .totop{position:fixed;right:24px;bottom:24px;width:46px;height:46px;border-radius:var(--radius-full);background:var(--surface);box-shadow:var(--shadow-pop);display:grid;place-items:center;color:var(--ink);z-index:20;opacity:0;pointer-events:none;transition:opacity .2s}
+.site .totop.show{opacity:1;pointer-events:auto}
+.site .sec.datos{padding-top:0}
+.site .datos .facts{margin-left:340px;margin-top:0}
+.site .flbl{font-size:14px;font-weight:600}
+.site .flbl small{font-weight:400;color:var(--ink-muted)}
+.site .txt .body blockquote+p,.site .txt .body blockquote+.cols{margin-top:28px}
+.site .txt .body .h1+p{margin-top:16px}
+.site .txt .body>p:first-child{margin-top:0}
+.site .cols p{margin-top:0!important}
+.site .it2 .h1{margin-top:16px}
+.site .it2 .eb+.h1{margin-top:16px}
+.site .emptyb{padding:64px;text-align:center;color:var(--ink-muted);border:2px dashed var(--line);margin:24px;border-radius:var(--radius-md)}
+.site .ft .lg a:hover{text-decoration:underline}
+.site .snav a svg.i{width:14px;height:14px;vertical-align:-2px}
+@media (max-width:900px){.site{font-size:15px;line-height:24px}.site .w{padding:0 20px}.site .hd .w{height:64px}.site .brand{font-size:21px}.site .snav,.site .hd .btn{display:none}.site .burger{display:grid}.site .h1{font-size:30px;line-height:36px}.site .lead{font-size:17px;line-height:27px}.site .hero .w{grid-template-columns:1fr;padding-top:40px;padding-bottom:48px;gap:36px}.site .hero h1{font-size:40px;line-height:44px;margin:16px 0 16px}.site .hero .ac{flex-direction:column;margin-top:28px}.site .hero .ac .btn{width:100%}.site .sky{height:240px}.site .sky .sun{width:120px;height:120px;right:36px;top:30px}.site .sky .c1{width:240px;height:180px;bottom:-90px}.site .sky .c2{left:140px;width:280px;height:180px;bottom:-110px}.site .hnote{left:16px;top:auto;bottom:16px;width:auto;right:16px;padding:12px 14px}.site .ph .w{padding-top:28px;padding-bottom:44px}.site .ph .crumb{margin-bottom:20px;font-size:13px}.site .ph h1{font-size:36px;line-height:40px}.site .ph .arc{width:300px;height:220px;right:-120px;bottom:-150px}.site .ph .arc2,.site .ph .sunb{display:none}.site .ph .ac{flex-direction:column}.site .sec{padding:56px 0}.site .sh,.site .txt{grid-template-columns:1fr;gap:14px}.site .sh{margin-bottom:28px}.site .sh .row{flex-direction:column;align-items:flex-start}.site .txt blockquote{font-size:24px;line-height:31px}.site .txt .body .cols{grid-template-columns:1fr;gap:16px}.site .facts{grid-template-columns:1fr;margin-top:32px}.site .datos .facts{margin-left:0;margin-top:0}.site .facts div,.site .facts div+div{padding:16px 0;border-left:0;border-bottom:1px solid var(--line)}.site .grid,.site .grid.two{grid-template-columns:1fr}.site .cell{min-height:0;padding:24px 20px}.site .ico{margin-bottom:18px}.site .aud{grid-template-columns:1fr;gap:28px}.site .team{grid-template-columns:1fr 1fr;gap:16px}.site .pf{height:170px}.site .pf b{top:34px;width:64px;height:64px}.site .pf b svg.i{width:28px;height:28px}.site .pf i{width:130px;height:130px;bottom:-60px}.site .team h3{font-size:16px;line-height:21px}.site .team span{font-size:13px;line-height:19px;display:block}.site .tl{grid-auto-flow:row;padding:0 0 0 30px;gap:26px}.site .tl:before{left:5px;right:auto;top:6px;bottom:6px;width:3px;height:auto}.site .tl .y:before{top:4px;left:-30px}.site .it2{grid-template-columns:1fr;gap:28px}.site .it2 .im{height:230px;order:0!important}.site .cta .w{flex-direction:column;align-items:flex-start;gap:24px;padding-top:52px;padding-bottom:52px}.site .cta .ac{flex-direction:column;width:100%}.site .cta .ac .btn{width:100%}.site .related{grid-template-columns:1fr}.site .ct{grid-template-columns:1fr;gap:36px}.site .frm{padding:22px 18px}.site .frm .two{grid-template-columns:1fr}.site .job{grid-template-columns:1fr;padding:18px}.site .job .btn{width:100%}.site .nf .num{font-size:110px}.site .nf h1{font-size:28px;line-height:34px;margin-top:-20px}.site .ft{padding:52px 0 28px}.site .ft .top{grid-template-columns:1fr 1fr;gap:32px 20px}.site .ft .top>div:first-child{grid-column:1/-1}.site .ft .bot{flex-direction:column;gap:6px}.site .totop{right:16px;bottom:16px}}
+.site .fld{align-content:start}
+.site .sh .lnk{white-space:nowrap}
+.site .aud .ico{margin-top:4px}
+</style>
+</head>
+<body>
+<div id="app" class="site"></div>
+<script>
+/* ===== Tramasec · contenido del sitio (lo que edita el panel y lee el sitio) ===== */
+window.TRAMASEC_CONTENT=(function(){
+function b(t,d){return{t:t,d:d};}
+var SOL=[
+ ['transmision-de-datos','transfer','Transmisión de datos','Consultoría y gestión del flujo de datos entre tus sistemas, canales y aliados.',
+  'Diseñamos y gestionamos cómo viaja la información entre tus sistemas, tus canales de atención y las entidades con las que trabajas.',
+  [['Diagnóstico del flujo actual','Mapeamos qué datos se mueven, entre quién y con qué frecuencia.'],['Diseño de la integración','Definimos formatos, rutas y controles para cada intercambio.'],['Gestión y monitoreo','Seguimiento de la transmisión para detectar y resolver fallas a tiempo.'],['Seguridad de la información','Cifrado y control de acceso sobre los datos que se transmiten.']]],
+ ['modelos-de-negocio-masivos','chart','Modelos de negocio masivos','Estructuramos carteras de productos y servicios financieros y comerciales a gran escala.',
+  'Te ayudamos a convertir un producto o servicio en una oferta que llegue a miles de clientes, con una operación que la sostenga.',
+  [['Estructura de la cartera','Qué productos ofrecer, a quién y en qué condiciones.'],['Canales y alianzas','Cómo llegar a tus clientes a través de redes propias o de terceros.'],['Operación y tecnología','Los procesos y sistemas que necesitas para operar a escala.'],['Seguimiento del modelo','Indicadores para medir y ajustar el modelo en el tiempo.']]],
+ ['telecomunicaciones','signal','Telecomunicaciones','Soluciones TIC y de comunicación para conectar tu operación de punta a punta.',
+  'Conectividad y comunicación para que tus oficinas, puntos de atención y sistemas trabajen como una sola operación.',
+  [['Análisis de conectividad','Revisamos cómo se conectan hoy tus sedes y sistemas.'],['Diseño de la solución','Proponemos la arquitectura de comunicación adecuada a tu operación.'],['Implementación','Instalación y puesta en marcha con tu equipo.'],['Acompañamiento','Soporte durante la operación y ajustes cuando la red crece.']]],
+ ['seguridad-electronica','shield','Seguridad electrónica','Sistemas de seguridad para proteger instalaciones, equipos y personas.',
+  'Protegemos tus instalaciones con sistemas electrónicos pensados para tu operación, no con equipos sueltos.',
+  [['Evaluación de riesgos','Identificamos los puntos críticos de cada instalación.'],['Diseño del sistema','Elegimos los equipos y su ubicación según tu necesidad.'],['Instalación e integración','Montaje y conexión con tus demás sistemas.'],['Mantenimiento','Revisiones para que el sistema funcione cuando se necesita.']]],
+ ['control-de-accesos','lock','Control de accesos','Quién entra, a dónde y cuándo: control y registro de accesos físicos.',
+  'Define quién puede entrar a cada área, a qué hora, y ten registro de cada ingreso.',
+  [['Mapa de accesos','Áreas, perfiles de personas y horarios permitidos.'],['Equipos de control','Lectores y cerraduras según el nivel de seguridad de cada área.'],['Registro de ingresos','Historial de quién entró, dónde y cuándo.'],['Administración','Altas, bajas y cambios de permisos de forma centralizada.']]],
+ ['automatizacion','gear','Automatización','Automatizamos procesos y equipos para que la operación dependa menos de tareas manuales.',
+  'Identificamos las tareas repetitivas de tu operación y las automatizamos, en procesos y en equipos.',
+  [['Levantamiento de procesos','Encontramos dónde se pierde tiempo o se cometen errores.'],['Diseño de la automatización','Definimos qué se automatiza y cómo se controla.'],['Implementación','Puesta en marcha por etapas, sin detener la operación.'],['Mejora continua','Revisamos resultados y ajustamos.']]]
+];
+function card(s){return{icono:s[1],titulo:s[2],texto:s[3],enlace:'sol-'+s[0]};}
+var PARA=[{icono:'bank',titulo:'Bancos',texto:'Estructuración de productos masivos y gestión segura de los datos que los mueven.',enlace:''},
+ {icono:'coop',titulo:'Cooperativas',texto:'Modelos para llevar servicios financieros a más socios, con la operación que eso exige.',enlace:''},
+ {icono:'store',titulo:'Comercios',texto:'Carteras de productos y servicios a gran escala, con seguridad en tus puntos de atención.',enlace:''}];
+function clone(o){return JSON.parse(JSON.stringify(o));}
+var pages=[
+ {id:'inicio',title:'Inicio',slug:'',home:true,status:'pub',edited:'12 sep',seo:'Tecnología, datos y seguridad para bancos, cooperativas y comercios.',blocks:[
+  b('portada',{eyebrow:'TIC y telecomunicaciones · Quito, Ecuador',titulo:'Tecnología para operar a gran escala.',texto:'Consultoría, gestión de datos y seguridad electrónica para bancos, cooperativas y comercios que llevan sus servicios a miles de personas.',boton1:'Ver soluciones',enlace1:'soluciones',boton2:'Hablar con un asesor',enlace2:'contacto',icono:'',nota_titulo:'Transacciones masivas',nota_texto:'El modelo de negocio, los datos que lo mueven y la seguridad que lo protege.'}),
+  b('tarjetas',{eyebrow:'Soluciones',titulo:'Qué hacemos',texto:'Tres frentes que trabajan juntos: el negocio, los datos y la seguridad.',columnas:'3',boton:'Ver las 6 soluciones',destino:'soluciones',items:SOL.slice(0,3).map(card)}),
+  b('tarjetas',{eyebrow:'Para quién',titulo:'Hecho para operaciones masivas',texto:'',columnas:'3',boton:'',destino:'',items:clone(PARA)}),
+  b('imagen',{eyebrow:'Quiénes somos',titulo:'Una empresa ecuatoriana, con sede en Quito',texto:'Unimos consultoría de negocio con infraestructura: diseñamos el modelo masivo, gestionamos la transmisión de datos que lo mueve y protegemos los accesos físicos y digitales.',puntos:'',imagen:'img1',lado:'izquierda',boton:'Conoce cómo trabajamos',destino:'acerca'}),
+  b('llamado',{titulo:'¿Tienes un proyecto a gran escala?',texto:'Cuéntanos qué necesitas y un asesor te contactará.',boton:'Contáctanos',destino:'contacto'})]},
+ {id:'acerca',title:'Acerca de',slug:'acerca-de',status:'pub',edited:'10 sep',seo:'Quiénes somos y cómo trabajamos.',blocks:[
+  b('portada',{eyebrow:'Acerca de',titulo:'Tecnología para llegar a miles de personas',texto:'Quiénes somos, a quién servimos y cómo trabajamos.',boton1:'',enlace1:'',boton2:'',enlace2:'',icono:'',nota_titulo:'',nota_texto:''}),
+  b('texto',{eyebrow:'Quiénes somos',titulo:'',destacado:'Ayudamos a que un producto financiero o comercial llegue a miles de personas, con la tecnología que eso exige.',texto:'Transacciones Masivas del Ecuador Tramasec S.A.S. es una empresa ecuatoriana con sede en Quito, dedicada a las tecnologías de la información, la comunicación y las telecomunicaciones.\n\nUnimos consultoría de negocio con infraestructura: diseñamos el modelo masivo, gestionamos la transmisión de datos que lo mueve y protegemos los accesos físicos y digitales.'}),
+  b('datos',{items:[{valor:'Quito',etiqueta:'Sede principal, Ecuador'},{valor:'TIC y telecom',etiqueta:'Sector en el que operamos'},{valor:'Banca y comercio',etiqueta:'Bancos, cooperativas y comercios'}]}),
+  b('pasos',{eyebrow:'Cómo trabajamos',titulo:'Del diagnóstico a la operación',items:[{etiqueta:'Paso 1',titulo:'Diagnóstico',texto:'Entendemos tu cartera, tus canales y el volumen que necesitas mover.'},{etiqueta:'Paso 2',titulo:'Modelo de negocio',texto:'Estructuramos el producto o servicio masivo y cómo llegará a tus clientes.'},{etiqueta:'Paso 3',titulo:'Plataforma de datos',texto:'Diseñamos la transmisión y gestión de la información que lo sostiene.'},{etiqueta:'Paso 4',titulo:'Seguridad y accesos',texto:'Protegemos instalaciones e información con control de accesos y automatización.'},{etiqueta:'Paso 5',titulo:'Operación',texto:'Acompañamos la puesta en marcha y el crecimiento del modelo.'}]}),
+  b('imagen',{eyebrow:'Nuestro enfoque',titulo:'Negocio, datos y seguridad en una sola casa',texto:'Un modelo masivo solo funciona si la tecnología que lo sostiene es confiable. Por eso trabajamos los tres frentes juntos.',puntos:'El modelo de negocio define qué se ofrece y a quién.\nLos datos permiten operarlo a gran escala.\nLa seguridad protege a la operación y a las personas.',imagen:'img5',lado:'derecha',boton:'',destino:''}),
+  b('llamado',{titulo:'Conversemos sobre tu proyecto',texto:'Te contamos cómo podemos ayudarte.',boton:'Contáctanos',destino:'contacto'})]},
+ {id:'soluciones',title:'Soluciones',slug:'soluciones',status:'changes',edited:'hace 4 min',seo:'Transmisión de datos, modelos masivos, seguridad y automatización.',blocks:[
+  b('portada',{eyebrow:'Soluciones',titulo:'Soluciones para operar a gran escala',texto:'El modelo de negocio, los datos que lo mueven y la seguridad que lo protege. Cada línea se puede contratar por separado.',boton1:'',enlace1:'',boton2:'',enlace2:'',icono:'',nota_titulo:'',nota_texto:''}),
+  b('tarjetas',{eyebrow:'Qué hacemos',titulo:'Seis líneas de servicio',texto:'Elige una para ver qué incluye.',columnas:'3',boton:'',destino:'',items:SOL.map(card)}),
+  b('tarjetas',{eyebrow:'Para quién',titulo:'Bancos, cooperativas y comercios',texto:'',columnas:'3',boton:'',destino:'',items:clone(PARA)}),
+  b('llamado',{titulo:'¿No sabes cuál necesitas?',texto:'Te ayudamos a elegir la combinación correcta para tu operación.',boton:'Contáctanos',destino:'contacto'})]}
+];
+SOL.forEach(function(s,i){pages.push({id:'sol-'+s[0],title:s[2],slug:s[0],parent:'soluciones',status:'pub',edited:'12 sep',seo:s[3],blocks:[
+  b('portada',{eyebrow:'Solución '+String(i+1).padStart(2,'0'),titulo:s[2],texto:s[4],boton1:'Solicitar información',enlace1:'contacto',boton2:'',enlace2:'',icono:s[1],nota_titulo:'',nota_texto:''}),
+  b('tarjetas',{eyebrow:'Qué incluye',titulo:'Cómo lo trabajamos contigo',texto:'',columnas:'2',boton:'Ver todas las soluciones',destino:'soluciones',items:s[5].map(function(x){return{icono:'',titulo:x[0],texto:x[1],enlace:''};})}),
+  b('llamado',{titulo:'¿Te interesa '+s[2].toLowerCase()+'?',texto:'Cuéntanos tu caso y te contactamos.',boton:'Contáctanos',destino:'contacto'})]});});
+pages.push(
+ {id:'nosotros',title:'Nosotros',slug:'nosotros',status:'pub',edited:'3 sep',seo:'El equipo de Tramasec.',blocks:[
+  b('portada',{eyebrow:'Nosotros',titulo:'Nuestro equipo',texto:'Áreas especializadas que trabajan sobre cada proyecto, del modelo de negocio a la instalación.',boton1:'',enlace1:'',boton2:'',enlace2:'',icono:'',nota_titulo:'',nota_texto:''}),
+  b('equipo',{eyebrow:'Áreas',titulo:'Quién hace qué',texto:'',items:[{icono:'users',nombre:'Gerencia general',cargo:'Dirección y relación con clientes'},{icono:'chart',nombre:'Consultoría de negocio',cargo:'Modelos masivos para banca y comercio'},{icono:'transfer',nombre:'Ingeniería de datos',cargo:'Transmisión y gestión de datos'},{icono:'shield',nombre:'Seguridad y automatización',cargo:'Accesos, control y seguridad electrónica'}]}),
+  b('llamado',{titulo:'¿Trabajamos juntos?',texto:'Cuéntanos qué necesitas y te presentamos al equipo indicado.',boton:'Contáctanos',destino:'contacto'})]},
+ {id:'contacto',title:'Contacto',slug:'contacto',status:'pub',edited:'3 sep',seo:'Escríbenos.',blocks:[
+  b('portada',{eyebrow:'Contacto',titulo:'Cuéntanos qué necesitas',texto:'Escríbenos y un asesor te contactará para entender tu proyecto.',boton1:'',enlace1:'',boton2:'',enlace2:'',icono:'',nota_titulo:'',nota_texto:''}),
+  b('contacto',{eyebrow:'Datos de contacto',titulo:'Hablemos',texto:'Completa el formulario o usa cualquiera de estos canales.',formulario:true,temas:true})]},
+ {id:'trabaja',title:'Trabaja con nosotros',slug:'trabaja-con-nosotros',status:'draft',edited:'ayer',seo:'',blocks:[
+  b('portada',{eyebrow:'Empleo',titulo:'Trabaja con nosotros',texto:'Buscamos personas que quieran construir tecnología para operaciones a gran escala.',boton1:'',enlace1:'',boton2:'',enlace2:'',icono:'',nota_titulo:'',nota_texto:''}),
+  b('contacto',{eyebrow:'Postula',titulo:'Envíanos tu hoja de vida',texto:'Por ahora no hay vacantes publicadas. Escríbenos y te contactaremos cuando se abra una acorde a tu perfil.',formulario:true,temas:false})]},
+ {id:'privacidad',title:'Política de privacidad',slug:'politica-de-privacidad',status:'pub',edited:'3 sep',seo:'',footer:true,blocks:[
+  b('portada',{eyebrow:'Legal',titulo:'Política de privacidad',texto:'Cómo tratamos los datos que nos envías a través de este sitio.',boton1:'',enlace1:'',boton2:'',enlace2:'',icono:'',nota_titulo:'',nota_texto:''}),
+  b('texto',{eyebrow:'Contenido',titulo:'',destacado:'',texto:'El texto de la política de privacidad lo redacta y aprueba Tramasec, y se edita desde el panel como cualquier otra página.'})]}
+);
+return {
+ pages:pages,
+ menu:[{page:'acerca'},{page:'soluciones'},{page:'nosotros'}],
+ cta:{label:'Contáctanos',page:'contacto',show:true},
+ set:{razon:'Transacciones Masivas del Ecuador Tramasec S.A.S.',nombre:'Tramasec',lema:'Tecnología, datos y seguridad desde Quito.',telefono:'',correo:'',direccion:'Quito, Ecuador',horario:'',web:'www.tramasec.com',linkedin:'',facebook:'',instagram:''},
+ images:[
+  {id:'img1',n:'oficina-quito.jpg',s:'1,2 MB',dim:'1920 × 1080',alt:'Oficina de Tramasec en Quito',v:1},
+  {id:'img2',n:'centro-de-datos.jpg',s:'980 KB',dim:'1600 × 1067',alt:'Centro de datos',v:2},
+  {id:'img3',n:'control-accesos.jpg',s:'860 KB',dim:'1600 × 1067',alt:'Lector de control de accesos',v:3},
+  {id:'img4',n:'equipo-reunion.jpg',s:'1,4 MB',dim:'2048 × 1365',alt:'Equipo en reunión',v:4},
+  {id:'img5',n:'banca-movil.jpg',s:'720 KB',dim:'1440 × 960',alt:'Persona usando banca móvil',v:5},
+  {id:'img6',n:'automatizacion.jpg',s:'1,1 MB',dim:'1920 × 1280',alt:'Tablero de automatización',v:6}]
+};
+})();
+
+/* ===== Tramasec · dibujado de bloques compartido (vista previa del panel y sitio público) ===== */
+window.TR=(function(){
+var P={
+arrow:"M5 12h14M13 6l6 6-6 6",transfer:"M4 8h15l-4-4M20 16H5l4 4",chart:"M3 21h18M7 21v-7M12 21V6M17 21V11",
+signal:"M12 11v10M9 21h6M9 8a4 4 0 0 1 6 0M6 5a8 8 0 0 1 12 0M12 11h.01",
+shield:"M12 3l8 3v6c0 4.5-3.4 8.2-8 9-4.6-.8-8-4.5-8-9V6l8-3zM9 12l2 2 4-4",
+lock:"M6 11h12a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1v-8a1 1 0 0 1 1-1zM8 11V8a4 4 0 0 1 8 0v3",
+gear:"M12 9a3 3 0 1 1 0 6 3 3 0 0 1 0-6zM12 2v3M12 19v3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M2 12h3M19 12h3M4.9 19.1L7 17M17 7l2.1-2.1",
+network:"M12 3a2 2 0 1 1 0 4 2 2 0 0 1 0-4zM5 17a2 2 0 1 1 0 4 2 2 0 0 1 0-4zM19 17a2 2 0 1 1 0 4 2 2 0 0 1 0-4zM12 7v5M12 12l-6 5M12 12l6 5",
+database:"M12 3c4.4 0 8 1.3 8 3s-3.6 3-8 3-8-1.3-8-3 3.6-3 8-3zM4 6v12c0 1.7 3.6 3 8 3s8-1.3 8-3V6M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3",
+server:"M5 4h14a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2zM5 13h14a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2zM7 7.5h.01M7 16.5h.01",
+cloud:"M7 18h10a4 4 0 0 0 .5-7.97A6 6 0 0 0 6.1 9.5 4.25 4.25 0 0 0 7 18z",
+globe:"M12 3a9 9 0 1 1 0 18 9 9 0 0 1 0-18zM3 12h18M12 3c2.5 2.5 3.5 5.5 3.5 9s-1 6.5-3.5 9c-2.5-2.5-3.5-5.5-3.5-9s1-6.5 3.5-9z",
+cpu:"M7 7h10v10H7zM10 3v4M14 3v4M10 17v4M14 17v4M3 10h4M3 14h4M17 10h4M17 14h4",
+users:"M9 11a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7zM3 20c0-3.3 2.7-6 6-6s6 2.7 6 6M16 4.5a3.5 3.5 0 0 1 0 6.5M21 20c0-2.6-1.6-4.9-4-5.7",
+briefcase:"M4 8h16v11H4zM9 8V5h6v3M4 13h16",
+bank:"M3 10l9-6 9 6M5 10v8M9.5 10v8M14.5 10v8M19 10v8M3 20h18",
+coop:"M12 12a3 3 0 1 0 0-6 3 3 0 0 0 0 6zM5 20c0-3.3 3.1-6 7-6s7 2.7 7 6M4 10a2 2 0 1 0 0-4M20 10a2 2 0 1 1 0-4",
+store:"M4 9l1.5-5h13L20 9M4 9h16v11H4zM4 9a2.7 2.7 0 0 0 5.3 0 2.7 2.7 0 0 0 5.4 0 2.7 2.7 0 0 0 5.3 0M10 20v-5h4v5",
+check:"M5 12l5 5 9-10",chevR:"M9 6l6 6-6 6",chevU:"M6 15l6-6 6 6",chevL:"M15 6l-6 6 6 6",
+menu:"M4 7h16M4 12h16M4 17h16",x:"M6 6l12 12M18 6L6 18",
+mail:"M4 5h16a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1zM3 6l9 7 9-7",
+phone:"M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a1 1 0 0 1-1 1A16 16 0 0 1 4 5a1 1 0 0 1 1-1z",
+pin:"M12 21s-7-6.1-7-11.5a7 7 0 0 1 14 0C19 14.9 12 21 12 21zM12 7a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5z",
+clock:"M12 3a9 9 0 1 1 0 18 9 9 0 0 1 0-18zM12 7v5l3 2",alert:"M12 3l10 18H2L12 3zM12 10v5M12 18h.01",
+ext:"M14 4h6v6M20 4l-9 9M18 14v6H4V6h6",
+linkedin:"M4 9h4v11H4zM6 4a2 2 0 1 1 0 4 2 2 0 0 1 0-4zM10 9h4v1.6c.6-1 1.8-1.8 3.4-1.8 2.6 0 3.6 1.7 3.6 4.4V20h-4v-6c0-1.2-.4-2-1.6-2S14 13 14 14v6h-4z",
+facebook:"M14 8h3V4h-3a4 4 0 0 0-4 4v3H7v4h3v6h4v-6h3l1-4h-4V8z",
+instagram:"M7 3h10a4 4 0 0 1 4 4v10a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4V7a4 4 0 0 1 4-4zM12 8a4 4 0 1 1 0 8 4 4 0 0 1 0-8zM17.5 6.5h.01",
+file:"M6 3h8l5 5v13H6zM14 3v5h5"
+};
+var CATALOG=["transfer","chart","signal","shield","lock","gear","network","database","server","cloud","globe","cpu","users","briefcase","bank","coop","store"];
+function I(n){return '<svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="'+(P[n]||P.file)+'"/></svg>';}
+function esc(s){return String(s==null?'':s).replace(/[&<>"]/g,function(m){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[m];});}
+function pg(C,id){for(var i=0;i<C.pages.length;i++)if(C.pages[i].id===id)return C.pages[i];return null;}
+function isPublic(p){return !!p&&(p.status==='pub'||p.status==='changes');}
+function url(C,p){if(!p)return '/';if(p.home)return '/';var par=p.parent?pg(C,p.parent):null;return (par&&!par.home?url(C,par).replace(/\/$/,'')+'/':'/')+p.slug;}
+function link(C,id,O){var p=pg(C,id);if(!p)return null;if(!O.preview&&!isPublic(p))return null;return '#'+url(C,p);}
+function btn(C,label,id,cls,O,arrow){if(!label)return '';var h=link(C,id,O);return '<a class="btn '+cls+'"'+(h?' href="'+h+'"':'')+'>'+esc(label)+(arrow?' '+I('arrow'):'')+'</a>';}
+function eb(n,t){return t?'<div class="eb">'+(n?String(n).padStart(2,'0')+' — ':'')+esc(t)+'</div>':'';}
+function paras(t){return String(t||'').split(/\n\s*\n/).filter(function(x){return x.trim();}).map(function(x){return '<p>'+esc(x.trim())+'</p>';}).join('');}
+function img(C,id){var v=1,n='';C.images.forEach(function(x){if(x.id===id){v=x.v;n=x.n;}});return '<div class="th-img v'+v+'"><i></i><i></i><i></i>'+(n?'<span class="img-lbl">'+esc(n)+'</span>':'')+'</div>';}
+function crumbs(C,p){var list=[],q=p;while(q&&q.parent){q=pg(C,q.parent);if(q&&!q.home)list.unshift(q);}
+  return '<nav class="crumb" aria-label="Ruta"><a href="#/">Inicio</a>'+list.map(function(x){return I('chevR')+'<a href="#'+url(C,x)+'">'+esc(x.title)+'</a>';}).join('')+I('chevR')+'<span>'+esc(p.title)+'</span></nav>';}
+function secHead(C,n,d,O){var right=d.boton?(function(){var h=link(C,d.destino,O);return h?'<a class="lnk" href="'+h+'"><span>'+esc(d.boton)+'</span>'+I('arrow')+'</a>':'';})():'';
+  return '<div class="sh">'+eb(n,d.eyebrow)+'<div class="row"><div>'+(d.titulo?'<h2 class="h1">'+esc(d.titulo)+'</h2>':'')+(d.texto?'<p class="lead">'+esc(d.texto)+'</p>':'')+'</div>'+right+'</div></div>';}
+function solutionsFor(C){var out=[];C.pages.forEach(function(p){(p.blocks||[]).forEach(function(b){if(b.t==='tarjetas')b.d.items.forEach(function(it){if(it.enlace&&/^sol-/.test(it.enlace)&&out.indexOf(it.titulo)<0)out.push(it.titulo);});});});return out;}
+
+function field(O,k,label,opt){opt=opt||{};var f=O.form||{err:{}},e=f.err&&f.err[k],v=f[k]||'',id='cf_'+k;
+  var ctl=opt.area?'<textarea class="inp'+(e?' bad':'')+'" id="'+id+'" data-ff="'+k+'" placeholder="'+esc(opt.ph||'')+'">'+esc(v)+'</textarea>':
+   '<input class="inp'+(e?' bad':'')+'" id="'+id+'" type="'+(opt.type||'text')+'" data-ff="'+k+'" value="'+esc(v)+'" placeholder="'+esc(opt.ph||'')+'"'+(opt.ac?' autocomplete="'+opt.ac+'"':'')+'>';
+  return '<div class="fld"><label for="'+id+'">'+label+(opt.opt?' <small>(opcional)</small>':'')+'</label>'+ctl+(e?'<span class="err">'+I('alert')+e+'</span>':'')+'</div>';}
+
+var R={
+ portada:function(C,p,d,n,O){
+  if(p.home)return '<section class="hero"><div class="w"><div>'+eb(0,d.eyebrow)+'<h1>'+esc(d.titulo)+'</h1>'+(d.texto?'<p class="lead">'+esc(d.texto)+'</p>':'')+((d.boton1||d.boton2)?'<div class="ac">'+btn(C,d.boton1,d.enlace1,'btn-p',O,1)+btn(C,d.boton2,d.enlace2,'btn-s',O)+'</div>':'')+'</div>'+
+   '<div class="sky" aria-hidden="true"><span class="rule" style="top:96px"></span><span class="rule" style="top:180px"></span><span class="rule" style="top:264px"></span><span class="sun"></span><span class="c1"></span><span class="c2"></span>'+(d.nota_titulo?'<div class="hnote"><b>'+esc(d.nota_titulo)+'</b><span>'+esc(d.nota_texto)+'</span></div>':'')+'</div></div></section>';
+  return '<section class="ph"><span class="arc"></span><span class="arc2"></span><span class="sunb"></span><div class="w">'+crumbs(C,p)+(d.icono?'<div class="ico-big">'+I(d.icono)+'</div>':'')+eb(0,d.eyebrow)+'<h1>'+esc(d.titulo)+'</h1>'+(d.texto?'<p class="lead">'+esc(d.texto)+'</p>':'')+((d.boton1||d.boton2)?'<div class="ac">'+btn(C,d.boton1,d.enlace1,'btn-p',O,1)+btn(C,d.boton2,d.enlace2,'btn-s',O)+'</div>':'')+'</div></section>';},
+ texto:function(C,p,d,n,O,alt){var ps=String(d.texto||'').split(/\n\s*\n/).filter(function(x){return x.trim();});
+  return '<section class="sec'+(alt?' alt':'')+'"><div class="w"><div class="txt">'+eb(n,d.eyebrow)+'<div class="body">'+(d.titulo?'<h2 class="h1">'+esc(d.titulo)+'</h2>':'')+(d.destacado?'<blockquote>'+esc(d.destacado)+'</blockquote>':'')+(ps.length>1&&d.destacado?'<div class="cols">'+paras(d.texto)+'</div>':paras(d.texto))+'</div></div></div></section>';},
+ datos:function(C,p,d,n,O,alt){return '<section class="sec datos'+(alt?' alt':'')+'"><div class="w"><div class="facts">'+d.items.map(function(x){return '<div><strong>'+esc(x.valor)+'</strong><span>'+esc(x.etiqueta)+'</span></div>';}).join('')+'</div></div></section>';},
+ tarjetas:function(C,p,d,n,O,alt){return '<section class="sec'+(alt?' alt':'')+'"><div class="w">'+secHead(C,n,d,O)+'<div class="grid'+(d.columnas==='2'?' two':'')+'">'+d.items.map(function(x,i){var h=x.enlace?link(C,x.enlace,O):null,tag=h?'a href="'+h+'"':'div';
+   return '<'+tag+' class="cell"><span class="n">'+String(i+1).padStart(2,'0')+'</span>'+(x.icono?'<div class="ico">'+I(x.icono)+'</div>':'')+'<h3>'+esc(x.titulo)+'</h3><p>'+esc(x.texto)+'</p>'+(h?'<span class="lnk"><span>Ver más</span>'+I('arrow')+'</span>':'')+'</'+(h?'a':'div')+'>';}).join('')+'</div></div></section>';},
+ equipo:function(C,p,d,n,O,alt){return '<section class="sec'+(alt?' alt':'')+'"><div class="w">'+secHead(C,n,d,O)+'<div class="team">'+d.items.map(function(e){return '<div><div class="pf"><i></i><b>'+I(e.icono)+'</b></div><h3>'+esc(e.nombre)+'</h3><span>'+esc(e.cargo)+'</span></div>';}).join('')+'</div></div></section>';},
+ pasos:function(C,p,d,n,O,alt){return '<section class="sec'+(alt?' alt':'')+'"><div class="w">'+secHead(C,n,d,O)+'<div class="tl">'+d.items.map(function(x){return '<div class="y"><strong>'+esc(x.etiqueta)+'</strong><h3>'+esc(x.titulo)+'</h3><p>'+esc(x.texto)+'</p></div>';}).join('')+'</div></div></section>';},
+ imagen:function(C,p,d,n,O,alt){var pts=String(d.puntos||'').split('\n').filter(function(x){return x.trim();});var h=d.boton?link(C,d.destino,O):null;
+  return '<section class="sec'+(alt?' alt':'')+'"><div class="w"><div class="it2'+(d.lado==='derecha'?' r':'')+'"><div class="im">'+img(C,d.imagen)+'</div><div>'+eb(n,d.eyebrow)+'<h2 class="h1">'+esc(d.titulo)+'</h2>'+paras(d.texto)+(pts.length?'<ul>'+pts.map(function(t){return '<li>'+I('check')+'<span>'+esc(t)+'</span></li>';}).join('')+'</ul>':'')+(h?'<div style="margin-top:28px"><a class="lnk" href="'+h+'"><span>'+esc(d.boton)+'</span>'+I('arrow')+'</a></div>':'')+'</div></div></div></section>';},
+ llamado:function(C,p,d,n,O){return '<section class="cta"><span class="arc"></span><div class="w"><div><h2 class="h1">'+esc(d.titulo)+'</h2>'+(d.texto?'<p>'+esc(d.texto)+'</p>':'')+'</div><div class="ac">'+btn(C,d.boton,d.destino,'btn-l',O,1)+'</div></div></section>';},
+ contacto:function(C,p,d,n,O,alt){var s=C.set,v=function(x){return x?'<span>'+esc(x)+'</span>':'<span class="pd">Por completar en Ajustes del sitio</span>';};
+  var info='<ul class="ci"><li>'+I('pin')+'<div><b>Oficina</b>'+v(s.direccion)+'</div></li><li>'+I('phone')+'<div><b>Teléfono</b>'+v(s.telefono)+'</div></li><li>'+I('mail')+'<div><b>Correo</b>'+v(s.correo)+'</div></li>'+(s.horario?'<li>'+I('clock')+'<div><b>Horario</b><span>'+esc(s.horario)+'</span></div></li>':'')+(s.web?'<li>'+I('globe')+'<div><b>Web</b><span>'+esc(s.web)+'</span></div></li>':'')+'</ul>';
+  var f=O.form||{err:{},tema:[]},form='';
+  if(d.formulario){
+   if(f.sent)form='<div class="frm"><div class="done"><div class="ico">'+I('check')+'</div><h3>Recibimos tu mensaje</h3><p>Gracias, '+esc((f.nombre||'').split(' ')[0])+'. Te escribiremos a '+esc(f.correo)+'.</p><button class="btn btn-s" data-act="reset">Enviar otro mensaje</button></div></div>';
+   else{var temas=d.temas?solutionsFor(C):[],pv=link(C,'privacidad',O);
+    form='<form class="frm" novalidate onsubmit="return false"><div class="two">'+field(O,'nombre','Nombre',{ac:'name',ph:'Tu nombre'})+field(O,'empresa','Empresa',{ac:'organization',ph:'Nombre de la empresa',opt:1})+'</div><div class="two">'+field(O,'correo','Correo',{type:'email',ac:'email',ph:'nombre@empresa.com'})+field(O,'telefono','Teléfono',{type:'tel',ac:'tel',ph:'+593',opt:1})+'</div>'+
+    (temas.length?'<div class="fld"><span class="flbl">¿En qué te ayudamos? <small>(elige una o varias)</small></span><div class="chips">'+temas.map(function(t){var on=(f.tema||[]).indexOf(t)>=0;return '<button type="button" class="chip'+(on?' on':'')+'" data-act="tema" data-arg="'+esc(t)+'" aria-pressed="'+on+'">'+(on?I('check'):'')+esc(t)+'</button>';}).join('')+'</div></div>':'')+
+    field(O,'mensaje','Mensaje',{area:1,ph:'Cuéntanos brevemente qué necesitas.'})+
+    '<button type="button" class="chk" data-act="accept"><span class="box'+(f.acepto?' on':'')+'">'+(f.acepto?I('check'):'')+'</span><span>Acepto que Tramasec use estos datos para responder mi solicitud'+(pv?', según la <a href="'+pv+'">política de privacidad</a>':'')+'.</span></button>'+(f.err&&f.err.acepto?'<span class="err">'+I('alert')+f.err.acepto+'</span>':'')+
+    '<div><button type="button" class="btn btn-p" data-act="send">Enviar mensaje '+I('arrow')+'</button></div></form>';}
+  }
+  return '<section class="sec'+(alt?' alt':'')+'"><div class="w"><div class="ct"><div>'+eb(n,d.eyebrow)+(d.titulo?'<h2 class="h1" style="margin-top:16px">'+esc(d.titulo)+'</h2>':'')+(d.texto?'<p class="mut" style="margin-top:12px;max-width:44ch">'+esc(d.texto)+'</p>':'')+info+'</div>'+form+'</div></div></section>';}
+};
+var NUMBERED={texto:1,tarjetas:1,equipo:1,pasos:1,imagen:1,contacto:1};
+var SEC={texto:1,tarjetas:1,equipo:1,pasos:1,imagen:1,contacto:1};
+
+function header(C,activeId,O){O=O||{};var act=pg(C,activeId),top=act;while(top&&top.parent)top=pg(C,top.parent);
+  var items=C.menu.map(function(m){if(m.page){var p=pg(C,m.page);if(!p||(!O.preview&&!isPublic(p)))return '';var on=act&&(act.id===p.id||(top&&top.id===p.id));return '<a href="#'+url(C,p)+'" class="'+(on?'on':'')+'">'+esc(p.title)+'</a>';}return '<a href="'+esc(m.url)+'" target="_blank" rel="noopener">'+esc(m.label)+' '+I('ext')+'</a>';}).join('');
+  var cta=C.cta.show?btn(C,C.cta.label,C.cta.page,'btn-p hcta',O):'';
+  var h='<header class="hd"><div class="w"><a class="brand" href="#/" aria-label="'+esc(C.set.nombre)+', inicio"><span class="dot"></span>'+esc((C.set.nombre||'').toLowerCase())+'</a><nav class="snav" aria-label="Principal">'+items+'</nav>'+cta+'<button class="burger" data-act="menu" aria-label="Abrir menú" aria-expanded="'+!!O.menuOpen+'">'+I('menu')+'</button></div></header>';
+  if(O.mobileNav){var home=pg(C,'inicio');
+   h+='<div class="mnav'+(O.menuOpen?' open':'')+'" role="dialog" aria-label="Menú"><div class="top"><a class="brand" href="#/"><span class="dot"></span>'+esc((C.set.nombre||'').toLowerCase())+'</a><button class="burger" data-act="menu" aria-label="Cerrar menú">'+I('x')+'</button></div><ul><li><a href="#/" class="'+(act&&act.home?'on':'')+'">'+esc(home?home.title:'Inicio')+I('chevR')+'</a></li>'+
+   C.menu.map(function(m){if(m.page){var p=pg(C,m.page);if(!p||!isPublic(p))return '';var on=act&&(act.id===p.id||(top&&top.id===p.id));return '<li><a href="#'+url(C,p)+'" class="'+(on?'on':'')+'">'+esc(p.title)+I('chevR')+'</a></li>';}return '<li><a href="'+esc(m.url)+'" target="_blank" rel="noopener">'+esc(m.label)+I('ext')+'</a></li>';}).join('')+
+   '</ul><div class="bot">'+(C.cta.show?btn(C,C.cta.label,C.cta.page,'btn-p',O,1):'')+'<small>'+[C.set.direccion,C.set.web].filter(Boolean).map(esc).join(' · ')+'</small></div></div>';}
+  return h;}
+function footer(C,O){O=O||{};var s=C.set,ok=function(p){return p&&(O.preview||isPublic(p));};
+  var menuPages=C.menu.map(function(m){return m.page?pg(C,m.page):null;}).filter(ok);
+  var parent=null,kids=[];menuPages.some(function(p){var k=C.pages.filter(function(x){return x.parent===p.id&&ok(x);});if(k.length){parent=p;kids=k;return true;}});
+  var soc=[['linkedin',s.linkedin],['facebook',s.facebook],['instagram',s.instagram]].filter(function(x){return x[1];});
+  var legal=C.pages.filter(function(p){return p.footer&&ok(p);});
+  return '<footer class="ft"><div class="w"><div class="top"><div><a class="brand" href="#/"><span class="dot"></span>'+esc((s.nombre||'').toLowerCase())+'</a><p>'+esc(s.razon)+'. '+esc(s.lema)+'</p>'+(soc.length?'<div class="soc">'+soc.map(function(x){return '<a href="https://'+esc(x[1].replace(/^https?:\/\//,''))+'" target="_blank" rel="noopener" aria-label="'+x[0]+'">'+I(x[0])+'</a>';}).join('')+'</div>':'')+'</div>'+
+  '<div><h4>SITIO</h4><ul><li><a href="#/">Inicio</a></li>'+menuPages.map(function(p){return '<li><a href="#'+url(C,p)+'">'+esc(p.title)+'</a></li>';}).join('')+(C.cta.show&&ok(pg(C,C.cta.page))?'<li><a href="#'+url(C,pg(C,C.cta.page))+'">'+esc(pg(C,C.cta.page).title)+'</a></li>':'')+'</ul></div>'+
+  (parent?'<div><h4>'+esc(parent.title.toUpperCase())+'</h4><ul>'+kids.slice(0,5).map(function(p){return '<li><a href="#'+url(C,p)+'">'+esc(p.title)+'</a></li>';}).join('')+(kids.length>5?'<li><a href="#'+url(C,parent)+'">Ver todas</a></li>':'')+'</ul></div>':'<div></div>')+
+  '<div><h4>CONTACTO</h4><ul>'+[s.direccion,s.telefono,s.correo,s.web].filter(Boolean).map(function(x){return '<li>'+esc(x)+'</li>';}).join('')+'</ul></div></div>'+
+  '<div class="bot"><span>© 2026 '+esc(s.razon)+'</span><span class="lg">'+legal.map(function(p){return '<a href="#'+url(C,p)+'">'+esc(p.title)+'</a>';}).join(' · ')+'</span></div></div></footer>';}
+function page(C,p,O){O=O||{};var n=0,alt=true,h='';
+  if(!p.blocks.length)h='<div class="emptyb">Esta página aún no tiene bloques.</div>';
+  p.blocks.forEach(function(b,i){var num=NUMBERED[b.t]&&b.d.eyebrow?++n:0;if(SEC[b.t])alt=!alt;
+    var html=R[b.t]?R[b.t](C,p,b.d,num,O,b.t==='datos'?alt:alt):'';
+    if(O.selectable)html='<div class="blk'+(i===O.sel?' sel':'')+'" data-act="selblock" data-arg="'+i+'"><span class="bt">'+esc(O.names&&O.names[b.t]||b.t)+'</span>'+html+'</div>';
+    h+=html;});
+  return h;}
+function notFound(){return '<section class="nf"><div><div class="num">404</div><h1>No encontramos esta página</h1><p>Puede que la dirección haya cambiado o que la página ya no exista.</p><div class="ac"><a class="btn btn-p" href="#/">Ir al inicio</a></div></div></section>';}
+function findByPath(C,path){path='/'+String(path||'').replace(/^\/+|\/+$/g,'');if(path==='/')path='/';var r=null;C.pages.forEach(function(p){if(url(C,p)===path)r=p;});return r;}
+return {P:P,I:I,esc:esc,CATALOG:CATALOG,pg:pg,url:url,isPublic:isPublic,header:header,footer:footer,page:page,notFound:notFound,findByPath:findByPath,img:img,solutionsFor:solutionsFor};
+})();
+
+/* ===== Tramasec · sitio público: muestra exactamente las páginas publicadas del panel ===== */
+(function(){
+var C=window.TRAMASEC_CONTENT,I=TR.I;
+var app=document.getElementById('app');
+var cur=null,menuOpen=false;
+var F={nombre:'',empresa:'',correo:'',telefono:'',mensaje:'',tema:[],acepto:false,err:{},sent:false};
+function render(keep){
+  var y=window.scrollY,html;
+  var page=cur&&TR.isPublic(cur)?cur:null;
+  document.title=page?(page.home?C.set.nombre+' · '+(page.blocks[0]&&page.blocks[0].d.titulo||''):page.title+' · '+C.set.nombre):'Página no encontrada · '+C.set.nombre;
+  html=page?TR.page(C,page,{form:F}):TR.notFound();
+  app.innerHTML=TR.header(C,page&&page.id,{mobileNav:1,menuOpen:menuOpen})+'<main>'+html+'</main>'+TR.footer(C)+'<button class="totop" data-act="top" aria-label="Volver arriba">'+I('chevU')+'</button>';
+  document.body.style.overflow=menuOpen?'hidden':'';
+  if(keep)window.scrollTo(0,y);
+}
+function onHash(){
+  var h=location.hash.replace(/^#/,'')||'/';
+  cur=TR.findByPath(C,h.split('?')[0]);menuOpen=false;
+  render();window.scrollTo(0,0);
+}
+var A={
+ menu:function(){menuOpen=!menuOpen;render(true);},
+ top:function(){window.scrollTo({top:0,behavior:'smooth'});},
+ tema:function(t){var i=F.tema.indexOf(t);if(i>=0)F.tema.splice(i,1);else F.tema.push(t);render(true);},
+ accept:function(a,el,e){if(e.target.closest('a'))return;F.acepto=!F.acepto;delete F.err.acepto;render(true);},
+ reset:function(){F.sent=false;F.mensaje='';F.tema=[];F.acepto=false;render(true);},
+ send:function(){var e={};
+  if(!F.nombre.trim())e.nombre='Escribe tu nombre.';
+  if(!F.correo.trim())e.correo='Escribe tu correo.';else if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(F.correo))e.correo='Revisa el correo: debe ser como nombre@empresa.com.';
+  if(!F.mensaje.trim())e.mensaje='Cuéntanos brevemente qué necesitas.';
+  if(!F.acepto)e.acepto='Necesitamos tu autorización para responderte.';
+  F.err=e;if(!Object.keys(e).length)F.sent=true;render(true);
+  var ip=app.querySelector('.inp.bad')||app.querySelector('.err');
+  if(ip){var r=ip.getBoundingClientRect();if(r.top<90||r.top>window.innerHeight-60)window.scrollBy({top:r.top-120});if(ip.focus)ip.focus({preventScroll:true});}}
+};
+document.addEventListener('click',function(e){
+  var t=e.target.closest('[data-act]');
+  if(t){if(t.tagName==='BUTTON'&&!e.target.closest('a'))e.preventDefault();var f=A[t.dataset.act];if(f)f(t.dataset.arg,t,e);if(!e.target.closest('a'))return;}
+  var a=e.target.closest('a');
+  if(a&&!a.getAttribute('href')){e.preventDefault();}
+  if(a&&a.getAttribute('href')===location.hash){menuOpen=false;render();window.scrollTo(0,0);}
+});
+document.addEventListener('input',function(e){var k=e.target.dataset.ff;if(!k)return;F[k]=e.target.value;if(F.err[k]){delete F.err[k];e.target.classList.remove('bad');var er=e.target.parentNode.querySelector('.err');if(er)er.remove();}});
+document.addEventListener('keydown',function(e){if(e.key==='Escape'&&menuOpen){menuOpen=false;render(true);}});
+window.addEventListener('scroll',function(){var b=app.querySelector('.totop');if(b)b.classList.toggle('show',window.scrollY>700);},{passive:true});
+window.addEventListener('hashchange',onHash);
+window.__F=F;window.__render=render;
+onHash();
+})();
+
+</script>
+</body>
+</html>
