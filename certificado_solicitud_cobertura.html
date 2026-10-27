@@ -1,0 +1,619 @@
+<?php // Variables PHP (sustituibles dinámicamente)
+$nombre_solicitante = $nombre_solicitante ?? "";
+$cedula             = $cedula             ?? "";
+$direccion          = $direccion          ?? "";
+$celular            = $celular            ?? "";
+$fecha_nacimiento   = $fecha_nacimiento   ?? "";
+$edad               = $edad               ?? "";
+$genero             = $genero             ?? "";
+$ciudad             = $ciudad             ?? "";
+$correo             = $correo             ?? "";
+$fecha_desde        = $fecha_desde        ?? "";
+$fecha_hasta        = $fecha_hasta        ?? "";
+
+// Datos de beneficiario
+$ben_cedula    = $ben_cedula    ?? "";
+$ben_nombre    = $ben_nombre    ?? "";
+$ben_porcentaje= $ben_porcentaje?? "";
+$ben_telefono  = $ben_telefono  ?? "";
+$ben_correo    = $ben_correo    ?? "";
+$ben_parentesco= $ben_parentesco?? "";
+?>
+
+
+
+    <meta charset="UTF-8">
+    <title>Certificado Inmedical - Cooperativa Cotocollao</title>
+    <style>
+        @page {
+            size: A4 portrait;
+            margin: 8mm 10mm 8mm 10mm;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Calibri, 'Calibri Light', Arial, sans-serif;
+            font-size: 8pt; /* Ajustado: 0.5pt menos que el anterior */
+            color: #1a1a1a;
+            line-height: 1.2;
+            margin: 0;
+            padding: 0;
+        }
+
+        .page-break {
+            page-break-after: always;
+        }
+
+        /* --- ENCABEZADOS Y TÍTULOS --- */
+        .titulo-header {
+            text-align: center;
+            font-weight: bold;
+            font-size: 11pt;
+            color: #1a1a1a;
+            line-height: 1.2;
+            margin-bottom: 6px;
+            text-transform: uppercase;
+        }
+
+        /* --- TABLA UNIFICADA CON BORDES PUNTEADOS Y LÍNEA CONTINUA EN BENEFICIARIOS --- */
+        .tabla-datos-unificada {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 6px;
+        }
+
+        .tabla-datos-unificada td, .tabla-datos-unificada th {
+            border: 1px dashed #444444;
+            padding: 3px 5px;
+            vertical-align: middle;
+            font-size: 8pt;
+        }
+
+        /* Línea continua específica para separar el título de beneficiarios de los títulos de columnas */
+        .linea-continua-ben {
+            border-bottom: 1px solid #444444 !important;
+            border-top: 1px dashed #444444;
+            border-left: 1px dashed #444444;
+            border-right: 1px dashed #444444;
+        }
+
+        .tabla-datos-unificada th {
+            font-weight: bold;
+            text-align: left;
+            background-color: #ffffff;
+        }
+
+        /* --- TABLA DE COBERTURAS --- */
+        .tabla-coberturas {
+            width: 82%;
+            margin: 5px auto 3px auto;
+            border-collapse: collapse;
+        }
+
+        .tabla-coberturas th {
+            border: 1px dashed #444444;
+            padding: 3px 5px;
+            font-size: 9pt;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .tabla-coberturas td {
+            border: 1px dashed #444444;
+            padding: 3px 5px;
+            font-size: 8pt;
+            vertical-align: top;
+        }
+
+        .tasa-pie {
+            text-align: center;
+            font-size: 8pt;
+            font-weight: bold;
+            margin: 4px 0 2px 0;
+        }
+
+        /* LÍNEA DIVISORIA CONTINUA BAJO LA TASA */
+        .linea-divisorias-solicitud {
+            border-top: 1px solid #000000;
+            margin: 4px 0 6px 0;
+        }
+
+        /* --- SECCIONES DE TEXTO LEGAL --- */
+        .bloque-legal {
+            font-size: 7.3pt; /* Ajustado proporcionalmente */
+            text-align: justify;
+            line-height: 1.15;
+            margin-bottom: 4px;
+            color: #222222;
+        }
+
+        .bloque-legal strong {
+            color: #000000;
+        }
+
+        .bloque-legal ol, .bloque-legal ul {
+            margin: 2px 0;
+            padding-left: 12px;
+        }
+
+        .bloque-legal li {
+            margin-bottom: 1.5px;
+        }
+
+        /* --- CASILLA DE VERIFICACIÓN / X --- */
+        .box-check-container {
+            display: inline-block;
+            width: 24px;
+            height: 12px;
+            border: 1px solid #000000;
+            vertical-align: middle;
+            margin-left: 4px;
+            margin-right: 4px;
+            text-align: center;
+            line-height: 10px;
+            font-weight: bold;
+            font-size: 8pt;
+        }
+
+        /* --- FIRMA Y FOOTER --- */
+        .seccion-firma-anverso {
+            width: 100%;
+            margin-top: 10px;
+            margin-bottom: 4px;
+            text-align: center;
+            font-size: 8pt;
+        }
+
+        .linea-puntos-firma {
+            display: inline-block;
+            width: 250px;
+            border-bottom: 1px dotted #000000;
+            margin-left: 5px;
+        }
+
+        .texto-super-cias {
+            text-align: center;
+            font-size: 7.5pt;
+            font-weight: bold;
+            margin-top: 3px;
+            margin-bottom: 6px;
+        }
+
+        .footer-logos {
+            width: 100%;
+            border-top: 1px solid #aaaaaa;
+            padding-top: 4px;
+            margin-top: 4px;
+        }
+
+        .footer-logos td {
+            vertical-align: middle;
+            font-size: 7.2pt;
+            color: #555555;
+        }
+
+        /* --- PÁGINA 2: BARRAS GRISES DE SECCIÓN --- */
+        .barra-seccion {
+            background-color: #595959;
+            color: #ffffff;
+            font-weight: bold;
+            font-size: 8.5pt;
+            padding: 3px 6px;
+            margin-top: 4px;
+            margin-bottom: 3px;
+            text-transform: uppercase;
+        }
+
+        .titulo-pagina2 {
+            font-size: 10pt;
+            font-weight: bold;
+            text-align: center;
+            margin: 3px 0 5px 0;
+        }
+
+        .subtitulo-anexo {
+            font-size: 9pt;
+            font-weight: bold;
+            text-align: center;
+            margin: 5px 0 3px 0;
+            text-transform: uppercase;
+        }
+
+        /* --- CÓDIGOS QR Y TABLAS COMPUESTAS EN PÁGINA 2 --- */
+        .qr-placeholder {
+            width: 65px;
+            height: 65px;
+            border: 1px solid #000000;
+            border-radius: 6px;
+            padding: 2px;
+            background-color: #ffffff;
+        }
+
+        .box-coordinacion {
+            text-align: center;
+            font-weight: bold;
+            font-size: 8pt;
+            border-top: 1px solid #888888;
+            border-bottom: 1px solid #888888;
+            padding: 3px 0;
+            margin: 5px 0;
+        }
+
+        .tabla-pasos {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .tabla-pasos td {
+            width: 50%;
+            vertical-align: top;
+            padding: 0 8px;
+            font-size: 7.3pt;
+        }
+
+        .pasos-titulo {
+            font-weight: bold;
+            font-size: 7.8pt;
+            border-bottom: 1px dashed #666666;
+            padding-bottom: 2px;
+            margin-bottom: 3px;
+            text-transform: uppercase;
+        }
+
+        .linea-separadora-vert {
+            border-right: 1px solid #aaaaaa;
+        }
+    </style>
+
+
+
+    <!-- ==================== PÁGINA 1: ANVERSO ==================== -->
+    
+    <div class="titulo-header">
+        SOLICITUD DE COBERTURA Y CERTIFICADO DE SALUD PREPAGADA Y DE SEGURO<br>
+        COOPERATIVA DE AHORRO Y CRÉDITO COTOCOLLAO PARA CUOTAS DESDE $501 HASTA $1.500
+    </div>
+
+    <!-- TABLA ÚNICA Y CONTINUA PARA DATOS Y BENEFICIARIOS -->
+    <table class="tabla-datos-unificada">
+        <tbody><tr>
+            <td style="width: 15%;"><strong>Nombre Solicitante:</strong></td>
+            <td style="width: 45%;" colspan="3"><?php echo htmlspecialchars($nombre_solicitante); ?></td>
+            <td style="width: 15%;"><strong>Cédula de Identidad:</strong></td>
+            <td style="width: 25%;"><?php echo htmlspecialchars($cedula); ?></td>
+        </tr>
+        <tr>
+            <td><strong>Dirección Domicilio:</strong></td>
+            <td colspan="3"><?php echo htmlspecialchars($direccion); ?></td>
+            <td><strong>Celular:</strong></td>
+            <td><?php echo htmlspecialchars($celular); ?></td>
+        </tr>
+        <tr>
+            <td><strong>Fecha de nacimiento:</strong></td>
+            <td colspan="3"><?php echo htmlspecialchars($fecha_nacimiento); ?></td>
+            <td><strong>Edad:</strong></td>
+            <td><?php echo htmlspecialchars($edad); ?></td>
+        </tr>
+        <tr>
+            <td><strong>Género:</strong></td>
+            <td colspan="3"><?php echo htmlspecialchars($genero); ?></td>
+            <td><strong>Ciudad:</strong></td>
+            <td><?php echo htmlspecialchars($ciudad); ?></td>
+        </tr>
+        <tr>
+            <td><strong>Correo electrónico:</strong></td>
+            <td colspan="3"><?php echo htmlspecialchars($correo); ?></td>
+            <td><strong>Fecha inicio - Fin:</strong></td>
+            <td>
+                <strong>Desde:</strong> <?php echo htmlspecialchars($fecha_desde); ?> / /<br>
+                <strong>Hasta:</strong> <?php echo htmlspecialchars($fecha_hasta); ?> / /
+            </td>
+        </tr>
+        <!-- FILA DE BENEFICIARIOS CON LÍNEA INFERIOR CONTINUA -->
+        <tr>
+            <td colspan="6" class="linea-continua-ben" style="font-weight: bold; background-color: #ffffff;">
+                Beneficiarios (Vida / Muerte por cualquier causa):
+            </td>
+        </tr>
+        <tr style="text-align: center; font-weight: bold;">
+            <td style="width: 15%;">No. Cédula</td>
+            <td style="width: 32%;" colspan="2">Nombre completo</td>
+            <td style="width: 11%;">Porcentaje</td>
+            <td style="width: 12%;">Teléfono</td>
+            <td style="width: 30%;">Correo Electrónico / Parentesco</td>
+        </tr>
+        <tr style="height: 18px; text-align: center;">
+            <td><?php echo htmlspecialchars($ben_cedula); ?></td>
+            <td colspan="2"><?php echo htmlspecialchars($ben_nombre); ?></td>
+            <td><?php echo htmlspecialchars($ben_porcentaje); ?></td>
+            <td><?php echo htmlspecialchars($ben_telefono); ?></td>
+            <td>
+                <?php $info_contacto = array_filter([$ben_correo, $ben_parentesco]);
+                    echo htmlspecialchars(implode(' - ', $info_contacto)); 
+                ?>
+            </td>
+        </tr>
+    </tbody></table>
+
+    <!-- COBERTURAS -->
+    <table class="tabla-coberturas">
+        <thead>
+            <tr>
+                <th style="width: 42%;">COBERTURAS</th>
+                <th style="width: 58%;">DETALLE</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>Consultas de Médico Telefónico</strong></td>
+                <td>Ilimitadas dentro de la Red Inmedical</td>
+            </tr>
+            <tr>
+                <td><strong>Entrega de medicamentos</strong></td>
+                <td>Gratuitas de acuerdo a Vademécum</td>
+            </tr>
+            <tr>
+                <td><strong>Beneficios adicionales para el titular del servicio</strong></td>
+                <td>
+                    Respaldo Cooperativo - Hasta $1.500 USD según la cuota del crédito del titular<br>
+                    En las siguientes coberturas:<br>
+                    - Cobertura desempleo, ó<br>
+                    - Cobertura renuncia voluntaria, ó<br>
+                    - Quiebra de negocio<br>
+                    - Muerte por cualquier causa: $ 100 USD
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="tasa-pie">
+        Titular sólo: Tasa neta: $ 1,590% - Seguro Social Campesino: $ 0,012% - Tasa Final: $ 1,602% del valor de la cuota mensual del crédito
+    </div>
+
+    <!-- LÍNEA CONTINUA DIVISORIA EXACTA -->
+    <div class="linea-divisorias-solicitud"></div>
+
+    <!-- SECCIONES LEGALES Y CLAUSULADO -->
+    <div class="bloque-legal">
+        <strong>SOLICITUD. -</strong> Con la suscripción de la presente solicitud expreso libremente y con plena capacidad legal para hacerlo, que he leído o he sido plenamente informado de:
+        <ol>
+            <li>Que el prestador de medicina prepagada es INMEDICAL S.A., legalmente habilitada para brindar dichos servicios.</li>
+            <li>Que he sido informado y que conozco que, de manera adicional a la cobertura de salud prepagada, recibiré la cobertura de vida y de los seguros de desempleo, renuncia voluntaria y cierre de negocio, que serán ofertados por compañías autorizadas para brindar ese tipo de servicios, información consta en la presente solicitud y cuyo certificado se encuentra en este mismo documento.</li>
+            <li>Los servicios de financiamiento de salud prepagada que recibiré, así como los otros beneficios detallados en este documento, de mis derechos, condiciones y demás estipulaciones del contrato, así como de que las mismas podrán ser consultadas y descargadas en el sitio web de Inmedical (www.inmedical.com.ec).</li>
+            <li>Que podré solicitar la terminación del servicio en cualquier momento, para lo cual deberé notificar por escrito mi decisión de no seguir recibiendo el servicio a INMEDICAL (info@inmedical.com.ec).</li>
+            <li>Que podré consultar todas las condiciones de los servicios que he contratado en el código QR que consta en la presente solicitud. En donde podré revisar los riesgos cubiertos, exclusiones y carencias, las causales de resolución del contrato, el procedimiento, documentación requerida y plazo para presentar la solicitud de reembolso, procedimiento para presentar quejas o reclamos por insatisfacción de los usuarios ante un servicio de la empresa, los mecanismos de solución de controversias, los medios de contacto de la empresa para atender reclamos y quejas de los usuarios; y, que podré consultar la guía de los servicios en el mismo código. Del mismo modo, podré consultar dichas condiciones en la siguiente dirección <strong>www.inmedical.com.ec/condicionesocotocollao</strong> o podrán ser enviados a mi correo electrónico, en caso de haber realizado de mi parte, una solicitud por escrito a la dirección info@inmedical.com.ec.</li>
+        </ol>
+    </div>
+
+    <div class="bloque-legal">
+        <strong>ACEPTACIÓN DEL SERVICIO Y NOTIFICACIONES:</strong><br>
+        Con la suscripción de la presente solicitud ACEPTO recibir el servicio de financiamiento de salud prepagada, el mismo que será pagado a través del proceso de recaudación aceptado, y cuyo precio final es: Tasa neta: $ 1,590% - Seguro Social Campesino: $ 0,012% - <strong>Tasa Final: $ 1,602% del valor de la cuota mensual del crédito</strong> <span class="box-check-container"></span> <strong>Marcar con una X</strong>
+    </div>
+
+    <div class="bloque-legal">
+        <strong>NOTIFICACIONES:</strong> Con la suscripción de la presente solicitud ACEPTO recibir notificaciones por medio de correo electrónico, mensajes de texto, llamada telefónica o cualquier otro medio electrónico que permita el registro de los datos remitidos. Las notificaciones se considerarán enviadas cuando hayan salido de la red electrónica de INMEDICAL S.A; y, recibidas cuando el mensaje de datos ingrese al sistema de información o red electrónica del destinatario, independientemente de haberse recuperado o no el mensaje de datos.
+    </div>
+
+    <div class="bloque-legal">
+        <strong>TRATAMIENTO DE DATOS PERSONALES:</strong> A la suscripción de este instrumento entiendo y declaro que se me ha explicado respecto al tratamiento de mis datos personales con motivo de la presente contratación. La finalidad de los mismos está relacionada a la prestación efectiva del contrato y conducen, específicamente, a identificarme como titular del servicio y a ejecutar aquellas obligaciones constantes en el contrato. Así mismo, acepto que mi información sea compartida a ECUAPRIMAS, con quien INMEDICAL requiere compartir los datos, para esta finalidad y la prestación de sus servicios. Declaro también que se me ha informado respecto a mis derechos de acceso, rectificación, eliminación, oposición, y demás previstos en la Ley Orgánica de Protección de Datos Personales. También conozco que el presente consentimiento lo puedo revocar en cualquier momento. Cualquier notificación se la remitirá por medio de una solicitud al correo: info@inmedical.com.ec, en el que se especificará nombres completos, número de contrato y detalle claro y concreto del pedido. Es de mi conocimiento que, aunque la relación contractual termine, INMEDICAL y ECUAPRIMAS podrán reservar mi información por el tiempo de 2 años adicionales, para efectos de reclamos administrativos o auditorías de los entes de control.
+    </div>
+
+    <div class="bloque-legal">
+        <strong>FALTA DE FONDOS:</strong> Al suscribir la presente solicitud dejo constancia de que conozco que en caso de que los valores no sean cancelados el servicio será suspendido, y en caso de falta de pago por 3 meses consecutivos el mismo será cancelado, conforme a lo dispuesto en la Ley, sin que exista derecho a reclamo alguno.
+    </div>
+
+    <div class="bloque-legal" style="margin-top: 2px;">
+        La presente firma ratifica y acepta los textos detallados en anverso y reverso de este documento, referente a la contratación de los servicios de Salud Integral Prepagada ofertada por Inmedical y los servicios de seguros complementarios, que son ofertados por compañías autorizadas para hacerlo, conforme la póliza que ha sido contratada por Inmedical.
+    </div>
+
+    <!-- FIRMA TITULAR -->
+    <div class="seccion-firma-anverso">
+        Firma o huella dactilar titular: <span class="linea-puntos-firma"></span>
+    </div>
+
+    <div class="texto-super-cias">
+        El Solicitante y/o Asegurado podrán solicitar a la Superintendencia de Compañías, Valores y Seguros la verificación de este texto.
+    </div>
+
+    <!-- LOGOS FOOTER ANVERSO -->
+    <table class="footer-logos">
+        <tbody><tr>
+            <td style="width: 35%;">
+                Respaldado por:
+                <svg width="120" height="20" viewBox="0 0 120 22" style="vertical-align: middle;">
+                    <circle cx="10" cy="11" r="5" fill="#333"></circle>
+                    <circle cx="18" cy="11" r="5" fill="#666"></circle>
+                    <text x="28" y="15" font-family="Calibri, Arial" font-weight="bold" font-size="12" fill="#222">inmedical</text>
+                </svg>
+            </td>
+            <td style="width: 35%;">
+                <svg width="110" height="20" viewBox="0 0 110 22" style="vertical-align: middle;">
+                    <rect x="2" y="3" width="14" height="14" fill="#444"></rect>
+                    <text x="20" y="12" font-family="Calibri, Arial" font-weight="bold" font-size="9" fill="#222">Seguros</text>
+                    <text x="20" y="19" font-family="Calibri, Arial" font-weight="bold" font-size="9" fill="#222">Atlántida</text>
+                </svg>
+            </td>
+            <td style="width: 30%; text-align: right;">
+                Con la asesoría de: <strong style="font-size: 10pt; color: #222;">ecuaprimas</strong>
+            </td>
+        </tr>
+    </tbody></table>
+
+    <!-- REVERSO EN NUEVA PÁGINA -->
+    <div class="page-break"></div>
+
+    <!-- ==================== PÁGINA 2: REVERSO ==================== -->
+
+    <div class="titulo-pagina2">CONDICIONES PARTICULARES</div>
+
+    <div class="barra-seccion">AFILIACIÓN:</div>
+    <div class="bloque-legal" style="font-size: 7.5pt; margin-left: 2px;">
+        1. Titular, registrado en el plan desde los 18 años sin límite de edad.
+    </div>
+
+    <div class="barra-seccion">PROCEDIMIENTO Y DOCUMENTACIÓN PARA PAGO DE BENEFICIOS:</div>
+    <div class="bloque-legal" style="font-size: 7.5pt; margin-left: 2px;">
+        1. Notificación de evento para otros beneficios: Hasta 30 días desde la ocurrencia del siniestro.<br>
+        2. El pago del beneficio se realizará una vez recibida toda la documentación según el tipo de cobertura. Dicha información podrá ser consultada a personal de ECUAPRIMAS o INMEDICAL.<br>
+        <em>* Inmedical y la empresa que otorgue el beneficio se reservan el derecho de solicitar información adicional, de acuerdo al tipo de siniestro presentado.</em>
+    </div>
+
+    <div class="barra-seccion">EXCLUSIONES NO FINANCIADAS:</div>
+    <table style="width: 100%; margin-top: 2px; margin-bottom: 4px;">
+        <tbody><tr>
+            <td style="width: 55%; vertical-align: middle; font-size: 7.3pt; line-height: 1.15;">
+                • No tendrá financiamiento consultas médicas que no sean con médicos acreditados en las siguientes especialidades: Médico General.
+            </td>
+            <td style="width: 30%; vertical-align: middle; font-size: 7.3pt; text-align: right; padding-right: 6px;">
+                • Las demás exclusiones, se podrán revisar en el siguiente enlace o código QR.
+            </td>
+            <td style="width: 15%; text-align: right; vertical-align: middle;">
+                <!-- QR CODE ENLACE EXCLUSIONES -->
+                <svg class="qr-placeholder" viewBox="0 0 100 100">
+                    <path d="M0,0 L30,0 L30,30 L0,30 Z M10,10 L20,10 L20,20 L10,20 Z" fill="#000"></path>
+                    <path d="M70,0 L100,0 L100,30 L70,30 Z M80,10 L90,10 L90,20 L80,20 Z" fill="#000"></path>
+                    <path d="M0,70 L30,70 L30,100 L0,100 Z M10,80 L20,80 L20,90 L10,90 Z" fill="#000"></path>
+                    <rect x="40" y="10" width="10" height="20" fill="#000"></rect>
+                    <rect x="10" y="40" width="20" height="10" fill="#000"></rect>
+                    <rect x="40" y="40" width="20" height="20" fill="#000"></rect>
+                    <rect x="70" y="50" width="20" height="10" fill="#000"></rect>
+                    <rect x="50" y="80" width="30" height="10" fill="#000"></rect>
+                </svg>
+            </td>
+        </tr>
+    </tbody></table>
+
+    <div style="border-top: 1px solid #000000; margin: 3px 0;"></div>
+
+    <div class="subtitulo-anexo">
+        ANEXO DE SEGURO DE VIDA RESPALDADO POR SEGUROS ATLÁNTIDA S.A. CERTIFICADO INDIVIDUAL DE SEGURO
+    </div>
+
+    <!-- TABLA DE SUMA ASEGURADA Y LEYENDA -->
+    <table style="width: 100%; margin-bottom: 4px;">
+        <tbody><tr>
+            <td style="width: 50%; vertical-align: top;">
+                <table class="tabla-datos-unificada" style="margin: 0;">
+                    <thead>
+                        <tr style="text-align: center; font-weight: bold;">
+                            <td style="width: 60%;">COBERTURAS</td>
+                            <td style="width: 40%;">SUMA ASEGURADA</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Muerte por cualquier causa</strong></td>
+                            <td style="text-align: center;"><strong>$ 100</strong></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Desempleo, renuncia voluntaria o cierre de negocio</strong></td>
+                            <td style="text-align: center;"><strong>Hasta $ 1.500</strong></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </td>
+            <td style="width: 50%; vertical-align: middle; padding-left: 10px; font-size: 7.2pt; line-height: 1.15;">
+                *El valor asegurado será igual a la cuota de amortización mensual de las obligaciones adeudadas por el deudor principal a la Cooperativa de Ahorro y Crédito Cotocollao. Hasta el valor máximo de USD1.500<br>
+                <strong>MÁXIMO DE CUOTAS A CUBRIR: 7 cuotas - DEDUCIBLE: 1 cuota</strong>
+            </td>
+        </tr>
+    </tbody></table>
+
+    <div class="bloque-legal">
+        <strong>MUERTE POR CUALQUIER CAUSA:</strong><br>
+        Esta Póliza ampara el fallecimiento del Asegurado, por cualquier causa y en cualquier lugar del mundo, siempre y cuando ocurra dentro de la vigencia del contrato de seguros. Inmediatamente después de haber recibido y aprobado las correspondientes pruebas de muerte y sus causas, la Compañía pagará la suma por la cual esté asegurado, a los beneficiarios designados o en su defecto a los beneficiarios legales que están facultados a recibirla.
+    </div>
+
+    <div class="bloque-legal">
+        <strong>DESEMPLEO, RENUNCIA VOLUNTARIA O CIERRE DE NEGOCIO:</strong><br>
+        La Aseguradora indemnizará al Solicitante hasta la cuota de amortización mensual de las obligaciones adeudadas por el deudor principal, con un máximo de USD1.500, siempre que el Asegurado se encuentre en situación de desempleo, renuncia voluntaria o por cierre - quiebra de negocio, en cualquiera de las siguientes circunstancias, y siempre que se cubran los requisitos de asegurabilidad de la póliza:
+        <ol>
+            <li>Desempleo involuntario derivado de la relación laboral, siendo causa ajena a la voluntad del trabajador.</li>
+            <li>Cuando el Asegurado, en calidad de trabajador bajo relación de dependencia, presente su renuncia voluntaria a la relación laboral que mantiene con su empleador.</li>
+            <li>En caso de terminación de la relación laboral por efecto de cierre o liquidación definitiva del negocio, empresa o establecimiento que actuaba en calidad de empleador.</li>
+            <li>Por efecto de pérdida total de ingresos por cierre o liquidación de negocio o empresa propia, siempre que el mismo haya sucedido por causas externas a la voluntad del propietario.</li>
+        </ol>
+    </div>
+
+    <!-- QR SEGUNDO ANEXO -->
+    <table style="width: 100%; margin: 2px 0 4px 0;">
+        <tbody><tr>
+            <td style="width: 80%; text-align: right; vertical-align: middle; font-size: 7.3pt; padding-right: 10px;">
+                El detalle de las coberturas de Vida / Muerte por cualquier causa, desempleo, renuncia voluntaria y cierre de negocio, que incluye:<br>
+                límites de edad, exclusiones, y procedimiento de reclamos; se podrán revisar en el siguiente enlace o código QR
+            </td>
+            <td style="width: 20%; text-align: right; vertical-align: middle;">
+                <svg class="qr-placeholder" viewBox="0 0 100 100">
+                    <path d="M0,0 L30,0 L30,30 L0,30 Z M10,10 L20,10 L20,20 L10,20 Z" fill="#000"></path>
+                    <path d="M70,0 L100,0 L100,30 L70,30 Z M80,10 L90,10 L90,20 L80,20 Z" fill="#000"></path>
+                    <path d="M0,70 L30,70 L30,100 L0,100 Z M10,80 L20,80 L20,90 L10,90 Z" fill="#000"></path>
+                    <rect x="35" y="15" width="15" height="15" fill="#000"></rect>
+                    <rect x="50" y="45" width="20" height="20" fill="#000"></rect>
+                    <rect x="80" y="80" width="15" height="15" fill="#000"></rect>
+                </svg>
+            </td>
+        </tr>
+    </tbody></table>
+
+    <div class="bloque-legal">
+        <strong>IMPORTANTE:</strong> El presente certificado individual no constituye la Póliza de Seguro, es un resumen de las coberturas otorgadas, procedimientos, exclusiones y demás información relevante y se emite en cumplimiento de la normativa de la Junta de Política y Regulación Monetaria y Financiera y reposará en los archivos de la COOPERATIVA DE AHORRO COTOCOLLAO y con dicho resguardo se considera que dicha institución cuenta con la información que justifica la relación entre INMEDICAL y el CLIENTE.
+    </div>
+
+    <div class="bloque-legal">
+        La firma realizada en el anverso de este documento y que forma parte del mismo, ratifica y acepta la contratación de los servicios de Salud Integral Prepagada ofertada por Inmedical y los servicios de seguros complementarios, que son ofertados por compañías autorizadas para hacerlo, conforme la póliza que ha sido contratada por Inmedical.
+    </div>
+
+    <!-- CAJA DE COORDINACIÓN CITAS -->
+    <div class="box-coordinacion">
+        Para coordinación de citas médicas y consultas · Llámanos primero al 02 38 28 717 Códigos de Aprobación ACESS No. 019-050-129, 019-050-140
+    </div>
+
+    <!-- PASOS DESCARGA VÍA INTERNET -->
+    <table class="tabla-pasos">
+        <tbody><tr>
+            <td class="linea-separadora-vert">
+                <div class="pasos-titulo">DESCARGA TU CONTRATO VÍA INTERNET:</div>
+                <strong>1- Digita www.inmedical.com.ec</strong><br>
+                &nbsp;&nbsp;&nbsp;• Pulsa botón Servicios Online → Contratos<br>
+                <strong>2- Ingresa datos del titular</strong> - A) Usuario: Número de cédula<br>
+                &nbsp;&nbsp;&nbsp;- B) Contraseña: 4 últimos dígitos de la cédula del titular<br>
+                <strong>3- En la siguiente ventana podrás visualizar y descargar tu contrato.</strong>
+            </td>
+            <td>
+                <div class="pasos-titulo">DESCARGA TU FACTURA ELECTRÓNICA VÍA INTERNET:</div>
+                <strong>1- Digita www.inmedical.com.ec</strong><br>
+                &nbsp;&nbsp;&nbsp;• Pulsa botón Servicios Online → Descarga tu factura electrónica<br>
+                <strong>2- Ingresa datos del titular</strong> - A) Usuario: Número de cédula<br>
+                &nbsp;&nbsp;&nbsp;- B) Contraseña: 8 primeros dígitos de la cédula del titular<br>
+                <strong>3- En la siguiente ventana podrás visualizar y descargar tu factura electrónica.</strong>
+            </td>
+        </tr>
+    </tbody></table>
+
+    <!-- LOGOS FOOTER REVERSO -->
+    <table class="footer-logos" style="margin-top: 6px;">
+        <tbody><tr>
+            <td style="width: 35%;">
+                Respaldado por:
+                <svg width="120" height="20" viewBox="0 0 120 22" style="vertical-align: middle;">
+                    <circle cx="10" cy="11" r="5" fill="#333"></circle>
+                    <circle cx="18" cy="11" r="5" fill="#666"></circle>
+                    <text x="28" y="15" font-family="Calibri, Arial" font-weight="bold" font-size="12" fill="#222">inmedical</text>
+                </svg>
+            </td>
+            <td style="width: 35%;">
+                <svg width="110" height="20" viewBox="0 0 110 22" style="vertical-align: middle;">
+                    <rect x="2" y="3" width="14" height="14" fill="#444"></rect>
+                    <text x="20" y="12" font-family="Calibri, Arial" font-weight="bold" font-size="9" fill="#222">Seguros</text>
+                    <text x="20" y="19" font-family="Calibri, Arial" font-weight="bold" font-size="9" fill="#222">Atlántida</text>
+                </svg>
+            </td>
+            <td style="width: 30%; text-align: right;">
+                Con la asesoría de: <strong style="font-size: 10pt; color: #222;">ecuaprimas</strong>
+            </td>
+        </tr>
+    </tbody></table>
+
