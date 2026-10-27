@@ -101,7 +101,6 @@ $img_logo_ecuaprimas = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAARgAAAAuCA
             border-bottom: 1px dashed #555555;
         }
 
-        /* --- BENEFICIARIOS --- */
         .tabla-beneficiarios {
             width: 100%;
             margin-bottom: 6px;
@@ -124,7 +123,6 @@ $img_logo_ecuaprimas = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAARgAAAAuCA
             height: 16px;
         }
 
-        /* --- COBERTURAS --- */
         .tabla-coberturas {
             width: 64%;
             margin: 0 auto;
@@ -157,7 +155,6 @@ $img_logo_ecuaprimas = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAARgAAAAuCA
             margin: 8px 0 10px 0;
         }
 
-        /* --- TEXTO LEGAL --- */
         .bloque-legal {
             font-size: 7.1pt;
             text-align: justify;
@@ -174,7 +171,6 @@ $img_logo_ecuaprimas = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAARgAAAAuCA
             margin: 0 6px 0 4px;
         }
 
-        /* --- FIRMA --- */
         .seccion-firma {
             text-align: center;
             font-size: 8pt;
@@ -187,7 +183,6 @@ $img_logo_ecuaprimas = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAARgAAAAuCA
             margin-bottom: 10px;
         }
 
-        /* --- PIE DE PÁGINA --- */
         .pie-pagina {
             position: fixed;
             left: 0;
@@ -210,7 +205,6 @@ $img_logo_ecuaprimas = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAARgAAAAuCA
             padding: 0 4px;
         }
 
-        /* --- PÁGINA 2 --- */
         .titulo-pagina2 {
             font-size: 9.5pt;
             font-weight: bold;
@@ -330,7 +324,6 @@ $img_logo_ecuaprimas = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAARgAAAAuCA
 
 
 
-    <!-- PIE DE PÁGINA FIJO (se repite al fondo de cada hoja) -->
     <div class="pie-pagina">
         <table class="pie-logos"><tr>
             <td style="text-align: right; width: 16%;">Respaldado por:</td>
@@ -341,14 +334,12 @@ $img_logo_ecuaprimas = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAARgAAAAuCA
         </tr></table>
     </div>
 
-    <!-- ==================== PÁGINA 1: ANVERSO ==================== -->
 
     <div class="titulo-header">
         SOLICITUD DE COBERTURA Y CERTIFICADO DE SALUD PREPAGADA Y DE SEGURO<br>
         <?php echo htmlspecialchars($cooperativa_nombre); ?> PARA CUOTAS <?php echo htmlspecialchars($rango_cuotas); ?>
     </div>
 
-    <!-- DATOS DEL SOLICITANTE -->
     <table class="tabla-datos">
         <tbody>
         <tr>
@@ -398,7 +389,6 @@ $img_logo_ecuaprimas = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAARgAAAAuCA
         </tbody>
     </table>
 
-    <!-- BENEFICIARIOS -->
     <table class="tabla-beneficiarios">
         <tbody>
         <tr class="encabezado">
@@ -427,7 +417,6 @@ $img_logo_ecuaprimas = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAARgAAAAuCA
         </tbody>
     </table>
 
-    <!-- COBERTURAS -->
     <table class="tabla-coberturas">
         <thead>
             <tr>
@@ -462,7 +451,6 @@ $img_logo_ecuaprimas = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAARgAAAAuCA
         Titular sólo: Tasa neta: $ <?php echo htmlspecialchars($tasa_neta); ?>% - Seguro Social Campesino: $ <?php echo htmlspecialchars($tasa_social_campesino); ?>% &nbsp;- Tasa Final: $ <?php echo htmlspecialchars($tasa_final); ?><strong>%</strong> del valor de la cuota mensual del crédito
     </div>
 
-    <!-- SECCIONES LEGALES -->
     <div class="bloque-legal">
         <strong>SOLICITUD.</strong> - Con la suscripción de la presente solicitud expreso libremente y con plena capacidad legal para hacerlo, que he leído o he sido plenamente informado de:<br>
         1.- Que el prestador de medicina prepagada es INMEDICAL S.A. , legalmente habilitada para brindar dichos servicios.<br>
@@ -493,7 +481,6 @@ $img_logo_ecuaprimas = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAARgAAAAuCA
         La presente firma ratifica y acepta los textos detallados en anverso y reverso de este documento, referente a la contratación de los servicios de Salud Integral Prepagada ofertada por Inmedical y los servicios de seguros complementarios, que son ofertados por compañías autorizadas para hacerlo, conforme la póliza que ha sido contratada por Inmedical.
     </div>
 
-    <!-- FIRMA TITULAR -->
     <div class="seccion-firma">
         Firma o huella dactilar titular: &nbsp;. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
     </div>
@@ -505,7 +492,6 @@ $img_logo_ecuaprimas = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAARgAAAAuCA
 
     <div class="page-break"></div>
 
-    <!-- ==================== PÁGINA 2: REVERSO ==================== -->
 
     <div class="titulo-pagina2">CONDICIONES PARTICULARES</div>
 
@@ -550,7 +536,6 @@ $img_logo_ecuaprimas = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAARgAAAAuCA
         ANEXO DE SEGURO DE VIDA RESPALDADO POR SEGUROS ATLÁNTIDA S.A. CERTIFICADO INDIVIDUAL DE SEGURO
     </div>
 
-    <!-- SUMA ASEGURADA -->
     <table style="width: 100%; margin-bottom: 8px;">
         <tr>
             <td style="width: 47%; vertical-align: top;">
@@ -592,7 +577,6 @@ $img_logo_ecuaprimas = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAARgAAAAuCA
         4. Por efecto de pérdida total de ingresos por cierre o liquidación de negocio o empresa propia, siempre que el mismo haya sucedido por causas externas a la voluntad del propietario.
     </div>
 
-    <!-- QR COBERTURAS -->
     <table style="width: 100%; margin: 0 0 6px 0;">
         <tr>
             <td style="width: 82%; text-align: right; vertical-align: middle; font-size: 7.2pt; padding-right: 12px;">
@@ -619,12 +603,10 @@ $img_logo_ecuaprimas = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAARgAAAAuCA
         La firma realizada en el anverso de este documento y que forma parte del mismo, ratifica y acepta la contratación de los servicios de Salud Integral Prepagada ofertada por Inmedical y los servicios de seguros complementarios, que son ofertados por compañías autorizadas para hacerlo, conforme la póliza que ha sido contratada por Inmedical.
     </div>
 
-    <!-- COORDINACIÓN DE CITAS -->
     <div class="box-coordinacion">
         Para coordinación de citas médicas y consultas · Llámanos primero al <?php echo htmlspecialchars($telefono_coordinacion); ?> Códigos de Aprobación ACESS No. <?php echo htmlspecialchars($codigos_acess); ?>
     </div>
 
-    <!-- DESCARGAS VÍA INTERNET -->
     <table class="tabla-pasos">
         <tr>
             <td class="columna-izq">
