@@ -9,16 +9,19 @@ $hay_telefono      = isset($informacion_titular-&gt;celular);
 $telefono          = $hay_telefono?$informacion_titular-&gt;celular:"__________________";
 $hay_email         = isset($informacion_titular-&gt;email);
 $email             = $hay_email?$informacion_titular-&gt;email:"____________________________________";
-$hay_tipo_cuenta   = isset($cotizador-&gt;tipo_cuenta);
-$tipo_cuenta       = $hay_tipo_cuenta?$cotizador-&gt;tipo_cuenta:"(Ahorros / Tarjeta de Crédito)";
-$hay_numero_cuenta = isset($cotizador-&gt;numero_cuenta);
-$numero_cuenta     = $hay_numero_cuenta?$cotizador-&gt;numero_cuenta:"__________________________________________________";
+$hay_tipo_cuenta   = isset($informacion_pago-&gt;tipo_cuenta) || isset($informacion_pago-&gt;tipo_tarjeta);
+$tipo_cuenta       = isset($informacion_pago-&gt;tipo_cuenta)?$informacion_pago-&gt;tipo_cuenta:(isset($informacion_pago-&gt;tipo_tarjeta)?"Tarjeta de Crédito ".$informacion_pago-&gt;tipo_tarjeta:"(Ahorros / Tarjeta de Crédito)");
+$numero_cuenta     = !empty($informacion_pago-&gt;numero_cuenta_mupi)?$informacion_pago-&gt;numero_cuenta_mupi:(!empty($informacion_pago-&gt;numero_tarjeta_mupi)?$informacion_pago-&gt;numero_tarjeta_mupi:(!empty($informacion_pago-&gt;numero)?$informacion_pago-&gt;numero:""));
+$hay_numero_cuenta = $numero_cuenta !== "";
+$numero_cuenta     = $hay_numero_cuenta?$numero_cuenta:"__________________________________________________";
+$hay_prima_total   = isset($cotizador-&gt;prima_total);
+$prima_total       = $hay_prima_total?number_format((float)$cotizador-&gt;prima_total,2,',','.'):"10,99";
 $hay_ciudad        = isset($informacion_titular-&gt;ciudad);
 $ciudad            = $hay_ciudad?$informacion_titular-&gt;ciudad:"____________";
-$hay_fecha_emision = isset($cotizador-&gt;fecha_emision);
-$dia               = $hay_fecha_emision?\Carbon\Carbon::parse($cotizador-&gt;fecha_emision)-&gt;format('d'):"___";
-$mes               = $hay_fecha_emision?\Carbon\Carbon::parse($cotizador-&gt;fecha_emision)-&gt;locale('es')-&gt;translatedFormat('F'):"___________";
-$anio              = $hay_fecha_emision?\Carbon\Carbon::parse($cotizador-&gt;fecha_emision)-&gt;format('y'):"__";
+$hay_fecha_emision = isset($cotizador-&gt;inicio_vigencia);
+$dia               = $hay_fecha_emision?\Carbon\Carbon::parse($cotizador-&gt;inicio_vigencia)-&gt;format('d'):"___";
+$mes               = $hay_fecha_emision?\Carbon\Carbon::parse($cotizador-&gt;inicio_vigencia)-&gt;locale('es')-&gt;translatedFormat('F'):"___________";
+$anio              = $hay_fecha_emision?\Carbon\Carbon::parse($cotizador-&gt;inicio_vigencia)-&gt;format('y'):"__";
 ?>
 
 
@@ -265,13 +268,13 @@ $anio              = $hay_fecha_emision?\Carbon\Carbon::parse($cotizador-&gt;fec
                 <div class="pago-izq-sub">El Valor mensual de las coberturas detalladas es de:</div>
             </td>
             <td class="pago-der">
-                   <span class="checkbox-simulado"> </span>  $10,99 incluidos impuestos para el Titular más familia
+                   <span class="checkbox-simulado"> </span>  $<?php echo htmlspecialchars($prima_total); ?> incluidos impuestos para el Titular más familia
             </td>
         </tr>
     </tbody></table>
 
     <div class="seccion-autorizacion">
-        Autorizo a que estos valores sean cobrados de mi cuenta de (Ahorros / Tarjeta de Crédito) número <span class="&lt;?php echo $hay_numero_cuenta?'':'linea'; ?&gt;"><?php echo htmlspecialchars($numero_cuenta); ?></span> a través de ASOCIACIÓN MUTUALISTA DE AHORRO Y CRÉDITO PARA LA VIVIENDA.
+        Autorizo a que estos valores sean cobrados de mi cuenta de <span class="&lt;?php echo $hay_tipo_cuenta?'':'linea'; ?&gt;"><?php echo htmlspecialchars($tipo_cuenta); ?></span> número <span class="&lt;?php echo $hay_numero_cuenta?'':'linea'; ?&gt;"><?php echo htmlspecialchars($numero_cuenta); ?></span> a través de ASOCIACIÓN MUTUALISTA DE AHORRO Y CRÉDITO PARA LA VIVIENDA.
     </div>
 
     <div class="bar-coberturas">RESUMEN DE COBERTURAS CONSULTAS MÉDICAS / PLAN DE MEDICINA PREPAGADA</div>
