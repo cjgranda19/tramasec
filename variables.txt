@@ -1,0 +1,262 @@
+campos de: informacion_titular
+
+TIPO DE IDENTIFICACIÓN	tipo_identificacion
+2	IDENTIFICACIÓN	identificacion
+3	PRIMER NOMBRE	primer_nombre
+4	SEGUNDO NOMBRE	segundo_nombre
+5	PRIMER APELLIDO	primer_apellido
+6	SEGUNDO APELLIDO	segundo_apellido
+7	ESTADO CIVIL	estado_civil
+8	GÉNERO	genero
+9	FECHA DE NACIMIENTO	fecha_nacimiento
+10	LUGAR DE NACIMIENTO	lugar_nacimiento
+1 PAIS	pais
+2	PROVINCIA	provincia
+3	CANTÓN	canton
+4	CIUDAD	ciudad
+5	PARROQUIA	parroquia
+6	SECTOR	sector
+7	DIRECCIÓN	direccion
+8	TELÉFONO	telefono
+9	CELULAR	celular
+10	EMAIL	email
+1	ACTIVIDAD ECONÓMICA	actividad_economica
+2	INGRESOS MENSUALES	ingresos_mensuales
+3	ACTIVOS	activos
+4	PASIVOS	pasivos
+5	CEDULA	cedula
+6	RUC	ruc
+7	PASAPORTE	pasaporte
+8	EDAD	edad
+9	NACIONALIDAD	nacionalidad
+10	OCUPACIÓN	ocupacion
+1	PARENTESCO	parentesco
+2	TELÉFONOS	telefonos
+3	PATRIMONIO	patrimonio
+4	VINCULO	vinculo
+5	ESTADO MIGRATORIO	estado_migratorio
+6	FECHA DE INGRESO AL PAIS	fecha_ingreso_pais
+7	FECHA DE EXPEDICIÓN DEL PASAPORTE	fecha_expedicion_pasaporte
+8	FECHA DE CADUCIDAD DEL PASAPORTE	fecha_caducidad_pasaporte
+9	ID CLIENTE	id_cliente
+10	CUENTA DE AHORROS	cuenta_ahorros
+1	SUCURSAL	sucursal
+2	NÚMERO DE CLIENTE	numero_cliente
+3	TELÉFONO DE TRABAJO	telefono_trabajo
+4	DIRECCIÓN DE TRABAJO	direccion_trabajo
+5	EDAD INGRESO	edad_ingreso
+6	EDAD ACTUAL	edad_actual
+7	CODEUDOR SOLIDARIO	codeudor_solidario
+8	DISOLUCION CONYUGAL	disolucion_conyugal
+9	CALIFICACIÓN	calificacion
+10	UBICACIÓN	ubicacion
+1	FECHA DE CONSTITUCION	fecha_constitucion
+2	ZONA	zona
+3	GENERO	genero
+4	CALLE SECUNDARIA	calle_secundaria
+5	PESO	peso
+6	ESTATURA	estatura
+7	PRESIÓN ARTERIAL	presion_arterial
+
+
+CAMPOS DE: cotizador
+1	NÚMERO DE OPERACION	numero_operacion
+2	INICIO DE VIGENCIA	inicio_vigencia
+3	FIN DE VIGENCIA	fin_vigencia
+4	PLAZO DEL CRÉDITO	plazo
+5	TASA	tasa
+6	VALOR ASEGURADO	valor_asegurado
+7	PRIMA NETA	prima_neta
+8	IMPUESTO SCVS	impuesto_scvs
+9	IMPUESTO SSC	impuesto_ssc
+10	DERECHOS DE EMISIÓN	derechos_emision
+1	BASE IMPONIBLE IVA	base_imponible_iva
+2	IVA	iva
+3	PRIMA TOTAL	prima_total
+4	HOJA NEGOCIO	hoja_negocio
+5	ASEGURADORA	aseguradora
+6	BASE IVA	prueba_base_iva
+7	PRUEBA IVA	prueba_iva
+8	PLAN	plan
+9	SEGMENTO	segmento
+10	NÚMERO DE SOCIO	numero_socio
+1	FECHA DE INGRESO	fecha_ingreso
+2	FECHA DE PAGO DE PRIMERA CUOTA	fecha_pago_primera_cuota
+3	NÚMERO DE CERTIFICADO	numero_certificado
+4	FECHA ALTA	fecha_alta
+5	NÚMERO DE CRÉDITO	numero_credito
+6	MONTO	monto
+7	CUOTAS	cuotas
+8	AGENCIA	agencia
+9	TIPO DE CRÉDITO	tipo_credito
+10	NÚMERO DE SOLICITUD	numero_solicitud
+1	VALOR DEL INTERÉS	valor_interes
+2	INCENTIVO FV	incentivo_fv
+3	TASA INTERES ANUAL	tasa_interes_anual
+4	TIPO AMORTIZACION	tipo_amortizacion
+5	PRIMA TOTAL COBRADA	prima_total_cobrada
+6	CÉDULA ASESOR	cedula_asesor
+7	APELLIDO ASESOR	apellido_asesor
+8	NOMBRE ASESOR	nombre_asesor
+9	USUARIO	usuario
+10	FECHA DE COBRO	fecha_cobro
+1	CUOTA PAGADA	cuota_pagada
+2	VALOR DE COBRO	valor_cobro
+3	VALOR DE CUOTA	valor_cuota
+4	OFICINA	oficina
+5	TIPO DE SEGURO	tipo_seguro
+6	NÚMERO DE PÓLIZA	numero_poliza
+7	NÚMERO DE PRÉSTAMO	numero_prestamo
+8	GRUPO	grupo
+9	COBERTURA	cobertura
+10	VALOR SEGURO	valor_seguro
+1	DEUDA INICIAL	deuda_inicial
+2	SOCIEDAD CONYUGAL	sociedad_conyugal
+3	FECHA DE CANCELACION	fecha_cancelacion
+4	DÍAS DE VIGENCIA	dias_vigencia
+5	PRIMA DEVUELTA	prima_devuelta
+6	FECHA DE EMISION	fecha_emision
+7	N° FACTURA	nro_factura
+8	CÚMULOS	cumulos
+9	FECHA ADJUDICACIÓN	fecha_adjudicacion
+10	SALDO PRESTAMO	saldo_prestamo
+1	FRECUENCIA PAGO	frecuencia_pago
+2	TOTAL CUOTAS	total_cuotas
+3	TIPO DE PRODUCTO	tipo_producto
+4	CONCESIONARIO	concesionario
+5	CALIFICACION	calificacion
+6	OTROS	otros
+7	VALOR OTROS	valor_otros
+8	ORIGEN	origen
+9	DESTINO	destino
+10	AEROPUERTO ORIGEN	aeropuerto_origen
+1	AEROPUERTO DESTINO	aeropuerto_destino
+2	PLAZA DEL SEGURO	plaza_del_seguro
+3	FECHA COBERTURA INICIO	fecha_covertura_inicio
+4	FECHA COBERTURA FIN	fecha_cobertura_fin
+5	PRIMERA NETA SEGURO	primera_neta_seguro
+6	PRIMER TOTAL SEGURO	prima_total_seguro
+7	PRIMA_SEGURO	prima_seguro
+8	CERTIFICADO BMI	certificado_bmi
+9	NUMERO PLAN SUFIJO	numero_plan_sufijo
+10	ASISTENCIA DENTAL	asistencia_dental
+1	ADICIONALES	adicionales
+2	FECHA DE INCLUSION	fecha_inclusion
+3	NOMBRE CANAL / COOPERATIVA	nombre_canal
+4	TELEFONO	telefono
+5	CORREO	email
+6	NUMERO POLIZA	numero_poliza
+
+
+CAMPOS de: objeto_asegurado
+1	MARCA	marca
+2	MODELO	modelo
+3	CHASIS	chasis
+4	MOTOR	motor
+5	COLOR	color
+6	AÑO	year
+7	PLACA	placa
+8	RAMV	ramv
+9	PROVINCIA	provincia
+10	CANTÓN	canton
+1	CIUDAD	ciudad
+2	PARROQUIA	parroquia
+3	SECTOR	sector
+4	DIRECCIÓN	direccion
+5	MARCA 2	marca_dos
+6	ESPECIE	especie
+7	RAZA	raza
+8	SEXO	sexo
+9	FECHA NACIMIENTO	fecha_nacimiento
+10	ÁREA DE ESTRUCTURA	area_estructura
+1	AVALUO DE LA ESTRUCTURA	avaluo_estructura
+2	COORDENADAS LATITUD	coordenadas_latitud
+3	COORDENADAS LONGITUD	coordenadas_longitud
+4	NÚMERO CTA	numero_cta
+5	NOMBRE	nombre
+6	CONCESIONARIO	concesionario
+7	TIPO DE USO	tipo_uso
+8	TIPO DE PLACA	tipo_placa
+9	TIPO DE VEHICULO	tipo
+10	CANTIDAD MINIMA OBJETO ASEGURADO	cantidad_minima_objeto_asegurado
+1	CANTIDAD MAXIMA OBJETO ASEGURADO	cantidad_maxima_objeto_asegurado
+
+campos de: informacion_pago
+1	FORMA DE PAGO	forma_pago
+2	INSTITUCION FINANCIERA	institucion_financiera
+3	TIPO DE TARJETA	tipo_tarjeta
+4	NÚMERO DE CUENTA	numero_cuenta
+5	NÚMERO DE TARJETA	numero_tarjeta
+6	PLAN DE PAGO DEBITO BANCARIO	plan_pago_debito
+7	FECHA DE VENCIMIENTO	fecha_vencimiento
+8	TIPO DE CONTADO	tipo_contado
+9	TIPO DE CONTADO	tipo_contado
+10	TIPO DE CUENTA	tipo_cuenta
+1	PLAN PAGO TC	plan_pago_tc
+2	PLAN PAGO	plan_pagos
+3	NÚMERO	numero
+4	SALDO CUENTA	saldo_cuenta
+5	SALDO DISPONIBLE	saldo_disponible
+6	DÉBITO MES ANTERIOR	debito_mes_anterior
+7	TIPO DE FACTURA	tipo_factura
+8	NÚMERO DE FACTURA	numero_factura
+9	CONTADO	contado
+10	TARJETA DE CRÉDITO	tarjeta_credito
+1	TIPO DE IDENTIFICACIÓN	tipo_identificacion
+2	CÉDULA	cedula
+3	RUC	ruc
+4	PASAPORTE	pasaporte
+5	IDENTIFICACIÓN	identificacion
+6	CAMBIO FORMA PAGO	cambio_forma_pago
+7	MOROSIDAD	morosidad
+8	FORMA DE PAGO	forma_pago_morosidad
+9	FORMA DE PAGO	forma_pago_sin_morosidad
+10	PRIMER NOMBRE	primer_nombre
+1	PRIMER APELLIDO	primer_apellido
+2	VALIDADOR	validador
+3	MISMOS DATOS QUE EL TITULAR	mismos_datos_titular
+
+"informacion_titular" : {
+        "tipo_identificacion" : "5acb6d76aafc5a26d8616634",
+        "cedula" : "1721542171",
+        "ruc" : null,
+        "pasaporte" : null,
+        "identificacion" : "1721542171",
+        "primer_nombre" : "BRYAN",
+        "segundo_nombre" : "SANTIAGO",
+        "primer_apellido" : "JARRIN",
+        "segundo_apellido" : "HIDALGO",
+        "fecha_nacimiento" : "1991-05-08",
+        "edad" : NumberInt(35),
+        "estado_civil" : "5acba959aafc5a2a1b2c68d7",
+        "genero" : "5acbaa9aaafc5a2b162b3a28",
+        "email" : null,
+        "provincia" : "PICHINCHA/QUITO/CARCELEN",
+        "ciudad" : null,
+        "direccion" : "UNION NACIONAL GABRIEL ONOFRE 164 MARCOS JOFRE SOBRE LA CONCEPCION,QUITO",
+        "telefono" : null,
+        "celular" : "0984794836",
+        "ciudad_nacimiento" : "PICHINCHA/QUITO/SAN MARCOS",
+        "nacionalidad" : "ECUATORIANA"
+    },
+
+
+"objeto_asegurado" : [
+        {
+            "tipo_placa" : "6a7b7dab8913c2ff6001177b",
+            "placa" : "PCY7801",
+            "ramv" : null,
+            "marca" : "63a26952d49014201affdbe3",
+            "modelo" : "63ab2c9f3d2cf350dc44e6e7",
+            "chasis" : "1C4NJDAB0GD586499",
+            "motor" : "BGD586499",
+            "tipo" : "LIVIANO",
+            "grupo" : "LIVIANO",
+            "year" : "2011",
+            "uso_vehiculo" : "PARTICULAR",
+            "provincia_ciudad" : "6aa2e89d795a183ee1fe2aa6",
+            "color" : null
+        }
+    ],
+
+    

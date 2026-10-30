@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Autorización de débito automático – Generali Ecuador</title>
+    <style>
+        /* Medidas en pt tomadas del PDF original (Word): A4, contenido de 85pt a 553pt.
+           Solo tablas con ancho fijo en pt (sin flex, float ni %) para que el motor de PDF lo respete. */
+        @page {
+            size: A4 portrait;
+            margin: 0;
+        }
+
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            background: #ffffff;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 8pt;
+            line-height: 9.9pt;
+            color: #000000;
+        }
+
+        .hoja {
+            width: 595pt;
+            height: 841pt;
+            overflow: hidden;
+        }
+
+        .marca {
+            display: block;
+            width: 184pt;
+            height: 77pt;
+        }
+
+        .titulo {
+            margin: -7pt 0 0 85pt;
+            width: 468pt;
+            text-align: center;
+            font-size: 10pt;
+            line-height: 13pt;
+            font-weight: bold;
+        }
+
+        .cuerpo {
+            margin: 0 0 0 85pt;
+            width: 468pt;
+        }
+
+        /* Cada renglon de campos es una tabla con anchos fijos */
+        .fila {
+            height: 18.2pt;
+            white-space: nowrap;
+            font-size: 0;
+            line-height: 18.2pt;
+        }
+
+        .fila .c {
+            display: inline-block;
+            box-sizing: border-box;
+            height: 18.2pt;
+            font-size: 8pt;
+            line-height: 10pt;
+            padding-top: 4.1pt;
+            vertical-align: top;
+            white-space: nowrap;
+            overflow: hidden;
+        }
+
+        .fila .caja,
+        .fila .valor {
+            line-height: 10pt;
+        }
+
+        /* Recuadro vacio para llenar a mano */
+        .caja {
+            height: 9pt;
+            border: 0.75pt solid #1f2a4a;
+            background: #eef2fc;
+        }
+
+        /* Valor ya conocido: va en lugar del recuadro */
+        .valor {
+            height: 10pt;
+            overflow: hidden;
+            white-space: nowrap;
+            font-weight: bold;
+            padding-left: 1pt;
+        }
+
+        .notas .c {
+            font-size: 8pt;
+            font-style: italic;
+        }
+
+        .seccion {
+            margin: 13pt 0 0 0;
+            font-weight: bold;
+            font-style: italic;
+            text-decoration: underline;
+            line-height: 10pt;
+            margin-bottom: 4.3pt;
+        }
+
+        p {
+            margin: 0 0 8pt 0;
+            text-align: justify;
+        }
+
+        .intro {
+            margin-top: 2.7pt;
+            margin-bottom: 0;
+        }
+
+        .legal {
+            margin-top: 3pt;
+        }
+
+        .ayuda {
+            margin: 3.3pt 0 0 334pt;
+            height: 14.2pt;
+            font-style: italic;
+        }
+
+        .firma {
+            margin: 30.3pt 0 0 144pt;
+            width: 151pt;
+        }
+
+        .firma .linea {
+            height: 21pt;
+            background: #eef2fc;
+            border-bottom: 0.75pt solid #000000;
+        }
+
+        .firma .linea-con-valor {
+            height: 21pt;
+            border-bottom: 0.75pt solid #000000;
+            text-align: center;
+        }
+
+        .firma-texto {
+            margin: 6pt 0 0 132pt;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="hoja">
+        <img class="marca" src="data:image/png;base64,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" alt="Generali">
+        <div class="titulo">AUTORIZACIÓN DE DÉBITO AUTOMATICO PARA PAGO DE PRIMAS</div>
+
+        <div class="cuerpo">
+            <div class="fila" style="width:468pt; margin-top:27pt;">
+                    <span class="c" style="width:24.6pt">Fecha:</span>
+                    <span class="c" style="width:119pt"><div class="caja"></div></span>
+                    <span class="c" style="width:324.4pt"></span>
+                </div>
+
+            <div class="fila" style="width:468pt">
+                    <span class="c" style="width:126.4pt">Nombres completos del asegurado</span>
+                    <span class="c" style="width:185.5pt"><div class="caja"></div></span>
+                    <span class="c" style="width:2.2pt"></span>
+                    <span class="c" style="width:73.3pt">Póliza/Proforma N°:</span>
+                    <span class="c" style="width:80.6pt"><div class="caja"></div></span>
+                </div>
+
+            <div class="fila" style="width:468pt">
+                    <span class="c" style="width:14.2pt"><b>Yo,</b></span>
+                    <span class="c" style="width:247.4pt"><div class="caja"></div></span>
+                    <span class="c" style="width:2.4pt"></span>
+                    <span class="c" style="width:72pt">con C.I./Pass/RUC:</span>
+                    <span class="c" style="width:132pt"><div class="caja"></div></span>
+                </div>
+
+            <div class="fila notas" style="width:468pt">
+                    <span class="c" style="width:35.6pt"></span>
+                    <span class="c" style="width:318.9pt">(Nombre completo del titular de la cuenta/tarjeta)</span>
+                    <span class="c" style="width:113.5pt">(Titular de la cuenta/tarjeta)</span>
+                </div>
+
+            <p class="intro">Autorizo expresamente a Generali Ecuador Compañía de Seguros S.A. el cobro de los valores de la(s)
+                prima(s) generada(s) por la(s) póliza(s) contratada(s), de la cuenta bancaria o tarjeta de crédito de la que soy
+                titular.</p>
+
+            <div class="seccion" style="margin-top:23pt">Debito a Cuenta Bancaria:</div>
+
+            <div class="fila" style="width:468pt">
+                    <span class="c" style="width:44.9pt">No. Cuotas:</span>
+                    <span class="c" style="width:47.6pt"><div class="caja"></div></span>
+                    <span class="c" style="width:27.5pt"></span>
+                    <span class="c" style="width:89.6pt">Valor Total Prima: USD $</span>
+                    <span class="c" style="width:118.7pt"><div class="caja"></div></span>
+                    <span class="c" style="width:139.7pt"></span>
+                </div>
+
+            <div class="fila" style="width:468pt">
+                    <span class="c" style="width:128pt">Nombre de la institución financiera:</span>
+                    <span class="c" style="width:338.2pt"><div class="caja"></div></span>
+                    <span class="c" style="width:1.8pt"></span>
+                </div>
+
+            <div class="fila" style="width:468pt">
+                    <span class="c" style="width:41.6pt">Cuenta N°:</span>
+                    <span class="c" style="width:160.9pt"><div class="caja"></div></span>
+                    <span class="c" style="width:10.9pt"></span>
+                    <span class="c" style="width:32.3pt">Ahorros:</span>
+                    <span class="c" style="width:47.6pt"><div class="caja"></div></span>
+                    <span class="c" style="width:7.1pt"></span>
+                    <span class="c" style="width:37.2pt">Corriente:</span>
+                    <span class="c" style="width:47.6pt"><div class="caja"></div></span>
+                    <span class="c" style="width:82.8pt"></span>
+                </div>
+
+            <div class="seccion" style="margin-top:3pt">Debito a Tarjeta de Crédito:</div>
+
+            <div class="fila" style="width:468pt">
+                    <span class="c" style="width:44.9pt">No. Cuotas:</span>
+                    <span class="c" style="width:47.6pt"><div class="caja"></div></span>
+                    <span class="c" style="width:27.5pt"></span>
+                    <span class="c" style="width:89.6pt">Valor Total Prima: USD $</span>
+                    <span class="c" style="width:118.7pt"><div class="caja"></div></span>
+                    <span class="c" style="width:139.7pt"></span>
+                </div>
+
+            <div class="fila" style="width:468pt">
+                    <span class="c" style="width:39.9pt">Tarjeta N°:</span>
+                    <span class="c" style="width:214.5pt"><div class="caja"></div></span>
+                    <span class="c" style="width:2.2pt"></span>
+                    <span class="c" style="width:42.7pt">Caducidad:</span>
+                    <span class="c" style="width:112.2pt"><div class="caja"></div></span>
+                    <span class="c" style="width:56.5pt"></span>
+                </div>
+
+            <div class="ayuda">dd/mm/yyyy</div>
+
+            <div class="fila" style="width:468pt">
+                    <span class="c" style="width:42.7pt">Mastercard</span>
+                    <span class="c" style="width:16pt"><div class="caja"></div></span>
+                    <span class="c" style="width:7.7pt"></span><span class="c" style="width:16.4pt">Visa</span>
+                    <span class="c" style="width:16.9pt"><div class="caja"></div></span>
+                    <span class="c" style="width:9.2pt"></span><span class="c" style="width:25.1pt">Diners</span>
+                    <span class="c" style="width:16.5pt"><div class="caja"></div></span>
+                    <span class="c" style="width:4.9pt"></span><span class="c" style="width:34.6pt">Discover</span>
+                    <span class="c" style="width:17pt"><div class="caja"></div></span>
+                    <span class="c" style="width:20.1pt"></span><span class="c" style="width:54.2pt">Banco Emisor:</span>
+                    <span class="c" style="width:183.3pt"><div class="caja"></div></span>
+                    <span class="c" style="width:3.4pt"></span>
+                </div>
+
+            <div class="legal">
+                <p>A partir de esta fecha, me comprometo a mantener en mi cuenta bancaria antes detallada, los fondos suficientes
+                    para cubrir los valores que autorizo sean debitados. En caso de no existir los fondos suficientes en las fechas
+                    de débito programadas o si por causas de fuerza mayor no es posible efectuar el débito en dichas fechas, acepto y
+                    autorizo que se realicen los débitos en otras fechas. De no poderse efectuar el débito y que se acumulen varias
+                    cuotas, autorizo expresamente que se debite el valor total de las cuotas vencidas, en un solo débito, de la
+                    cuenta señalada. Los valores autorizados a debitar serán acreditados por el Banco - Institución Financiera en la
+                    cuenta bancaria de Generali Ecuador Compañía de Seguros S.A.</p>
+                <p>Declaro que conozco y acepto que se podrá suspender la cobertura o terminar de forma unilateral el contrato de
+                    seguro, de conformidad con los plazos que establece la ley, si Generali Ecuador Compañía de Seguros S.A. no puede
+                    recaudar las cuotas respectivas por fondos insuficientes, cancelación de la cuenta bancaria o tarjeta de crédito
+                    señalada o cualquier otra causa no imputable a Generali Ecuador Compañía de Seguros S.A.</p>
+                <p>Cualquier cambio en la cuenta bancaria o tarjeta de crédito me comprometo a informar inmediatamente a Generali
+                    Ecuador Compañía de Seguros S.A. para la actualización correspondiente.</p>
+                <p>Declaro que los fondos depositados en mi cuenta bancaria señalada, de la que se realizarán los débitos que
+                    autorizo efectuar, provienen de operaciones lícitas originadas en mi actividad económica actual, por lo que, de
+                    ser el caso, me comprometo a entregar toda información y documentación que requieran para su confirmación.
+                    Asimismo, declaro que la información consignada en este documento es de mi absoluta responsabilidad, por lo que
+                    cualquier error en la misma que impida realizar los débitos, no serán imputables a Generali Ecuador Compañía de
+                    Seguros S.A. ni a la Institución Financiera.</p>
+                <p>Como Titular de la cuenta bancaria o tarjeta de crédito señalada, me obligo a no revocar la presente autorización
+                    sin el previo aviso a Generali Ecuador Compañía de Seguros S.A. con al menos treinta (30) días de anticipación.
+                    Siempre y cuando mantenga saldo suficiente en mi cuenta bancaria señalada para los débitos que por este
+                    instrumento autorizo, y el Banco – Institución Financiera cumpla con su obligación de realizar dichos débitos y
+                    acreditar los valores correspondientes a la cuenta bancaria de Generali Ecuador Compañía de Seguros S.A., libero
+                    de toda responsabilidad al Banco - institución financiera por los débitos o cargos efectuados en base a la
+                    presente autorización.</p>
+            </div>
+
+            <div class="firma">
+                <div class="linea"></div>
+            </div>
+            <div class="firma-texto">Firma autógrafa o electrónica (Titular de la cuenta/tarjeta)</div>
+
+            <div class="fila" style="width:468pt; margin-top:4.9pt;">
+                    <span class="c" style="width:47.2pt"></span>
+                    <span class="c" style="width:71.6pt">Correo electrónico:</span>
+                    <span class="c" style="width:176pt"><div class="caja"></div></span>
+                    <span class="c" style="width:1pt"></span>
+                    <span class="c" style="width:32.7pt">Teléfono:</span>
+                    <span class="c" style="width:89.6pt"><div class="caja"></div></span>
+                    <span class="c" style="width:49.9pt"></span>
+                </div>
+        </div>
+    </div>
+</body>
+
+</html>
