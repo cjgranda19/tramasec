@@ -12,7 +12,7 @@ $tipoIdentificacion = function ($identificacion) {
     if (ctype_digit($identificacion) && strlen($identificacion) === 10) { return 'CÉDULA'; }
     if (ctype_digit($identificacion) && strlen($identificacion) === 13) { return 'RUC'; }
     return 'PASAPORTE';
-};
+};x
 // Los campos de catálogo llegan como ObjectId (24 hex): se traducen con Catalogos::get
 $catalogo = function ($valor) {
     if ($valor === null || $valor === '') { return ''; }
